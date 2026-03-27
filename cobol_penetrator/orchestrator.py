@@ -117,7 +117,7 @@ async def run(config: PenetratorConfig) -> dict:
             - ``done_tickets``: Tickets completed successfully.
             - ``blocked_tickets``: Tickets that exhausted their attempts.
     """
-    # 1. Parse mock.cbl
+    # 1a. Parse mock.cbl
     structure = parse_mock_structure(config.mock_cbl)
     logger.info(
         "Parsed structure: %d paragraphs, %d branches, entry=%s",
@@ -125,6 +125,29 @@ async def run(config: PenetratorConfig) -> dict:
         len(structure.branches),
         structure.entry_paragraph,
     )
+
+    # 1b. Build field report from DATA DIVISION
+    from cobol_penetrator.analysis.field_report import build_field_report
+
+    field_report = None
+    if config.heuristic_mode != "llm_only":
+        try:
+            field_report = build_field_report(config.mock_cbl, structure)
+            logger.info(
+                "Field report: %d variables analyzed",
+                len(field_report.fields),
+            )
+        except Exception:
+            logger.warning(
+                "Failed to build field report, continuing without",
+                exc_info=True,
+            )
+            field_report = None
+
+    # 1c. Initialize heuristic walker
+    from cobol_penetrator.heuristics.heuristic_walker import HeuristicWalker
+
+    walker = HeuristicWalker(field_report)
 
     # 2. Load or create ticket store
     store = TicketStore()
@@ -174,7 +197,38 @@ async def run(config: PenetratorConfig) -> dict:
             context = await agent.build_context(
                 ticket, structure, config.mock_cbl
             )
+            # Attach field report and execution history to context
+            context.field_report = field_report
+            # TODO: populate execution_history from prior attempts on
+            # this ticket once a per-ticket history store is added.
+
             params = await agent.generate_params(context)
+
+            # On retry attempts, merge heuristic suggestions (hybrid mode)
+            if (
+                config.heuristic_mode != "llm_only"
+                and ticket.attempts > 0
+                and field_report is not None
+            ):
+                if isinstance(ticket, BranchTicket):
+                    h_params = walker.suggest_params_for_branch(
+                        ticket.branch_id,
+                        ticket.direction,
+                        ticket.condition_vars,
+                        ticket.condition_text,
+                    )
+                else:
+                    if walker.corpus.entries:
+                        h_params = walker.mutate_params(params)
+                    else:
+                        h_params = walker.generate_exploratory_params()
+
+                # Merge: heuristic fills gaps, does not overwrite LLM
+                for k, v in h_params.get("input_state", {}).items():
+                    params.setdefault("input_state", {}).setdefault(k, v)
+                for k, v in h_params.get("stubs", {}).items():
+                    params.setdefault("stubs", {}).setdefault(k, v)
+
         except Exception:
             logger.exception(
                 "Agent %s failed for ticket %s", agent.name, ticket.id
@@ -200,6 +254,9 @@ async def run(config: PenetratorConfig) -> dict:
                 ticket.assigned_agent = None
             store.save(config.tickets_path)
             continue
+
+        # Record result in the heuristic walker for corpus tracking
+        walker.record_result(params, result)
 
         executions += 1
 

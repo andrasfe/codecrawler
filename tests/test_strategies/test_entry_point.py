@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from cobol_penetrator.agents.base import AgentContext
+from cobol_penetrator.analysis.variable_domain import VariableDomain
 from cobol_penetrator.mock_reader import (
     ParagraphInfo,
     ProgramStructure,
@@ -151,3 +152,129 @@ class TestEntryPointStrategyUserPrompt:
         prompt = strategy.build_user_prompt(minimal_ctx)
         assert "None found" in prompt
         assert "```cobol" in prompt
+
+
+# ---------------------------------------------------------------------------
+# Helpers for field report tests
+# ---------------------------------------------------------------------------
+
+
+class _FakeFieldReport:
+    """Minimal FieldReport-like object for testing prompt enrichment."""
+
+    def __init__(
+        self,
+        fields: dict[str, VariableDomain] | None = None,
+        condition_hints: dict[str, list] | None = None,
+    ) -> None:
+        self.fields = fields or {}
+        self.condition_hints = condition_hints or {}
+        self.stub_variables: dict[str, str] = {}
+        self.stub_operations: list[str] = []
+
+
+def _make_domain(
+    name: str,
+    data_type: str = "alpha",
+    max_length: int = 2,
+    semantic_type: str = "status_file",
+    classification: str = "status",
+    condition_literals: list | None = None,
+) -> VariableDomain:
+    return VariableDomain(
+        name=name,
+        data_type=data_type,
+        max_length=max_length,
+        semantic_type=semantic_type,
+        classification=classification,
+        condition_literals=condition_literals or [],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Tests: Enriched prompts with field report
+# ---------------------------------------------------------------------------
+
+
+class TestEntryPointStrategyEnrichedPrompt:
+    """Verify prompts include metadata when field_report is present."""
+
+    def test_prompt_includes_variable_definitions(
+        self, strategy: EntryPointStrategy, entry_context: AgentContext
+    ) -> None:
+        fields = {
+            "WS-STATUS": _make_domain(
+                "WS-STATUS",
+                condition_literals=["00", "10"],
+            ),
+        }
+        entry_context.field_report = _FakeFieldReport(fields=fields)
+        prompt = strategy.build_user_prompt(entry_context)
+        assert "Variable definitions from DATA DIVISION:" in prompt
+        assert "WS-STATUS" in prompt
+        assert "type=alpha" in prompt
+
+    def test_prompt_includes_condition_hints(
+        self, strategy: EntryPointStrategy, entry_context: AgentContext
+    ) -> None:
+        fields = {"WS-STATUS": _make_domain("WS-STATUS")}
+        hints = {"WS-STATUS": ["00", "10", "23"]}
+        entry_context.field_report = _FakeFieldReport(
+            fields=fields, condition_hints=hints
+        )
+        prompt = strategy.build_user_prompt(entry_context)
+        assert "Condition values found in program:" in prompt
+        assert "WS-STATUS is compared to:" in prompt
+        assert "'00'" in prompt
+
+    def test_prompt_includes_execution_history(
+        self, strategy: EntryPointStrategy, entry_context: AgentContext
+    ) -> None:
+        entry_context.execution_history = [
+            {
+                "input_state": {"WS-STATUS": "00"},
+                "stubs": {},
+                "paragraphs_hit": ["1000-MAIN"],
+                "branches_hit": {},
+            }
+        ]
+        prompt = strategy.build_user_prompt(entry_context)
+        assert "Prior attempts" in prompt
+        assert "Attempt 1:" in prompt
+
+    def test_no_field_report_no_enrichment(
+        self, strategy: EntryPointStrategy, entry_context: AgentContext
+    ) -> None:
+        """Without field_report, prompt should be identical to before."""
+        entry_context.field_report = None
+        prompt = strategy.build_user_prompt(entry_context)
+        assert "Variable definitions from DATA DIVISION:" not in prompt
+        assert "Condition values found in program:" not in prompt
+
+    def test_field_report_prioritizes_status_and_flag(
+        self, strategy: EntryPointStrategy, entry_context: AgentContext
+    ) -> None:
+        """Status and flag fields should appear before internal fields."""
+        fields = {
+            "WS-INTERNAL": _make_domain(
+                "WS-INTERNAL",
+                classification="internal",
+                semantic_type="generic",
+            ),
+            "WS-STATUS": _make_domain(
+                "WS-STATUS",
+                classification="status",
+                semantic_type="status_file",
+            ),
+            "WS-FLAG": _make_domain(
+                "WS-FLAG",
+                classification="flag",
+                semantic_type="flag_bool",
+            ),
+        }
+        entry_context.field_report = _FakeFieldReport(fields=fields)
+        prompt = strategy.build_user_prompt(entry_context)
+        # Status should come before internal in the output
+        status_pos = prompt.find("WS-STATUS")
+        internal_pos = prompt.find("WS-INTERNAL")
+        assert status_pos < internal_pos

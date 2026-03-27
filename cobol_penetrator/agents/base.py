@@ -13,11 +13,14 @@ import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from cobol_penetrator.llm_providers.protocol import LLMProvider, Message
 from cobol_penetrator.mock_reader import ProgramStructure
 from cobol_penetrator.tickets.models import Ticket
+
+if TYPE_CHECKING:
+    from cobol_penetrator.analysis.field_report import FieldReport
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +46,8 @@ class AgentContext:
         variable_snapshots: ``@@V:`` snapshots keyed by branch ID.
         call_path: Ordered list of paragraphs from entry to target.
         extra: Arbitrary additional data for strategy-specific needs.
+        field_report: Optional FieldReport from DATA DIVISION analysis.
+        execution_history: Prior execution attempts for this ticket.
     """
 
     ticket: Ticket
@@ -52,6 +57,8 @@ class AgentContext:
     variable_snapshots: dict[str, dict[str, str]] = field(default_factory=dict)
     call_path: list[str] = field(default_factory=list)
     extra: dict[str, Any] = field(default_factory=dict)
+    field_report: FieldReport | None = None
+    execution_history: list[dict] = field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------

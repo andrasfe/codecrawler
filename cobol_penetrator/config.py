@@ -38,6 +38,9 @@ class PenetratorConfig:
     llm_default_model: str | None = None
     llm_timeout: int = 600
 
+    # Heuristic mode: "llm_only", "heuristic_only", or "hybrid"
+    heuristic_mode: str = "hybrid"
+
     # Agent-specific configs
     recon_agent: AgentConfig = field(default_factory=AgentConfig)
     paragraph_agent: AgentConfig = field(default_factory=AgentConfig)

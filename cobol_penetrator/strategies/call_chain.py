@@ -6,8 +6,15 @@ the PERFORM call chain from the entry point.
 
 from __future__ import annotations
 
+import re
+
 from cobol_penetrator.agents.base import AgentContext
 from cobol_penetrator.strategies.base import Strategy
+from cobol_penetrator.strategies.prompt_enrichment import (
+    format_condition_hints,
+    format_execution_history,
+    format_variable_metadata,
+)
 
 
 class CallChainStrategy(Strategy):
@@ -41,7 +48,8 @@ class CallChainStrategy(Strategy):
         """Build the user prompt with call chain details.
 
         Includes the target paragraph code, the call path from entry
-        to target, the parent's successful parameters, and known stubs.
+        to target, the parent's successful parameters, known stubs,
+        and variable metadata from the field report (if available).
 
         Args:
             context: The agent context with paragraph code, call path,
@@ -63,7 +71,7 @@ class CallChainStrategy(Strategy):
 
         target_paragraph = context.extra.get("target_paragraph", "unknown")
 
-        return (
+        prompt = (
             f"I need to reach paragraph {target_paragraph} "
             f"in a COBOL program.\n\n"
             f"Call path: {call_path_text}\n\n"
@@ -75,3 +83,68 @@ class CallChainStrategy(Strategy):
             f"to reach this paragraph?\n"
             f'Return as JSON: {{"input_state": {{}}, "stubs": {{}}}}'
         )
+
+        # Enrich with variable metadata when field report is available
+        if context.field_report:
+            # Extract variable names referenced in the paragraph code
+            relevant_vars = _extract_vars_from_code(
+                context.paragraph_code, context.field_report
+            )
+
+            metadata = format_variable_metadata(
+                context.field_report, relevant_vars or None
+            )
+            if metadata:
+                prompt += (
+                    f"\n\nVariable definitions from DATA DIVISION:\n"
+                    f"{metadata}\n"
+                )
+
+            hints = format_condition_hints(
+                context.field_report, relevant_vars or None
+            )
+            if hints:
+                prompt += (
+                    f"\nCondition values found in program:\n{hints}\n"
+                )
+
+        if context.execution_history:
+            history = format_execution_history(context.execution_history)
+            prompt += f"\nPrior attempts:\n{history}\n"
+
+        return prompt
+
+
+# Regex to find COBOL variable references (uppercase, hyphen-separated tokens)
+_RE_COBOL_VAR = re.compile(r"\b([A-Z][A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)\b")
+
+
+def _extract_vars_from_code(
+    code: str, field_report: object
+) -> list[str]:
+    """Extract variable names from paragraph code that exist in the field report.
+
+    Scans the COBOL source code for tokens that match known field names
+    from the field report.
+
+    Args:
+        code: The paragraph's COBOL source code.
+        field_report: The FieldReport with a ``fields`` dict.
+
+    Returns:
+        A deduplicated list of variable names found in both the code
+        and the field report, preserving first-occurrence order.
+    """
+    fields = getattr(field_report, "fields", {})
+    if not fields or not code:
+        return []
+
+    found: list[str] = []
+    seen: set[str] = set()
+    for match in _RE_COBOL_VAR.finditer(code):
+        name = match.group(1)
+        if name in fields and name not in seen:
+            seen.add(name)
+            found.append(name)
+
+    return found

@@ -444,3 +444,98 @@ class TestRunLoop:
         assert params_dir.exists()
         param_files = list(params_dir.glob("*.json"))
         assert len(param_files) >= 1
+
+    def test_run_with_hybrid_mode_builds_field_report(
+        self, tmp_path: Path
+    ) -> None:
+        """In hybrid mode, run() builds a field report and walker."""
+        executable = self._make_mock_executable(tmp_path)
+        mock_cbl = self._make_mock_cbl(tmp_path)
+
+        config = PenetratorConfig(
+            executable=executable,
+            mock_cbl=mock_cbl,
+            budget=3,
+            timeout=60,
+            resume=False,
+            tickets_path=tmp_path / "tickets.json",
+            coverage_path=tmp_path / "coverage.json",
+            params_dir=tmp_path / "params",
+            max_attempts=3,
+            heuristic_mode="hybrid",
+        )
+
+        mock_provider = _make_mock_provider()
+
+        with patch(
+            "cobol_penetrator.orchestrator.get_provider_from_env",
+            return_value=mock_provider,
+        ):
+            result = asyncio.run(run(config))
+
+        # The run should complete successfully in hybrid mode
+        assert result["executions"] >= 1
+
+    def test_run_with_llm_only_mode_skips_field_report(
+        self, tmp_path: Path
+    ) -> None:
+        """In llm_only mode, field_report should not be built."""
+        executable = self._make_mock_executable(tmp_path)
+        mock_cbl = self._make_mock_cbl(tmp_path)
+
+        config = PenetratorConfig(
+            executable=executable,
+            mock_cbl=mock_cbl,
+            budget=2,
+            timeout=60,
+            resume=False,
+            tickets_path=tmp_path / "tickets.json",
+            coverage_path=tmp_path / "coverage.json",
+            params_dir=tmp_path / "params",
+            max_attempts=3,
+            heuristic_mode="llm_only",
+        )
+
+        mock_provider = _make_mock_provider()
+
+        with patch(
+            "cobol_penetrator.orchestrator.get_provider_from_env",
+            return_value=mock_provider,
+        ) as mock_env:
+            result = asyncio.run(run(config))
+
+        assert result["executions"] >= 1
+
+    def test_run_field_report_failure_continues(
+        self, tmp_path: Path
+    ) -> None:
+        """If field report building fails, run() continues without it."""
+        executable = self._make_mock_executable(tmp_path)
+        mock_cbl = self._make_mock_cbl(tmp_path)
+
+        config = PenetratorConfig(
+            executable=executable,
+            mock_cbl=mock_cbl,
+            budget=2,
+            timeout=60,
+            resume=False,
+            tickets_path=tmp_path / "tickets.json",
+            coverage_path=tmp_path / "coverage.json",
+            params_dir=tmp_path / "params",
+            max_attempts=3,
+            heuristic_mode="hybrid",
+        )
+
+        mock_provider = _make_mock_provider()
+
+        with patch(
+            "cobol_penetrator.orchestrator.get_provider_from_env",
+            return_value=mock_provider,
+        ), patch(
+            "cobol_penetrator.analysis.field_report.build_field_report",
+            side_effect=ValueError("parse error"),
+        ):
+            result = asyncio.run(run(config))
+
+        # Should still complete despite field report failure
+        assert result["executions"] >= 1

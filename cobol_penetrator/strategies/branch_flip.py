@@ -8,6 +8,11 @@ from __future__ import annotations
 
 from cobol_penetrator.agents.base import AgentContext
 from cobol_penetrator.strategies.base import Strategy
+from cobol_penetrator.strategies.prompt_enrichment import (
+    format_condition_hints,
+    format_execution_history,
+    format_variable_metadata,
+)
 
 
 class BranchFlipStrategy(Strategy):
@@ -44,7 +49,8 @@ class BranchFlipStrategy(Strategy):
 
         Includes the branch condition text, condition variables, variable
         snapshots from prior executions, the containing paragraph code,
-        and asks for JSON with input_state and stubs.
+        variable metadata from the field report (if available), and
+        asks for JSON with input_state and stubs.
 
         Args:
             context: The agent context with branch information, variable
@@ -78,7 +84,7 @@ class BranchFlipStrategy(Strategy):
             else "  No snapshots available"
         )
 
-        return (
+        prompt = (
             f"I need branch {branch_id} in paragraph "
             f"{containing_paragraph} to take direction "
             f"{target_direction}.\n\n"
@@ -91,3 +97,31 @@ class BranchFlipStrategy(Strategy):
             f"to make this branch take direction {target_direction}?\n"
             f'Return as JSON: {{"input_state": {{}}, "stubs": {{}}}}'
         )
+
+        # Enrich with variable metadata when field report is available
+        if context.field_report:
+            # For branch flips, use the condition_vars specifically
+            relevant_vars = list(condition_vars) if condition_vars else None
+
+            metadata = format_variable_metadata(
+                context.field_report, relevant_vars
+            )
+            if metadata:
+                prompt += (
+                    f"\n\nVariable definitions from DATA DIVISION:\n"
+                    f"{metadata}\n"
+                )
+
+            hints = format_condition_hints(
+                context.field_report, relevant_vars
+            )
+            if hints:
+                prompt += (
+                    f"\nCondition values found in program:\n{hints}\n"
+                )
+
+        if context.execution_history:
+            history = format_execution_history(context.execution_history)
+            prompt += f"\nPrior attempts:\n{history}\n"
+
+        return prompt
