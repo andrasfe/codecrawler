@@ -1,1 +1,5 @@
-"""Strategy system — implemented in Streams E and F."""
+"""Strategy system for COBOL coverage penetration."""
+
+from .base import Strategy
+
+__all__ = ["Strategy"]
