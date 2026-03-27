@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cobol-penetrator"
+version = "0.1.0"
+description = "Multi-agent COBOL coverage penetration system"
+requires-python = ">=3.10"
+dependencies = [
+    "python-dotenv",
+    "pydantic>=2.0",
+    "httpx>=0.25",
+    "openai>=1.0",
+    "anthropic>=0.20",
+    "pyyaml>=6.0",
+    "rich>=13.0",
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+cobol-penetrator = "cobol_penetrator.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cobol_penetrator*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short"

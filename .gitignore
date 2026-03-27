@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+.pytest_cache/
+.tickets.json
+reports/coverage.json
+reports/successful_params/
+*.dat
+.mypy_cache/
