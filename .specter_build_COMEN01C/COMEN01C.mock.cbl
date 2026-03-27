@@ -1,0 +1,947 @@
+      ******************************************************************
+      * Program     : COMEN01C.CBL
+      * Application : CardDemo
+      * Type        : CICS COBOL Program
+      * Function    : Main Menu for the Regular users
+      ******************************************************************
+      * Copyright Amazon.com, Inc. or its affiliates.
+      * All Rights Reserved.
+      *
+      * Licensed under the Apache License, Version 2.0 (the "License").
+      * You may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at
+      *
+      *    http://www.apache.org/licenses/LICENSE-2.0
+      *
+      * Unless required by applicable law or agreed to in writing,
+      * software distributed under the License is distributed on an
+      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+      * either express or implied. See the License for the specific
+      * language governing permissions and limitations under the License
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. COMEN01C.
+       AUTHOR.     AWS.
+
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT MOCK-FILE ASSIGN TO
+              'MOCKDATA'
+              ORGANIZATION IS LINE SEQUENTIAL
+              FILE STATUS IS MOCK-FILE-STATUS.
+
+       DATA DIVISION.
+      *----------------------------------------------------------------*
+      *                     WORKING STORAGE SECTION
+      *----------------------------------------------------------------*
+       FILE SECTION.
+       FD MOCK-FILE.
+       01 MOCK-FILE-RECORD     PIC X(80).
+
+       WORKING-STORAGE SECTION.
+      * SPECTER PATCH: cobc-undefined fallback declarations
+       01 S-CDEMO-MENU-OPT-NAME          PIC S9(18)V9(6) OCCURS 100.
+      * SPECTER PATCH: cobc-undefined fallback declarations
+       01 CDEMO-MENU-OPT-NUM             PIC S9(18)V9(6) OCCURS 100.
+      * SPECTER PATCH: cobc-undefined fallback declarations
+       01 OPTN001O                       PIC X(256).
+       01 OPTN002O                       PIC X(256).
+       01 OPTN003O                       PIC X(256).
+       01 OPTN004O                       PIC X(256).
+       01 OPTN005O                       PIC X(256).
+       01 OPTN006O                       PIC X(256).
+       01 OPTN007O                       PIC X(256).
+       01 OPTN008O                       PIC X(256).
+       01 OPTN009O                       PIC X(256).
+       01 OPTN010O                       PIC X(256).
+       01 OPTN011O                       PIC X(256).
+       01 OPTN012O                       PIC X(256).
+      * SPECTER PATCH: cobc-undefined fallback declarations
+       01 A                              PIC X(256).
+       01 SPECTER-CALL                   PIC X(256).
+       01 SPECTER-MOCK                   PIC X(256).
+       01 SPECTER-TRACE                  PIC X(256).
+
+      * SPECTER STUB: DFHAID (AID key values)
+       01 DFHAID-CONSTANTS.
+           05 DFHENTER        PIC X VALUE X'7D'.
+           05 DFHCLEAR        PIC X VALUE X'6D'.
+           05 DFHPA1          PIC X VALUE X'6C'.
+           05 DFHPA2          PIC X VALUE X'6E'.
+           05 DFHPA3          PIC X VALUE X'6B'.
+           05 DFHPF1          PIC X VALUE X'F1'.
+           05 DFHPF2          PIC X VALUE X'F2'.
+           05 DFHPF3          PIC X VALUE X'F3'.
+           05 DFHPF4          PIC X VALUE X'F4'.
+           05 DFHPF5          PIC X VALUE X'F5'.
+           05 DFHPF6          PIC X VALUE X'F6'.
+           05 DFHPF7          PIC X VALUE X'F7'.
+           05 DFHPF8          PIC X VALUE X'F8'.
+           05 DFHPF9          PIC X VALUE X'F9'.
+           05 DFHPF10         PIC X VALUE X'7A'.
+           05 DFHPF11         PIC X VALUE X'7B'.
+           05 DFHPF12         PIC X VALUE X'7C'.
+           05 DFHPF13         PIC X VALUE X'C1'.
+           05 DFHPF14         PIC X VALUE X'C2'.
+           05 DFHPF15         PIC X VALUE X'C3'.
+           05 DFHPF16         PIC X VALUE X'C4'.
+           05 DFHPF17         PIC X VALUE X'C5'.
+           05 DFHPF18         PIC X VALUE X'C6'.
+           05 DFHPF19         PIC X VALUE X'C7'.
+           05 DFHPF20         PIC X VALUE X'C8'.
+           05 DFHPF21         PIC X VALUE X'C9'.
+           05 DFHPF22         PIC X VALUE X'4A'.
+           05 DFHPF23         PIC X VALUE X'4B'.
+           05 DFHPF24         PIC X VALUE X'4C'.
+
+      * SPECTER STUB: DFHBMSCA (BMS attributes)
+       01 DFHBMSCA-CONSTANTS.
+           05 DFHBMPRO        PIC X VALUE X'F0'.
+           05 DFHBMUNP        PIC X VALUE X'C0'.
+           05 DFHBMUNN        PIC X VALUE X'D0'.
+           05 DFHBMPRF        PIC X VALUE X'61'.
+           05 DFHBMASF        PIC X VALUE X'C1'.
+           05 DFHBMASK        PIC X VALUE X'F0'.
+           05 DFHBMFSE        PIC X VALUE X'C8'.
+           05 DFHRED          PIC X VALUE X'F2'.
+           05 DFHBLUE         PIC X VALUE X'F4'.
+           05 DFHGREEN        PIC X VALUE X'F5'.
+           05 DFHWHITE        PIC X VALUE X'F7'.
+           05 DFHYELLO        PIC X VALUE X'F6'.
+           05 DFHTURQ         PIC X VALUE X'F1'.
+           05 DFHPINK         PIC X VALUE X'F3'.
+           05 DFHDFCOL        PIC X VALUE X'00'.
+           05 DFHNEUTR        PIC X VALUE X'00'.
+           05 DFHBMDAR        PIC X VALUE X'0C'.
+           05 DFHBMBRY        PIC X VALUE X'F0'.
+
+      * SPECTER STUB: EIB (Execute Interface Block)
+       01 DFHEIBLK.
+           05 EIBTIME         PIC S9(7) COMP-3 VALUE 0.
+           05 EIBDATE         PIC S9(7) COMP-3 VALUE 0.
+           05 EIBTRNID        PIC X(4) VALUE SPACES.
+           05 EIBTASKN        PIC S9(7) COMP-3 VALUE 0.
+           05 EIBTRMID        PIC X(4) VALUE SPACES.
+           05 EIBCPOSN        PIC S9(4) COMP VALUE 0.
+           05 EIBCALEN        PIC S9(4) COMP VALUE 0.
+           05 EIBAID          PIC X VALUE SPACES.
+           05 EIBFN           PIC X(2) VALUE SPACES.
+           05 EIBRCODE        PIC X(6) VALUE SPACES.
+           05 EIBDS           PIC X(8) VALUE SPACES.
+           05 EIBREQID        PIC X(8) VALUE SPACES.
+           05 EIBRSRCE        PIC X(8) VALUE SPACES.
+           05 EIBSYNC         PIC X VALUE SPACES.
+           05 EIBFREE         PIC X VALUE SPACES.
+           05 EIBRECV         PIC X VALUE SPACES.
+           05 EIBSIG          PIC X VALUE SPACES.
+           05 EIBCONF         PIC X VALUE SPACES.
+           05 EIBERR          PIC X VALUE SPACES.
+           05 EIBERRCD        PIC X(4) VALUE SPACES.
+           05 EIBSYNRB        PIC X VALUE SPACES.
+           05 EIBNODAT        PIC X VALUE SPACES.
+           05 EIBRESP         PIC S9(8) COMP VALUE 0.
+           05 EIBRESP2        PIC S9(8) COMP VALUE 0.
+
+      * SPECTER MOCK INFRASTRUCTURE
+       01 MOCK-RECORD.
+           05 MOCK-OP-KEY        PIC X(30).
+           05 MOCK-ALPHA-STATUS  PIC X(20).
+           05 MOCK-NUM-STATUS    PIC S9(09).
+           05 MOCK-FILLER        PIC X(21).
+       01 MOCK-FILE-STATUS      PIC XX VALUE '00'.
+
+      * SPECTER COMMON STUBS
+       01 DIBSTAT               PIC X(02) VALUE SPACES.
+       01 SQLCODE               PIC S9(09) COMP VALUE 0.
+
+
+       01 WS-VARIABLES.
+         05 WS-PGMNAME                 PIC X(08) VALUE 'COMEN01C'.
+         05 WS-TRANID                  PIC X(04) VALUE 'CM00'.
+         05 WS-MESSAGE                 PIC X(80) VALUE SPACES.
+         05 WS-USRSEC-FILE             PIC X(08) VALUE 'USRSEC  '.
+         05 WS-ERR-FLG                 PIC X(01) VALUE 'N'.
+           88 ERR-FLG-ON                         VALUE 'Y'.
+           88 ERR-FLG-OFF                        VALUE 'N'.
+         05 WS-RESP-CD                 PIC S9(09) COMP VALUE ZEROS.
+         05 WS-REAS-CD                 PIC S9(09) COMP VALUE ZEROS.
+         05 WS-OPTION-X                PIC X(02) JUST RIGHT.
+         05 WS-OPTION                  PIC 9(02) VALUE 0.
+         05 WS-IDX                     PIC S9(04) COMP VALUE ZEROS.
+         05 WS-MENU-OPT-TXT            PIC X(40) VALUE SPACES.
+
+      * SPECTER: COPY COCOM01Y inlined from COCOM01Y.cpy
+      ******************************************************************
+      * Communication area for CardDemo application programs
+      ******************************************************************
+      * Copyright Amazon.com, Inc. or its affiliates.                   
+      * All Rights Reserved.                                            
+      *                                                                 
+      * Licensed under the Apache License, Version 2.0 (the "License"). 
+      * You may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at                         
+      *                                                                 
+      *    http://www.apache.org/licenses/LICENSE-2.0                   
+      *                                                                 
+      * Unless required by applicable law or agreed to in writing,      
+      * software distributed under the License is distributed on an     
+      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,    
+      * either express or implied. See the License for the specific     
+      * language governing permissions and limitations under the License
+      ****************************************************************** 
+       01 CARDDEMO-COMMAREA.
+          05 CDEMO-GENERAL-INFO.
+             10 CDEMO-FROM-TRANID             PIC X(04).
+             10 CDEMO-FROM-PROGRAM            PIC X(08).
+             10 CDEMO-TO-TRANID               PIC X(04).
+             10 CDEMO-TO-PROGRAM              PIC X(08).
+             10 CDEMO-USER-ID                 PIC X(08).
+             10 CDEMO-USER-TYPE               PIC X(01).
+                88 CDEMO-USRTYP-ADMIN         VALUE 'A'.
+                88 CDEMO-USRTYP-USER          VALUE 'U'.
+             10 CDEMO-PGM-CONTEXT             PIC 9(01).
+                88 CDEMO-PGM-ENTER            VALUE 0.
+                88 CDEMO-PGM-REENTER          VALUE 1.
+          05 CDEMO-CUSTOMER-INFO.
+             10 CDEMO-CUST-ID                 PIC 9(09).
+             10 CDEMO-CUST-FNAME              PIC X(25).
+             10 CDEMO-CUST-MNAME              PIC X(25).
+             10 CDEMO-CUST-LNAME              PIC X(25).
+          05 CDEMO-ACCOUNT-INFO.
+             10 CDEMO-ACCT-ID                 PIC 9(11).
+             10 CDEMO-ACCT-STATUS             PIC X(01).
+          05 CDEMO-CARD-INFO.
+             10 CDEMO-CARD-NUM                PIC 9(16).
+          05 CDEMO-MORE-INFO.
+             10  CDEMO-LAST-MAP               PIC X(7).
+             10  CDEMO-LAST-MAPSET            PIC X(7).
+      *
+      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:57 CDT
+      *
+      * SPECTER: COPY COMEN02Y inlined from COMEN02Y.cpy
+      ******************************************************************
+      * CardDemo - Admin Menu Options
+      ******************************************************************
+      * Copyright Amazon.com, Inc. or its affiliates.                   
+      * All Rights Reserved.                                            
+      *                                                                 
+      * Licensed under the Apache License, Version 2.0 (the "License"). 
+      * You may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at                         
+      *                                                                 
+      *    http://www.apache.org/licenses/LICENSE-2.0                   
+      *                                                                 
+      * Unless required by applicable law or agreed to in writing,      
+      * software distributed under the License is distributed on an     
+      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,    
+      * either express or implied. See the License for the specific     
+      * language governing permissions and limitations under the License
+      ****************************************************************** 
+       01 CARDDEMO-MAIN-MENU-OPTIONS.
+
+         05 CDEMO-MENU-OPT-COUNT           PIC 9(02) VALUE 11.
+
+         05 CDEMO-MENU-OPTIONS-DATA.
+
+           10 FILLER                       PIC 9(02) VALUE 1.
+           10 FILLER                       PIC X(35) VALUE
+               'Account View                       '.
+           10 FILLER                       PIC X(08) VALUE 'COACTVWC'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                       PIC 9(02) VALUE 2.
+           10 FILLER                       PIC X(35) VALUE
+               'Account Update                     '.
+           10 FILLER                       PIC X(08) VALUE 'COACTUPC'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                       PIC 9(02) VALUE 3.
+           10 FILLER                       PIC X(35) VALUE
+               'Credit Card List                   '.
+           10 FILLER                       PIC X(08) VALUE 'COCRDLIC'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                       PIC 9(02) VALUE 4.
+           10 FILLER                       PIC X(35) VALUE
+               'Credit Card View                   '.
+           10 FILLER                       PIC X(08) VALUE 'COCRDSLC'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                       PIC 9(02) VALUE 5.
+           10 FILLER                       PIC X(35) VALUE
+               'Credit Card Update                 '.
+           10 FILLER                       PIC X(08) VALUE 'COCRDUPC'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                       PIC 9(02) VALUE 6.
+           10 FILLER                       PIC X(35) VALUE
+               'Transaction List                   '.
+           10 FILLER                       PIC X(08) VALUE 'COTRN00C'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                       PIC 9(02) VALUE 7.
+           10 FILLER                       PIC X(35) VALUE
+               'Transaction View                   '.
+           10 FILLER                       PIC X(08) VALUE 'COTRN01C'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                        PIC 9(02) VALUE 8.
+           10 FILLER                       PIC X(35) VALUE
+      *        'Transaction Add (Admin Only)       '.
+               'Transaction Add                    '.
+           10 FILLER                       PIC X(08) VALUE 'COTRN02C'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                       PIC 9(02) VALUE 9.
+           10 FILLER                       PIC X(35) VALUE
+               'Transaction Reports                '.
+           10 FILLER                       PIC X(08) VALUE 'CORPT00C'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+      *    10 FILLER                       PIC 9(02) VALUE 10.
+           10 FILLER                       PIC X(35) VALUE
+               'Bill Payment                       '.
+           10 FILLER                       PIC X(08) VALUE 'COBIL00C'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+           10 FILLER                       PIC 9(02) VALUE 11.
+           10 FILLER                       PIC X(35) VALUE
+               'Pending Authorization View         '.
+           10 FILLER                       PIC X(08) VALUE 'COPAUS0C'.
+           10 FILLER                       PIC X(01) VALUE 'U'.
+
+
+      *  05 CDEMO-MENU-OPTIONS REDEFINES CDEMO-MENU-OPTIONS-DATA.
+      *    10 CDEMO-MENU-OPT OCCURS 12 TIMES.
+      *      15 CDEMO-MENU-OPT-NUM           PIC 9(02).
+      *      15 CDEMO-MENU-OPT-NAME          PIC X(35).
+      *      15 CDEMO-MENU-OPT-PGMNAME       PIC X(08).
+      *      15 CDEMO-MENU-OPT-USRTYPE       PIC X(01).
+      *
+      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:58 CDT
+      *
+
+      * SPECTER: COPY COMEN01 (not found)
+
+      * SPECTER: COPY COTTL01Y inlined from COTTL01Y.cpy
+      ******************************************************************
+      * Copyright Amazon.com, Inc. or its affiliates.                   
+      * All Rights Reserved.                                            
+      *                                                                 
+      * Licensed under the Apache License, Version 2.0 (the "License"). 
+      * You may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at                         
+      *                                                                 
+      *    http://www.apache.org/licenses/LICENSE-2.0                   
+      *                                                                 
+      * Unless required by applicable law or agreed to in writing,      
+      * software distributed under the License is distributed on an     
+      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,    
+      * either express or implied. See the License for the specific     
+      * language governing permissions and limitations under the License
+      ****************************************************************** 
+       01 CCDA-SCREEN-TITLE.
+         05 CCDA-TITLE01    PIC X(40) VALUE
+            '      AWS Mainframe Modernization       '.
+         05 CCDA-TITLE02    PIC X(40) VALUE
+      *     '  Credit Card Demo Application (CCDA)   '.
+            '              CardDemo                  '.
+         05 CCDA-THANK-YOU  PIC X(40) VALUE
+            'Thank you for using CCDA application... '.
+      *
+      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:58 CDT
+      *
+      * SPECTER: COPY CSDAT01Y inlined from CSDAT01Y.cpy
+      ******************************************************************
+      * Copyright Amazon.com, Inc. or its affiliates.                   
+      * All Rights Reserved.                                            
+      *                                                                 
+      * Licensed under the Apache License, Version 2.0 (the "License"). 
+      * You may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at                         
+      *                                                                 
+      *    http://www.apache.org/licenses/LICENSE-2.0                   
+      *                                                                 
+      * Unless required by applicable law or agreed to in writing,      
+      * software distributed under the License is distributed on an     
+      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,    
+      * either express or implied. See the License for the specific     
+      * language governing permissions and limitations under the License
+      ****************************************************************** 
+       01 WS-DATE-TIME.
+         05 WS-CURDATE-DATA.
+           10  WS-CURDATE.
+             15  WS-CURDATE-YEAR         PIC 9(04).
+             15  WS-CURDATE-MONTH        PIC 9(02).
+             15  WS-CURDATE-DAY          PIC 9(02).
+           10 WS-CURDATE-N REDEFINES WS-CURDATE PIC 9(08).
+           10  WS-CURTIME.
+             15  WS-CURTIME-HOURS        PIC 9(02).
+             15  WS-CURTIME-MINUTE       PIC 9(02).
+             15  WS-CURTIME-SECOND       PIC 9(02).
+             15  WS-CURTIME-MILSEC       PIC 9(02).
+           10 WS-CURTIME-N REDEFINES WS-CURTIME PIC 9(08).
+         05 WS-CURDATE-MM-DD-YY.
+           10  WS-CURDATE-MM             PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE '/'.
+           10  WS-CURDATE-DD             PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE '/'.
+           10  WS-CURDATE-YY             PIC 9(02).
+         05 WS-CURTIME-HH-MM-SS.
+           10  WS-CURTIME-HH             PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE ':'.
+           10  WS-CURTIME-MM             PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE ':'.
+           10  WS-CURTIME-SS             PIC 9(02).
+         05 WS-TIMESTAMP.
+           10  WS-TIMESTAMP-DT-YYYY      PIC 9(04).
+           10  FILLER                    PIC X(01) VALUE '-'.
+           10  WS-TIMESTAMP-DT-MM        PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE '-'.
+           10  WS-TIMESTAMP-DT-DD        PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE ' '.
+           10  WS-TIMESTAMP-TM-HH        PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE ':'.
+           10  WS-TIMESTAMP-TM-MM        PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE ':'.
+           10  WS-TIMESTAMP-TM-SS        PIC 9(02).
+           10  FILLER                    PIC X(01) VALUE '.'.
+           10  WS-TIMESTAMP-TM-MS6       PIC 9(06).
+      *
+      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:58 CDT
+      *
+      * SPECTER: COPY CSMSG01Y inlined from CSMSG01Y.cpy
+      ******************************************************************
+      * Copyright Amazon.com, Inc. or its affiliates.                   
+      * All Rights Reserved.                                            
+      *                                                                 
+      * Licensed under the Apache License, Version 2.0 (the "License"). 
+      * You may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at                         
+      *                                                                 
+      *    http://www.apache.org/licenses/LICENSE-2.0                   
+      *                                                                 
+      * Unless required by applicable law or agreed to in writing,      
+      * software distributed under the License is distributed on an     
+      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,    
+      * either express or implied. See the License for the specific     
+      * language governing permissions and limitations under the License
+      ****************************************************************** 
+       01 CCDA-COMMON-MESSAGES.
+         05 CCDA-MSG-THANK-YOU         PIC X(50) VALUE
+              'Thank you for using CardDemo application...      '.
+         05 CCDA-MSG-INVALID-KEY       PIC X(50) VALUE
+              'Invalid key pressed. Please see below...         '.
+      *
+      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:58 CDT
+      *
+      * SPECTER: COPY CSUSR01Y inlined from CSUSR01Y.cpy
+      ******************************************************************
+      * Copyright Amazon.com, Inc. or its affiliates.                   
+      * All Rights Reserved.                                            
+      *                                                                 
+      * Licensed under the Apache License, Version 2.0 (the "License"). 
+      * You may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at                         
+      *                                                                 
+      *    http://www.apache.org/licenses/LICENSE-2.0                   
+      *                                                                 
+      * Unless required by applicable law or agreed to in writing,      
+      * software distributed under the License is distributed on an     
+      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,    
+      * either express or implied. See the License for the specific     
+      * language governing permissions and limitations under the License
+      ****************************************************************** 
+       01 SEC-USER-DATA.
+         05 SEC-USR-ID                 PIC X(08).
+         05 SEC-USR-FNAME              PIC X(20).
+         05 SEC-USR-LNAME              PIC X(20).
+         05 SEC-USR-PWD                PIC X(08).
+         05 SEC-USR-TYPE               PIC X(01).
+         05 SEC-USR-FILLER             PIC X(23).
+       01  DFHCOMMAREA.
+         05  LK-COMMAREA                           PIC X(01)
+             OCCURS 1 TO 32767 TIMES DEPENDING ON EIBCALEN.
+      *
+      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:59 CDT
+      *
+
+      * SPECTER: COPY DFHAID (not found)
+      * SPECTER: COPY DFHBMSCA (not found)
+
+      *----------------------------------------------------------------*
+      *                        LINKAGE SECTION
+      *----------------------------------------------------------------*
+      *LINKAGE SECTION.
+      *01  DFHCOMMAREA.
+      *  05  LK-COMMAREA                           PIC X(01)
+      *      OCCURS 1 TO 32767 TIMES DEPENDING ON EIBCALEN.
+
+      *----------------------------------------------------------------*
+      *                       PROCEDURE DIVISION
+      *----------------------------------------------------------------*
+      *PROCEDURE DIVISION.
+       PROCEDURE DIVISION.
+       SPECTER-HARDENED-ENTRY.
+           PERFORM MAIN-PARA.
+           PERFORM PROCESS-ENTER-KEY.
+           PERFORM RETURN-TO-SIGNON-SCREEN.
+           PERFORM SEND-MENU-SCREEN.
+           PERFORM RECEIVE-MENU-SCREEN.
+           PERFORM POPULATE-HEADER-INFO.
+           PERFORM S-CDEMO-MENU-OPT-NAME.
+           PERFORM S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL.
+           PERFORM SPECTER-EXIT-PARA.
+           GOBACK.
+       MAIN-PARA.
+           DISPLAY 'SPECTER-TRACE:MAIN-PARA'.
+           CONTINUE.
+       PROCESS-ENTER-KEY.
+           DISPLAY 'SPECTER-TRACE:PROCESS-ENTER-KEY'.
+      *    CONTINUE.
+       RETURN-TO-SIGNON-SCREEN.
+           DISPLAY 'SPECTER-TRACE:RETURN-TO-SIGNON-SCREEN'.
+      *    CONTINUE.
+       SEND-MENU-SCREEN.
+           DISPLAY 'SPECTER-TRACE:SEND-MENU-SCREEN'.
+      *    CONTINUE.
+       RECEIVE-MENU-SCREEN.
+           DISPLAY 'SPECTER-TRACE:RECEIVE-MENU-SCREEN'.
+      *    CONTINUE.
+       POPULATE-HEADER-INFO.
+           DISPLAY 'SPECTER-TRACE:POPULATE-HEADER-INFO'.
+      *    CONTINUE.
+       S-CDEMO-MENU-OPT-NAME.
+           DISPLAY 'SPECTER-TRACE:S-CDEMO-MENU-OPT-NAME'.
+      *    CONTINUE.
+       S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL.
+           DISPLAY 'SPECTER-TRACE:S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL'.
+      *    CONTINUE.
+       SPECTER-EXIT-PARA.
+           DISPLAY 'SPECTER-TRACE:SPECTER-EXIT-PARA'.
+      *    CONTINUE.
+      *MAIN-PARA.
+      *    CONTINUE.
+      *    DISPLAY 'SPECTER-TRACE:MAIN-PARA'.
+
+      *    SET ERR-FLG-OFF TO TRUE
+
+      *    MOVE SPACES TO WS-MESSAGE
+      *                   ERRMSGO OF COMEN1AO
+
+      *    IF EIBCALEN = 0
+      *        MOVE 'COSGN00C' TO CDEMO-FROM-PROGRAM
+      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=RETURN-TO-SIGNON-SCREEN'.
+      *        PERFORM RETURN-TO-SIGNON-SCREEN
+      *    ELSE
+      *        MOVE DFHCOMMAREA(1:EIBCALEN) TO CARDDEMO-COMMAREA
+      *        IF NOT CDEMO-PGM-REENTER
+      *            SET CDEMO-PGM-REENTER    TO TRUE
+      *            MOVE LOW-VALUES          TO COMEN1AO
+      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=SEND-MENU-SCREEN'.
+      *            PERFORM SEND-MENU-SCREEN
+      *        ELSE
+      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=RECEIVE-MENU-SCREEN'.
+      *            PERFORM RECEIVE-MENU-SCREEN
+      *            EVALUATE EIBAID
+      *                WHEN DFHENTER
+      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=PROCESS-ENTER-KEY'.
+      *                    PERFORM PROCESS-ENTER-KEY
+      *                WHEN DFHPF3
+      *                    MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM
+      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=RETURN-TO-SIGNON-SCREEN'.
+      *                    PERFORM RETURN-TO-SIGNON-SCREEN
+      *                WHEN OTHER
+      *                    MOVE 'Y'                       TO WS-ERR-FLG
+      *                    MOVE CCDA-MSG-INVALID-KEY      TO WS-MESSAGE
+      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=SEND-MENU-SCREEN'.
+      *                    PERFORM SEND-MENU-SCREEN
+      *            END-EVALUATE
+      *        END-IF
+      *    END-IF
+
+      *    EXEC CICS RETURN
+      *              TRANSID (WS-TRANID)
+      *              COMMAREA (CARDDEMO-COMMAREA)
+      *    END-EXEC.
+      *    DISPLAY 'SPECTER-CICS:RETURN'
+      *    GO TO SPECTER-EXIT-PARA.
+
+      *----------------------------------------------------------------*
+      *                      PROCESS-ENTER-KEY
+      *----------------------------------------------------------------*
+      *PROCESS-ENTER-KEY.
+      *    CONTINUE.
+
+      *    PERFORM VARYING WS-IDX
+      *            FROM LENGTH OF OPTIONI OF COMEN1AI BY -1 UNTIL
+      *            OPTIONI OF COMEN1AI(WS-IDX:1) NOT = SPACES OR
+      *            WS-IDX = 1
+      *    END-PERFORM
+      *    MOVE OPTIONI OF COMEN1AI(1:WS-IDX) TO WS-OPTION-X
+      *    INSPECT WS-OPTION-X REPLACING ALL ' ' BY '0'
+      *    MOVE WS-OPTION-X              TO WS-OPTION
+      *    MOVE WS-OPTION                TO OPTIONO OF COMEN1AO
+
+      *    IF WS-OPTION IS NOT NUMERIC OR
+      *       WS-OPTION > CDEMO-MENU-OPT-COUNT OR
+      *       WS-OPTION = ZEROS
+      *        MOVE 'Y'     TO WS-ERR-FLG
+      *        MOVE 'Please enter a valid option number...' TO
+      *                        WS-MESSAGE
+      *    DISPLAY 'SPECTER-CALL:FROM=PROCESS-ENTER-KEY:TO=SEND-MENU-SCREEN'.
+      *        PERFORM SEND-MENU-SCREEN
+      *    END-IF
+
+      *    IF CDEMO-USRTYP-USER AND
+      *       CDEMO-MENU-OPT-USRTYPE(WS-OPTION) = 'A'
+      *        SET ERR-FLG-ON          TO TRUE
+      *        MOVE SPACES             TO WS-MESSAGE
+      *        MOVE 'No access - Admin Only option... ' TO
+      *                                WS-MESSAGE
+      *    DISPLAY 'SPECTER-CALL:FROM=PROCESS-ENTER-KEY:TO=SEND-MENU-SCREEN'.
+      *        PERFORM SEND-MENU-SCREEN
+      *    END-IF
+
+      *    IF NOT ERR-FLG-ON
+      *       EVALUATE TRUE
+      *         WHEN CDEMO-MENU-OPT-PGMNAME(WS-OPTION) = 'COPAUS0C'
+      *            EXEC CICS INQUIRE
+      *                PROGRAM(CDEMO-MENU-OPT-PGMNAME(WS-OPTION))
+      *                NOHANDLE
+      *            END-EXEC
+      *    DISPLAY 'SPECTER-MOCK:CICS-INQUIRE'
+      *    READ MOCK-FILE INTO MOCK-RECORD
+      *       AT END
+      *         MOVE '00' TO MOCK-ALPHA-STATUS
+      *         MOVE 0 TO MOCK-NUM-STATUS
+      *    END-READ
+      *            IF EIBRESP = 0
+      *               MOVE WS-TRANID    TO CDEMO-FROM-TRANID
+      *               MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM
+      *               MOVE ZEROS        TO CDEMO-PGM-CONTEXT
+      *               EXEC CICS XCTL
+      *                   PROGRAM(CDEMO-MENU-OPT-PGMNAME(WS-OPTION))
+      *                   COMMAREA(CARDDEMO-COMMAREA)
+      *               END-EXEC
+      *    DISPLAY 'SPECTER-CICS:XCTL:CDEMO-MENU-OPT-PGMNAME(WS-OPTION'
+      *    GO TO SPECTER-EXIT-PARA
+      *            ELSE
+      *               MOVE SPACES             TO WS-MESSAGE
+      *               MOVE DFHRED             TO ERRMSGC  OF COMEN1AO
+      *               STRING 'This option '       DELIMITED BY SIZE
+      *                        CDEMO-MENU-OPT-NAME(WS-OPTION)
+      *                                   DELIMITED BY '  '
+      *                     ' is not installed...'   DELIMITED BY SIZE
+      *                   INTO WS-MESSAGE
+      *              END-IF
+      *           WHEN CDEMO-MENU-OPT-PGMNAME(WS-OPTION)(1:5) = 'DUMMY'
+      *              MOVE SPACES             TO WS-MESSAGE
+      *              MOVE DFHGREEN           TO ERRMSGC  OF COMEN1AO
+      *              STRING 'This option '       DELIMITED BY SIZE
+      *                      CDEMO-MENU-OPT-NAME(WS-OPTION)
+      *                                  DELIMITED BY SPACE
+      *                     'is coming soon ...'   DELIMITED BY SIZE
+      *                INTO WS-MESSAGE
+      *           WHEN OTHER
+      *              MOVE WS-TRANID    TO CDEMO-FROM-TRANID
+      *              MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM
+      *              MOVE WS-PGMNAME   TO CDEMO-FROM-PROGRAM
+      *              MOVE WS-USER-ID   TO CDEMO-USER-ID
+      *              MOVE SEC-USR-TYPE TO CDEMO-USER-TYPE
+      *              MOVE ZEROS        TO CDEMO-PGM-CONTEXT
+      *              EXEC CICS
+      *                  XCTL PROGRAM(CDEMO-MENU-OPT-PGMNAME(WS-OPTION))
+      *                  COMMAREA(CARDDEMO-COMMAREA)
+      *              END-EXEC
+      *    DISPLAY 'SPECTER-CICS:XCTL:CDEMO-MENU-OPT-PGMNAME(WS-OPTION'
+      *    GO TO SPECTER-EXIT-PARA
+      *       END-EVALUATE
+
+      *    DISPLAY 'SPECTER-CALL:FROM=PROCESS-ENTER-KEY:TO=SEND-MENU-SCREEN'.
+      *       PERFORM SEND-MENU-SCREEN
+      *    END-IF.
+
+      *----------------------------------------------------------------*
+      *                      RETURN-TO-SIGNON-SCREEN
+      *----------------------------------------------------------------*
+      *RETURN-TO-SIGNON-SCREEN.
+      *    DISPLAY 'SPECTER-TRACE:RETURN-TO-SIGNON-SCREEN'.
+
+      *    IF CDEMO-TO-PROGRAM = LOW-VALUES OR SPACES
+      *        MOVE 'COSGN00C' TO CDEMO-TO-PROGRAM
+      *    END-IF
+      *    EXEC CICS
+      *        XCTL PROGRAM(CDEMO-TO-PROGRAM)
+      *    END-EXEC.
+      *    DISPLAY 'SPECTER-CICS:XCTL:CDEMO-TO-PROGRAM'
+      *    GO TO SPECTER-EXIT-PARA.
+
+      *----------------------------------------------------------------*
+      *                      SEND-MENU-SCREEN
+      *----------------------------------------------------------------*
+      *SEND-MENU-SCREEN.
+      *    CONTINUE.
+
+      *    DISPLAY 'SPECTER-CALL:FROM=SEND-MENU-SCREEN:TO=POPULATE-HEADER-INFO'.
+      *    PERFORM POPULATE-HEADER-INFO
+      *    DISPLAY 'SPECTER-CALL:FROM=SEND-MENU-SCREEN:TO=BUILD-MENU-OPTIONS'.
+      *    PERFORM BUILD-MENU-OPTIONS
+
+      *    MOVE WS-MESSAGE TO ERRMSGO OF COMEN1AO
+
+      *    EXEC CICS SEND
+      *              MAP('COMEN1A')
+      *              MAPSET('COMEN01')
+      *              FROM(COMEN1AO)
+      *              ERASE
+      *    END-EXEC.
+      *    DISPLAY 'SPECTER-MOCK:CICS-SEND'
+      *    READ MOCK-FILE INTO MOCK-RECORD
+      *       AT END
+      *         MOVE '00' TO MOCK-ALPHA-STATUS
+      *         MOVE 0 TO MOCK-NUM-STATUS
+      *    END-READ.
+
+      *----------------------------------------------------------------*
+      *                      RECEIVE-MENU-SCREEN
+      *----------------------------------------------------------------*
+      *RECEIVE-MENU-SCREEN.
+      *    DISPLAY 'SPECTER-TRACE:RECEIVE-MENU-SCREEN'.
+
+      *    EXEC CICS RECEIVE
+      *              MAP('COMEN1A')
+      *              MAPSET('COMEN01')
+      *              INTO(COMEN1AI)
+      *              RESP(WS-RESP-CD)
+      *              RESP2(WS-REAS-CD)
+      *    END-EXEC.
+      *    DISPLAY 'SPECTER-MOCK:CICS-RECEIVE'
+      *    READ MOCK-FILE INTO MOCK-RECORD
+      *       AT END
+      *         MOVE '00' TO MOCK-ALPHA-STATUS
+      *         MOVE 0 TO MOCK-NUM-STATUS
+      *    END-READ
+      *    MOVE MOCK-ALPHA-STATUS(1:1) TO EIBAID
+      *    MOVE MOCK-NUM-STATUS TO WS-RESP-CD
+      *    MOVE 0 TO WS-REAS-CD.
+
+      *----------------------------------------------------------------*
+      *                      POPULATE-HEADER-INFO
+      *----------------------------------------------------------------*
+      *POPULATE-HEADER-INFO.
+      *    DISPLAY 'SPECTER-TRACE:POPULATE-HEADER-INFO'.
+
+      *    MOVE FUNCTION CURRENT-DATE  TO WS-CURDATE-DATA
+
+      *    MOVE CCDA-TITLE01           TO TITLE01O OF COMEN1AO
+      *    MOVE CCDA-TITLE02           TO TITLE02O OF COMEN1AO
+      *    MOVE WS-TRANID              TO TRNNAMEO OF COMEN1AO
+      *    MOVE WS-PGMNAME             TO PGMNAMEO OF COMEN1AO
+
+      *    MOVE WS-CURDATE-MONTH       TO WS-CURDATE-MM
+      *    MOVE WS-CURDATE-DAY         TO WS-CURDATE-DD
+      *    MOVE WS-CURDATE-YEAR(3:2)   TO WS-CURDATE-YY
+
+      *    MOVE WS-CURDATE-MM-DD-YY    TO CURDATEO OF COMEN1AO
+
+      *    MOVE WS-CURTIME-HOURS       TO WS-CURTIME-HH
+      *    MOVE WS-CURTIME-MINUTE      TO WS-CURTIME-MM
+      *    MOVE WS-CURTIME-SECOND      TO WS-CURTIME-SS
+
+      *    MOVE WS-CURTIME-HH-MM-SS    TO CURTIMEO OF COMEN1AO.
+
+      *----------------------------------------------------------------*
+      *                      BUILD-MENU-OPTIONS
+      *----------------------------------------------------------------*
+      *S-S-S-S-S-S-S-S-S-S-S-S-BUILD-.            
+      *    CONTINUE.
+
+      *    PERFORM VARYING WS-IDX FROM 1 BY 1 UNTIL
+      *                    WS-IDX > CDEMO-MENU-OPT-COUNT
+
+      *        MOVE SPACES             TO WS-MENU-OPT-TXT
+
+      *        STRING CDEMO-MENU-OPT-NUM(WS-IDX)  DELIMITED BY SIZE
+      *               '. '                         DELIMITED BY SIZE
+      *               S-CDEMO-MENU-OPT-NAME(WS-IDX) DELIMITED BY SIZE 
+      *          INTO WS-MENU-OPT-TXT
+
+      *        EVALUATE WS-IDX
+      *            WHEN 1
+      *                MOVE WS-MENU-OPT-TXT TO OPTN001O
+      *            WHEN 2
+      *                MOVE WS-MENU-OPT-TXT TO OPTN002O
+      *            WHEN 3
+      *                MOVE WS-MENU-OPT-TXT TO OPTN003O
+      *            WHEN 4
+      *                MOVE WS-MENU-OPT-TXT TO OPTN004O
+      *            WHEN 5
+      *                MOVE WS-MENU-OPT-TXT TO OPTN005O
+      *            WHEN 6
+      *                MOVE WS-MENU-OPT-TXT TO OPTN006O
+      *            WHEN 7
+      *                MOVE WS-MENU-OPT-TXT TO OPTN007O
+      *            WHEN 8
+      *                MOVE WS-MENU-OPT-TXT TO OPTN008O
+      *            WHEN 9
+      *                MOVE WS-MENU-OPT-TXT TO OPTN009O
+      *            WHEN 10
+      *                MOVE WS-MENU-OPT-TXT TO OPTN010O
+      *            WHEN 11
+      *                MOVE WS-MENU-OPT-TXT TO OPTN011O
+      *            WHEN 12
+      *                MOVE WS-MENU-OPT-TXT TO OPTN012O
+      *            WHEN OTHER
+      *                CONTINUE
+      *        END-EVALUATE
+
+      *    END-PERFORM.
+
+
+      *
+      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:12:33 CDT
+      *
+
+      * SPECTER: exit paragraph for CICS RETURN/XCTL
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-CDEMO-MENU-OPT-NAME. 
+      *    EXIT.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+
+      * SPECTER PATCH: cobc-undefined paragraph stubs.
+      *S-S-S-S-S-S-S-S-S-S-S-S-S-BUIL. 
+      *    CONTINUE.
+      *SPECTER-EXIT-PARA.
+      *    CLOSE MOCK-FILE
+      *    STOP RUN.

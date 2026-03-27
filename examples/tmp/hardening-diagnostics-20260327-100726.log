@@ -1,0 +1,11 @@
+stage=post-salvage
+
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-8rr4pet4/autocheck-salvage2.cbl: in paragraph 'CLEAR-CURRENT-SCREEN':
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-8rr4pet4/autocheck-salvage2.cbl:1046: error: redefinition of 'S-SPECTER-EXIT-PARA'
+ 1044 | 
+ 1045 |       * SPECTER: exit paragraph for CICS RETURN/XCTL
+ 1046 >        S-SPECTER-EXIT-PARA.
+ 1047 | 
+ 1048 |       *    CONTINUE.
+
+

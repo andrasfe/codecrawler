@@ -1,0 +1,11 @@
+stage=post-salvage
+
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-53i_zxzh/autocheck-salvage2.cbl:429: error: PROCEDURE DIVISION header missing
+  427 |       *                      PROCESS-ENTER-KEY
+  428 |       *----------------------------------------------------------------*
+  429 >        PROCESS-ENTER-KEY.
+  430 |       *    CONTINUE.
+  431 | 
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-53i_zxzh/autocheck-salvage2.cbl:429: error: syntax error, unexpected Identifier
+
+

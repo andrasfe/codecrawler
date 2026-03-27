@@ -1,0 +1,11 @@
+stage=post-salvage
+
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-zn76zg5x/autocheck-salvage2.cbl: in paragraph 'POPULATE-HEADER-INFO':
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-zn76zg5x/autocheck-salvage2.cbl:785: error: redefinition of 'S-CDEMO-MENU-OPT-NAME'
+  783 | 
+  784 |       * SPECTER PATCH: cobc-undefined paragraph stubs.
+  785 >        S-CDEMO-MENU-OPT-NAME.
+  786 | 
+  787 |            EXIT.
+
+
