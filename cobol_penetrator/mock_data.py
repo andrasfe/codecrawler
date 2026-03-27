@@ -94,14 +94,24 @@ def generate_mock_file(
         )
 
     # Stub records — one per operation key.
+    # The LLM may return stubs as {"key": "value"} (string shorthand)
+    # or {"key": {"alpha_status": "...", "num_status": "..."}} (full form).
     for op_key, status in stubs.items():
-        records.append(
-            MockRecord(
-                op_key=op_key,
-                alpha_status=status.get("alpha_status", ""),
-                num_status=status.get("num_status", ""),
+        if isinstance(status, str):
+            # Shorthand: treat the string as alpha_status
+            records.append(
+                MockRecord(op_key=op_key, alpha_status=status)
             )
-        )
+        elif isinstance(status, dict):
+            records.append(
+                MockRecord(
+                    op_key=op_key,
+                    alpha_status=status.get("alpha_status", ""),
+                    num_status=status.get("num_status", ""),
+                )
+            )
+        else:
+            records.append(MockRecord(op_key=op_key, alpha_status=str(status)))
 
     # Write all records, one per line.
     output_path.parent.mkdir(parents=True, exist_ok=True)
