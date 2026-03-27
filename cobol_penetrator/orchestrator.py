@@ -1,11 +1,11 @@
 """Main agent loop orchestrator for the COBOL penetration system.
 
-Implements the core loop from the spec (lines 124-172):
-1. Parse mock.cbl for program structure.
-2. Create initial entry paragraph ticket.
-3. Loop: claim ticket, select agent, build context, generate params,
-   execute, check result, cascade tickets.
-4. Track coverage and save state after each iteration.
+Enhanced with:
+- Multi-turn agent execution (multiple LLM calls per ticket)
+- Static call graph cascading (not just SPECTER-CALL traces)
+- Paragraphs-hit cascading (auto-create tickets for newly seen paragraphs)
+- Agent memory (execution history passed to agents on retries)
+- Aggressive coverage-driven exploration
 """
 
 from __future__ import annotations
@@ -42,24 +42,7 @@ def select_agent(
     provider: Any,
     config: PenetratorConfig,
 ) -> BaseAgent:
-    """Select the appropriate agent for a ticket type.
-
-    - Entry-point ParagraphTickets (no call path or single-element path)
-      get the ReconAgent.
-    - Deeper ParagraphTickets get the ParagraphAgent.
-    - BranchTickets get the BranchAgent.
-
-    Args:
-        ticket: The ticket to find an agent for.
-        provider: The LLM provider instance.
-        config: The penetrator configuration.
-
-    Returns:
-        An agent instance appropriate for the ticket type.
-
-    Raises:
-        ValueError: If the ticket type is not recognised.
-    """
+    """Select the appropriate agent for a ticket type."""
     if isinstance(ticket, ParagraphTicket):
         if not ticket.call_path or len(ticket.call_path) <= 1:
             return ReconAgent(provider)
@@ -73,19 +56,7 @@ def ticket_target_reached(
     ticket: ParagraphTicket | BranchTicket,
     result: ExecutionResult,
 ) -> bool:
-    """Check if the execution result reached the ticket's target.
-
-    For ParagraphTickets, success means the target paragraph appeared
-    in ``result.paragraphs_hit``.  For BranchTickets, success means
-    the target branch ID was hit with the target direction.
-
-    Args:
-        ticket: The ticket whose target we are checking.
-        result: The execution result from running the COBOL binary.
-
-    Returns:
-        ``True`` if the target was reached, ``False`` otherwise.
-    """
+    """Check if the execution result reached the ticket's target."""
     if isinstance(ticket, ParagraphTicket):
         return ticket.paragraph in result.paragraphs_hit
     elif isinstance(ticket, BranchTicket):
@@ -96,27 +67,198 @@ def ticket_target_reached(
     return False
 
 
-async def run(config: PenetratorConfig) -> dict:
-    """Main orchestration loop.
+def _cascade_from_trace(
+    engine: TicketEngine,
+    store: TicketStore,
+    structure: ProgramStructure,
+    result: ExecutionResult,
+    source_ticket: ParagraphTicket,
+) -> int:
+    """Create tickets for ALL paragraphs seen in trace output + static call graph.
 
-    Implements the agent loop from the spec:
-    1. Parse the mock.cbl file for program structure.
-    2. Load or create the ticket store (with crash recovery on resume).
-    3. Create the initial entry paragraph ticket if this is a fresh run.
-    4. Loop: claim tickets, dispatch agents, execute, cascade.
-    5. Save final state and return a summary dict.
+    This is the key enhancement: instead of only cascading from SPECTER-CALL
+    traces, we cascade from every paragraph that appeared in the execution
+    AND their static callees from the call graph.
 
-    Args:
-        config: The penetrator configuration.
-
-    Returns:
-        A summary dict with keys:
-            - ``executions``: Number of COBOL binary runs.
-            - ``coverage_pct``: Final coverage percentage.
-            - ``total_tickets``: Total tickets created.
-            - ``done_tickets``: Tickets completed successfully.
-            - ``blocked_tickets``: Tickets that exhausted their attempts.
+    Returns the number of new tickets created.
     """
+    created = 0
+    done_paras = store.done_paragraphs()
+    existing_ids = {t.id for t in store.all_tickets()}
+
+    # 1. Every paragraph hit in the trace gets a ticket (if not already done)
+    for para in result.paragraphs_hit:
+        if para in structure.paragraphs and para not in done_paras:
+            ticket_id = f"PARA-{para}"
+            if ticket_id not in existing_ids:
+                try:
+                    engine.create_paragraph_ticket(
+                        paragraph=para,
+                        call_path=list(source_ticket.call_path) + [para],
+                    )
+                    created += 1
+                    existing_ids.add(ticket_id)
+                except Exception:
+                    pass
+
+    # 2. For every hit paragraph, also cascade to its static callees
+    for para in result.paragraphs_hit:
+        callees = structure.call_graph.get(para, [])
+        for callee in callees:
+            if callee in structure.paragraphs and callee not in done_paras:
+                ticket_id = f"PARA-{callee}"
+                if ticket_id not in existing_ids:
+                    try:
+                        engine.create_paragraph_ticket(
+                            paragraph=callee,
+                            call_path=list(source_ticket.call_path) + [para, callee],
+                        )
+                        created += 1
+                        existing_ids.add(ticket_id)
+                    except Exception:
+                        pass
+
+    # 3. Original SPECTER-CALL cascading (if available)
+    for _caller, callee in result.call_chain:
+        if callee in structure.paragraphs and callee not in done_paras:
+            ticket_id = f"PARA-{callee}"
+            if ticket_id not in existing_ids:
+                try:
+                    engine.create_paragraph_ticket(
+                        paragraph=callee,
+                        call_path=list(source_ticket.call_path) + [callee],
+                    )
+                    created += 1
+                    existing_ids.add(ticket_id)
+                except Exception:
+                    pass
+
+    return created
+
+
+def _cascade_branch_tickets(
+    engine: TicketEngine,
+    structure: ProgramStructure,
+    ticket: ParagraphTicket,
+) -> None:
+    """Create branch tickets for all branches in the completed paragraph."""
+    for branch_id in structure.branches_in(ticket.paragraph):
+        branch_info = structure.branches[branch_id]
+        for direction in branch_info.directions:
+            try:
+                engine.create_branch_ticket(
+                    branch_id=branch_id,
+                    direction=direction,
+                    paragraph=ticket.paragraph,
+                    condition_text=branch_info.condition_text,
+                    condition_vars=branch_info.condition_vars,
+                )
+            except Exception:
+                pass
+
+
+async def _multi_turn_execute(
+    agent: BaseAgent,
+    ticket: ParagraphTicket | BranchTicket,
+    structure: ProgramStructure,
+    config: PenetratorConfig,
+    field_report: Any,
+    walker: Any,
+    execution_history: list[dict],
+    coverage: CoverageTracker | None = None,
+    max_turns: int = 3,
+) -> tuple[dict | None, ExecutionResult | None]:
+    """Execute multiple turns of agent → execute → analyze for a single ticket.
+
+    Each turn:
+    1. Build context with execution history from prior turns
+    2. Generate params (LLM + heuristics)
+    3. Execute COBOL binary
+    4. If target reached, return success
+    5. Otherwise, add result to history and try again
+
+    Returns (params, result) on success, or (None, last_result) on failure.
+    """
+    best_result = None
+    best_params = None
+
+    for turn in range(max_turns):
+        try:
+            context = await agent.build_context(ticket, structure, config.mock_cbl)
+            context.field_report = field_report
+            context.execution_history = list(execution_history)
+
+            params = await agent.generate_params(context)
+
+            # On retries, use heuristics more aggressively
+            if turn > 0 and field_report is not None:
+                if isinstance(ticket, BranchTicket):
+                    h_params = walker.suggest_params_for_branch(
+                        ticket.branch_id, ticket.direction,
+                        ticket.condition_vars, ticket.condition_text,
+                    )
+                elif walker.corpus.entries:
+                    h_params = walker.mutate_params(params)
+                else:
+                    h_params = walker.generate_exploratory_params()
+
+                # On later turns, heuristics OVERRIDE LLM (not just fill gaps)
+                if turn >= 2:
+                    for k, v in h_params.get("input_state", {}).items():
+                        params.setdefault("input_state", {})[k] = v
+                    for k, v in h_params.get("stubs", {}).items():
+                        params.setdefault("stubs", {})[k] = v
+                else:
+                    for k, v in h_params.get("input_state", {}).items():
+                        params.setdefault("input_state", {}).setdefault(k, v)
+                    for k, v in h_params.get("stubs", {}).items():
+                        params.setdefault("stubs", {}).setdefault(k, v)
+
+        except Exception:
+            logger.exception("Agent failed on turn %d for ticket %s", turn + 1, ticket.id)
+            continue
+
+        try:
+            result = execute(config.executable, params, timeout=30)
+        except Exception:
+            logger.exception("Execution failed on turn %d for ticket %s", turn + 1, ticket.id)
+            continue
+
+        walker.record_result(params, result)
+        best_result = result
+        best_params = params
+
+        # Update global coverage on EVERY execution (not just ticket success)
+        if coverage is not None:
+            coverage.update(result)
+
+        # Record this turn in history for the next turn
+        execution_history.append({
+            "turn": turn + 1,
+            "params": params,
+            "paragraphs_hit": list(set(result.paragraphs_hit)),
+            "branches_hit": dict(result.branches_hit),
+            "target_reached": ticket_target_reached(ticket, result),
+        })
+
+        if ticket_target_reached(ticket, result):
+            logger.info(
+                "Ticket %s target reached on turn %d",
+                ticket.id, turn + 1,
+            )
+            return params, result
+
+        logger.debug(
+            "Ticket %s turn %d: target not reached, hit %d paragraphs",
+            ticket.id, turn + 1, len(set(result.paragraphs_hit)),
+        )
+
+    return best_params, best_result
+
+
+async def run(config: PenetratorConfig) -> dict:
+    """Main orchestration loop with multi-turn agents and aggressive cascading."""
+
     # 1a. Parse mock.cbl
     structure = parse_mock_structure(config.mock_cbl)
     logger.info(
@@ -128,25 +270,16 @@ async def run(config: PenetratorConfig) -> dict:
 
     # 1b. Build field report from DATA DIVISION
     from cobol_penetrator.analysis.field_report import build_field_report
-
     field_report = None
     if config.heuristic_mode != "llm_only":
         try:
             field_report = build_field_report(config.mock_cbl, structure)
-            logger.info(
-                "Field report: %d variables analyzed",
-                len(field_report.fields),
-            )
+            logger.info("Field report: %d variables analyzed", len(field_report.fields))
         except Exception:
-            logger.warning(
-                "Failed to build field report, continuing without",
-                exc_info=True,
-            )
-            field_report = None
+            logger.warning("Failed to build field report", exc_info=True)
 
     # 1c. Initialize heuristic walker
     from cobol_penetrator.heuristics.heuristic_walker import HeuristicWalker
-
     walker = HeuristicWalker(field_report)
 
     # 2. Load or create ticket store
@@ -161,7 +294,7 @@ async def run(config: PenetratorConfig) -> dict:
     # 4. Create LLM provider
     provider = get_provider_from_env()
 
-    # 5. Coverage tracking — load existing state if resuming
+    # 5. Coverage tracking
     if config.resume and config.coverage_path.exists():
         coverage = CoverageTracker.load(config.coverage_path, structure)
     else:
@@ -171,7 +304,70 @@ async def run(config: PenetratorConfig) -> dict:
     executions = 0
     start_time = time.time()
 
-    # 7. Main loop
+    # 6b. FAST fault exploration phase BEFORE LLM calls
+    # Run executable with each stub fault value to discover error paths quickly
+    if field_report and not config.resume:
+        from cobol_penetrator.heuristics.stub_fault_table import fault_values_for
+        logger.info("Pre-scan: running stub fault sweeps to discover error paths")
+        all_fault_values = (
+            fault_values_for("status_file")
+            + fault_values_for("status_sql")
+            + ["GE", "GB", "AI", "II"]  # DLI-specific
+        )
+        # Deduplicate
+        seen_fv: set[str] = set()
+        unique_faults = []
+        for fv in all_fault_values:
+            s = str(fv)
+            if s not in seen_fv:
+                seen_fv.add(s)
+                unique_faults.append(s)
+
+        pre_scan_new = 0
+        for stub_op in field_report.stub_operations:
+            for fv in unique_faults:
+                if executions >= min(config.budget, 50):  # cap pre-scan at 50
+                    break
+                params = {"input_state": {}, "stubs": {stub_op: fv}}
+                try:
+                    result = execute(config.executable, params, timeout=10)
+                    executions += 1
+                    coverage.update(result)
+                    walker.record_result(params, result)
+                    new_paras = set(result.paragraphs_hit) - set(coverage.state.hit_paragraphs[:-len(result.paragraphs_hit)] if len(coverage.state.hit_paragraphs) > len(result.paragraphs_hit) else [])
+                except Exception:
+                    pass
+            if executions >= min(config.budget, 50):
+                break
+
+        # Also try pairwise stub faults
+        import itertools
+        for op1, op2 in itertools.combinations(field_report.stub_operations[:4], 2):
+            if executions >= min(config.budget, 80):
+                break
+            for fv in ["GE", "23", "10"]:
+                if executions >= min(config.budget, 80):
+                    break
+                params = {"input_state": {}, "stubs": {op1: fv, op2: fv}}
+                try:
+                    result = execute(config.executable, params, timeout=10)
+                    executions += 1
+                    coverage.update(result)
+                    walker.record_result(params, result)
+                except Exception:
+                    pass
+
+        logger.info(
+            "Pre-scan complete: %d executions, coverage %.1f%% (%d/%d paragraphs)",
+            executions, coverage.coverage_pct,
+            len(coverage.state.hit_paragraphs), coverage.state.total_paragraphs,
+        )
+        coverage.save(config.coverage_path)
+
+    # 7. Per-ticket execution history (memory)
+    ticket_histories: dict[str, list[dict]] = {}
+
+    # 8. Main loop
     while store.open_tickets_exist() and executions < config.budget:
         elapsed = time.time() - start_time
         if elapsed > config.timeout:
@@ -184,124 +380,172 @@ async def run(config: PenetratorConfig) -> dict:
             break
 
         engine.start_work(ticket)
-
         agent = select_agent(ticket, provider, config)
-        logger.debug(
-            "Iteration %d: ticket=%s, agent=%s",
-            executions + 1,
-            ticket.id,
-            agent.name,
+
+        # Get or create history for this ticket
+        history = ticket_histories.setdefault(ticket.id, [])
+
+        # Multi-turn execution
+        turns_per_ticket = min(3, config.max_attempts - ticket.attempts)
+        params, result = await _multi_turn_execute(
+            agent, ticket, structure, config, field_report, walker,
+            history, coverage=coverage, max_turns=max(1, turns_per_ticket),
         )
 
-        try:
-            context = await agent.build_context(
-                ticket, structure, config.mock_cbl
-            )
-            # Attach field report and execution history to context
-            context.field_report = field_report
-            # TODO: populate execution_history from prior attempts on
-            # this ticket once a per-ticket history store is added.
-
-            params = await agent.generate_params(context)
-
-            # On retry attempts, merge heuristic suggestions (hybrid mode)
-            if (
-                config.heuristic_mode != "llm_only"
-                and ticket.attempts > 0
-                and field_report is not None
-            ):
-                if isinstance(ticket, BranchTicket):
-                    h_params = walker.suggest_params_for_branch(
-                        ticket.branch_id,
-                        ticket.direction,
-                        ticket.condition_vars,
-                        ticket.condition_text,
-                    )
-                else:
-                    if walker.corpus.entries:
-                        h_params = walker.mutate_params(params)
-                    else:
-                        h_params = walker.generate_exploratory_params()
-
-                # Merge: heuristic fills gaps, does not overwrite LLM
-                for k, v in h_params.get("input_state", {}).items():
-                    params.setdefault("input_state", {}).setdefault(k, v)
-                for k, v in h_params.get("stubs", {}).items():
-                    params.setdefault("stubs", {}).setdefault(k, v)
-
-        except Exception:
-            logger.exception(
-                "Agent %s failed for ticket %s", agent.name, ticket.id
-            )
+        if result is None:
             engine.record_attempt(ticket)
             if ticket.status != "BLOCKED":
                 ticket.status = "CREATED"
                 ticket.assigned_agent = None
             store.save(config.tickets_path)
             continue
-
-        try:
-            result = execute(
-                config.executable, params, timeout=30
-            )
-        except Exception:
-            logger.exception(
-                "Execution failed for ticket %s", ticket.id
-            )
-            engine.record_attempt(ticket)
-            if ticket.status != "BLOCKED":
-                ticket.status = "CREATED"
-                ticket.assigned_agent = None
-            store.save(config.tickets_path)
-            continue
-
-        # Record result in the heuristic walker for corpus tracking
-        walker.record_result(params, result)
 
         executions += 1
 
         if ticket_target_reached(ticket, result):
-            logger.info(
-                "Ticket %s target reached on execution %d",
-                ticket.id,
-                executions,
-            )
-
-            # Build result metadata for engine.complete()
+            # Build result metadata
             result_meta: dict[str, Any] = {}
             if isinstance(ticket, ParagraphTicket):
-                # Discover branches within this paragraph
-                para_branch_ids = set(structure.branches_in(ticket.paragraph))
+                para_branch_ids = set()
+                try:
+                    para_branch_ids = set(structure.branches_in(ticket.paragraph))
+                except KeyError:
+                    pass
                 result_meta["branches_discovered"] = [
-                    bid
-                    for bid in result.branches_hit
-                    if bid in para_branch_ids
+                    bid for bid in result.branches_hit if bid in para_branch_ids
                 ]
             if isinstance(ticket, BranchTicket):
-                result_meta["variable_snapshot"] = (
-                    result.variable_snapshots.get(ticket.branch_id)
-                )
+                result_meta["variable_snapshot"] = result.variable_snapshots.get(ticket.branch_id)
 
             engine.complete(ticket, params, result_meta)
 
-            # Cascade: open tickets for branches and called paragraphs
+            # Cascade using BOTH trace output AND static call graph
             if isinstance(ticket, ParagraphTicket):
                 _cascade_branch_tickets(engine, structure, ticket)
-                _cascade_paragraph_tickets(
-                    engine, store, result, ticket
+                new_tickets = _cascade_from_trace(
+                    engine, store, structure, result, ticket
                 )
+                if new_tickets:
+                    logger.info(
+                        "Cascaded %d new paragraph tickets from %s",
+                        new_tickets, ticket.id,
+                    )
 
-            coverage.update(result)
+            # Coverage already updated in _multi_turn_execute for every execution
             save_successful_params(ticket, params, config.params_dir)
+
+            logger.info(
+                "Coverage: %.1f%% (%d/%d paragraphs, %d/%d branches)",
+                coverage.coverage_pct,
+                len(coverage.state.hit_paragraphs),
+                coverage.state.total_paragraphs,
+                len(coverage.state.hit_branches),
+                coverage.state.total_branches,
+            )
         else:
+            # Even on failure, cascade tickets for any NEW paragraphs seen
+            if isinstance(ticket, ParagraphTicket):
+                _cascade_from_trace(engine, store, structure, result, ticket)
+
             engine.record_attempt(ticket)
-            # If the ticket was not auto-blocked, reset it to CREATED
-            # so it can be claimed again on the next loop iteration.
             if ticket.status != "BLOCKED":
                 ticket.status = "CREATED"
                 ticket.assigned_agent = None
 
         store.save(config.tickets_path)
+        coverage.save(config.coverage_path)
+
+    # 9. Fault exploration phase — try stub error codes to reach error handlers
+    if executions < config.budget and coverage.coverage_pct < 100.0:
+        all_known_paras = set(coverage.state.hit_paragraphs)
+        missing_paras = set(structure.paragraphs.keys()) - all_known_paras
+        if missing_paras:
+            logger.info(
+                "Fault exploration: %d paragraphs still missing, trying stub fault sweeps",
+                len(missing_paras),
+            )
+            from cobol_penetrator.heuristics.stub_fault_table import fault_values_for
+
+            # Get stub operations from field report or from mock ops seen
+            stub_ops = []
+            if field_report:
+                stub_ops = list(field_report.stub_operations)
+
+            for stub_op in stub_ops:
+                if executions >= config.budget:
+                    break
+                if time.time() - start_time > config.timeout:
+                    break
+
+                # Try each fault value for this stub
+                fault_values = fault_values_for("status_file") + fault_values_for("status_sql")
+                for fv in fault_values:
+                    if executions >= config.budget:
+                        break
+
+                    params = {
+                        "input_state": {},
+                        "stubs": {stub_op: str(fv)},
+                    }
+                    try:
+                        result = execute(config.executable, params, timeout=30)
+                        executions += 1
+                        coverage.update(result)
+                        walker.record_result(params, result)
+
+                        new_paras = set(result.paragraphs_hit) - all_known_paras
+                        if new_paras:
+                            logger.info(
+                                "Fault sweep %s=%s found %d new paragraphs: %s",
+                                stub_op, fv, len(new_paras), sorted(new_paras),
+                            )
+                            all_known_paras.update(new_paras)
+                            # Create tickets for newly found paragraphs
+                            for para in new_paras:
+                                if para in structure.paragraphs:
+                                    try:
+                                        engine.create_paragraph_ticket(
+                                            paragraph=para, call_path=[para],
+                                        )
+                                    except Exception:
+                                        pass
+                    except Exception:
+                        logger.debug("Fault sweep execution failed for %s=%s", stub_op, fv)
+
+            # Also try combinations of fault values
+            if len(stub_ops) >= 2 and executions < config.budget:
+                import itertools
+                for op1, op2 in itertools.combinations(stub_ops[:5], 2):
+                    if executions >= config.budget:
+                        break
+                    for fv in ["GE", "23", "10", "100", "-803"]:
+                        if executions >= config.budget:
+                            break
+                        params = {
+                            "input_state": {},
+                            "stubs": {op1: str(fv), op2: str(fv)},
+                        }
+                        try:
+                            result = execute(config.executable, params, timeout=30)
+                            executions += 1
+                            coverage.update(result)
+                            walker.record_result(params, result)
+                            new_paras = set(result.paragraphs_hit) - all_known_paras
+                            if new_paras:
+                                logger.info(
+                                    "Combo fault %s=%s,%s=%s found %d new paras: %s",
+                                    op1, fv, op2, fv, len(new_paras), sorted(new_paras),
+                                )
+                                all_known_paras.update(new_paras)
+                        except Exception:
+                            pass
+
+            logger.info(
+                "Fault exploration complete: coverage now %.1f%% (%d/%d paragraphs)",
+                coverage.coverage_pct,
+                len(coverage.state.hit_paragraphs),
+                coverage.state.total_paragraphs,
+            )
 
     # Save final state
     coverage.save(config.coverage_path)
@@ -312,74 +556,9 @@ async def run(config: PenetratorConfig) -> dict:
         "executions": executions,
         "coverage_pct": coverage.coverage_pct,
         "total_tickets": len(all_tickets),
-        "done_tickets": len(
-            [t for t in all_tickets if t.status == "DONE"]
-        ),
-        "blocked_tickets": len(
-            [t for t in all_tickets if t.status == "BLOCKED"]
-        ),
+        "done_tickets": len([t for t in all_tickets if t.status == "DONE"]),
+        "blocked_tickets": len([t for t in all_tickets if t.status == "BLOCKED"]),
     }
 
     logger.info("Run complete: %s", summary)
     return summary
-
-
-def _cascade_branch_tickets(
-    engine: TicketEngine,
-    structure: ProgramStructure,
-    ticket: ParagraphTicket,
-) -> None:
-    """Create branch tickets for all branches in the completed paragraph.
-
-    Args:
-        engine: The ticket engine for creating tickets.
-        structure: The program structure.
-        ticket: The completed paragraph ticket.
-    """
-    for branch_id in structure.branches_in(ticket.paragraph):
-        branch_info = structure.branches[branch_id]
-        for direction in branch_info.directions:
-            try:
-                engine.create_branch_ticket(
-                    branch_id=branch_id,
-                    direction=direction,
-                    paragraph=ticket.paragraph,
-                    condition_text=branch_info.condition_text,
-                    condition_vars=branch_info.condition_vars,
-                )
-            except Exception:
-                # Duplicate ticket — already exists from a prior run
-                logger.debug(
-                    "Branch ticket BRANCH-%s-%s already exists",
-                    branch_id,
-                    direction,
-                )
-
-
-def _cascade_paragraph_tickets(
-    engine: TicketEngine,
-    store: TicketStore,
-    result: ExecutionResult,
-    ticket: ParagraphTicket,
-) -> None:
-    """Create paragraph tickets for callees discovered in the execution.
-
-    Args:
-        engine: The ticket engine for creating tickets.
-        store: The ticket store for checking done paragraphs.
-        result: The execution result containing the call chain.
-        ticket: The completed paragraph ticket.
-    """
-    done_paras = store.done_paragraphs()
-    for _caller, callee in result.call_chain:
-        if callee not in done_paras:
-            try:
-                engine.create_paragraph_ticket(
-                    paragraph=callee,
-                    call_path=list(ticket.call_path) + [callee],
-                )
-            except Exception:
-                # Duplicate ticket — already exists
-                logger.debug(
-                    "Paragraph ticket PARA-%s already exists", callee
-                )
