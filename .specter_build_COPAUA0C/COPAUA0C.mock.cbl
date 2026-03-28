@@ -39,24 +39,11 @@
 
        WORKING-STORAGE SECTION.                                                 
       * SPECTER PATCH: cobc-undefined fallback declarations
-       01 1000-INITIALIZE                PIC X(256).
-      * SPECTER PATCH: cobc-undefined fallback declarations
-       01 1200-EXIT                      PIC X(256).
-       01 1200-SCHEDULE-PSB              PIC X(256).
-       01 3100-EXIT                      PIC X(256).
-       01 5500-EXIT                      PIC X(256).
-       01 6000-EXIT                      PIC X(256).
-       01 6000-MAKE-DECISION             PIC X(256).
-       01 8500-INSERT-AUTH               PIC X(256).
-       01 ACCT                           PIC X(256).
-       01 C001                           PIC X(256).
-       01 C002                           PIC X(256).
-       01 C003                           PIC X(256).
-       01 CUST                           PIC X(256).
+       01 ACCT-CASH-CREDIT-LIMIT         PIC X(256).
+       01 ACCT-CREDIT-LIMIT              PIC X(256).
+       01 ACCT-CURR-BAL                  PIC X(256).
        01 DFHRESP                        PIC S9(18)V9(6) OCCURS 100.
        01 EIBRESP                        PIC X(256).
-       01 FAILED                         PIC X(256).
-       01 MQ                             PIC X(256).
        01 MQCC-OK                        PIC X(256).
        01 MQCI-NONE                      PIC X(256).
        01 MQFMT-STRING                   PIC X(256).
@@ -67,17 +54,20 @@
        01 MQGMO-WAIT                     PIC X(256).
        01 MQGMO-WAITINTERVAL             PIC X(256).
        01 MQMI-NONE                      PIC X(256).
+       01 MQMT-REPLY                     PIC X(256).
        01 MQOO-INPUT-SHARED              PIC X(256).
        01 MQOT-Q                         PIC X(256).
+       01 MQPER-NOT-PERSISTENT           PIC X(256).
+       01 MQPMO-DEFAULT-CONTEXT          PIC X(256).
+       01 MQPMO-NO-SYNCPOINT             PIC X(256).
+       01 MQPMO-OPTIONS                  PIC X(256).
        01 MQRC-NO-MSG-AVAILABLE          PIC X(256).
        01 MQTM-QNAME                     PIC X(256).
        01 MQTM-TRIGGERDATA               PIC X(256).
        01 NOTFND                         PIC X(256).
-       01 REQUEST                        PIC X(256).
-       01 SPECTER-CALL                   PIC X(256).
-       01 SPECTER-CICS                   PIC X(256).
-       01 SPECTER-TRACE                  PIC X(256).
-       01 XREF                           PIC X(256).
+       01 XREF-ACCT-ID                   PIC X(256).
+       01 XREF-CARD-NUM                  PIC X(256).
+       01 XREF-CUST-ID                   PIC X(256).
 
       * SPECTER MOCK INFRASTRUCTURE
        01 MOCK-RECORD.
@@ -451,77 +441,20 @@
                88 PA-FRAUD-REMOVED          VALUE 'R'.                          
            05  PA-FRAUD-RPT-DATE            PIC  X(08).                         
            05  FILLER                       PIC  X(17).                         
+       01  DFHCOMMAREA.                                                         
+         05  LK-COMMAREA                           PIC X(4096).                 
                                                                                 
       *----------------------------------------------------------------*        
       *DATASET LAYOUTS                                                          
       *----------------------------------------------------------------*        
       *- CARD XREF LAYOUT                                                       
-      * SPECTER: COPY CVACT03Y inlined from CVACT03Y.cpy
-      *****************************************************************         
-      *    Data-structure for card xref (RECLN 50)                              
-      *****************************************************************         
-       01 CARD-XREF-RECORD.                                                     
-           05  XREF-CARD-NUM                     PIC X(16).                     
-           05  XREF-CUST-ID                      PIC 9(09).                     
-           05  XREF-ACCT-ID                      PIC 9(11).                     
-           05  FILLER                            PIC X(14).                     
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:00 CDT
-      *
+      * SPECTER: COPY CVACT03Y (not found)
                                                                                 
       *- ACCT RECORD LAYOUT                                                     
-      * SPECTER: COPY CVACT01Y inlined from CVACT01Y.cpy
-      *****************************************************************
-      *    Data-structure for  account entity (RECLN 300)
-      *****************************************************************
-       01  ACCOUNT-RECORD.
-           05  ACCT-ID                           PIC 9(11).
-           05  ACCT-ACTIVE-STATUS                PIC X(01).
-           05  ACCT-CURR-BAL                     PIC S9(10)V99.
-           05  ACCT-CREDIT-LIMIT                 PIC S9(10)V99.
-           05  ACCT-CASH-CREDIT-LIMIT            PIC S9(10)V99.
-           05  ACCT-OPEN-DATE                    PIC X(10).
-           05  ACCT-EXPIRAION-DATE               PIC X(10). 
-           05  ACCT-REISSUE-DATE                 PIC X(10).
-           05  ACCT-CURR-CYC-CREDIT              PIC S9(10)V99.
-           05  ACCT-CURR-CYC-DEBIT               PIC S9(10)V99.
-           05  ACCT-ADDR-ZIP                     PIC X(10).
-           05  ACCT-GROUP-ID                     PIC X(10).
-           05  FILLER                            PIC X(178).      
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:59 CDT
-      *
+      * SPECTER: COPY CVACT01Y (not found)
                                                                                 
       *- CUSTOMER LAYOUT                                                        
-      * SPECTER: COPY CVCUS01Y inlined from CVCUS01Y.cpy
-      *****************************************************************
-      *    Data-structure for Customer entity (RECLN 500)
-      *****************************************************************
-       01  CUSTOMER-RECORD.
-           05  CUST-ID                                 PIC 9(09).
-           05  CUST-FIRST-NAME                         PIC X(25).
-           05  CUST-MIDDLE-NAME                        PIC X(25).
-           05  CUST-LAST-NAME                          PIC X(25).
-           05  CUST-ADDR-LINE-1                        PIC X(50).
-           05  CUST-ADDR-LINE-2                        PIC X(50).
-           05  CUST-ADDR-LINE-3                        PIC X(50).         
-           05  CUST-ADDR-STATE-CD                      PIC X(02).
-           05  CUST-ADDR-COUNTRY-CD                    PIC X(03).
-           05  CUST-ADDR-ZIP                           PIC X(10).
-           05  CUST-PHONE-NUM-1                        PIC X(15).
-           05  CUST-PHONE-NUM-2                        PIC X(15).
-           05  CUST-SSN                                PIC 9(09).
-           05  CUST-GOVT-ISSUED-ID                     PIC X(20).
-           05  CUST-DOB-YYYY-MM-DD                     PIC X(10).
-           05  CUST-EFT-ACCOUNT-ID                     PIC X(10).
-           05  CUST-PRI-CARD-HOLDER-IND                PIC X(01).
-           05  CUST-FICO-CREDIT-SCORE                  PIC 9(03).
-           05  FILLER                                  PIC X(168).      
-       01  DFHCOMMAREA.                                                         
-         05  LK-COMMAREA                           PIC X(4096).                 
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:00 CDT
-      *
+      * SPECTER: COPY CVCUS01Y (not found)
                                                                                 
       * ------------------------------------------------------------- *         
       *LINKAGE SECTION.                                                         
@@ -530,206 +463,24 @@
       *  05  LK-COMMAREA                           PIC X(4096).                 
       *                                                                         
       * ------------------------------------------------------------- *         
-      *PROCEDURE DIVISION.                                                      
-       PROCEDURE DIVISION.
-       SPECTER-HARDENED-ENTRY.
-           PERFORM MAIN-PARA.
-           PERFORM 1000-INITIALIZE.
-           PERFORM 1000-EXIT.
-           PERFORM 1100-OPEN-REQUEST-QUEUE.
-           PERFORM 1100-EXIT.
-           PERFORM 1200-SCHEDULE-PSB.
-           PERFORM 1200-EXIT.
-           PERFORM S-2000-MAIN-PROCESS.
-           PERFORM 2000-EXIT.
-           PERFORM 2100-EXTRACT-REQUEST-MSG.
-           PERFORM 2100-EXIT.
-           PERFORM 3100-READ-REQUEST-MQ.
-           PERFORM 3100-EXIT.
-           PERFORM 5000-PROCESS-AUTH.
-           PERFORM 5000-EXIT.
-           PERFORM 5100-READ-XREF-RECORD.
-           PERFORM 5100-EXIT.
-           PERFORM 5200-READ-ACCT-RECORD.
-           PERFORM 5200-EXIT.
-           PERFORM 5300-READ-CUST-RECORD.
-           PERFORM 5300-EXIT.
-           PERFORM 5500-READ-AUTH-SUMMRY.
-           PERFORM 5500-EXIT.
-           PERFORM 5600-READ-PROFILE-DATA.
-           PERFORM 5600-EXIT.
-           PERFORM 6000-MAKE-DECISION.
-           PERFORM 6000-EXIT.
-           PERFORM 7100-SEND-RESPONSE.
-           PERFORM 7100-EXIT.
-           PERFORM 8000-WRITE-AUTH-TO-DB.
-           PERFORM 8000-EXIT.
-           PERFORM 8400-UPDATE-SUMMARY.
-           PERFORM 8400-EXIT.
-           PERFORM 8500-INSERT-AUTH.
-           PERFORM 8500-EXIT.
-           PERFORM 9000-TERMINATE.
-           PERFORM S-9000-EXIT.
-           PERFORM 9100-CLOSE-REQUEST-QUEUE.
-           PERFORM 9100-EXIT.
-           PERFORM 9500-LOG-ERROR.
-           PERFORM 9500-EXIT.
-           PERFORM 9990-END-ROUTINE.
-           PERFORM 9990-EXIT.
-           PERFORM SPECTER-EXIT-PARA.
-           GOBACK.
-       MAIN-PARA.
-           DISPLAY 'SPECTER-TRACE:MAIN-PARA'.
-           CONTINUE.
-       1000-INITIALIZE.
-           DISPLAY 'SPECTER-TRACE:1000-INITIALIZE'.
-      *    CONTINUE.
-       1000-EXIT.
-           DISPLAY 'SPECTER-TRACE:1000-EXIT'.
-      *    CONTINUE.
-       1100-OPEN-REQUEST-QUEUE.
-           DISPLAY 'SPECTER-TRACE:1100-OPEN-REQUEST-QUEUE'.
-      *    CONTINUE.
-       1100-EXIT.
-           DISPLAY 'SPECTER-TRACE:1100-EXIT'.
-      *    CONTINUE.
-       1200-SCHEDULE-PSB.
-           DISPLAY 'SPECTER-TRACE:1200-SCHEDULE-PSB'.
-      *    CONTINUE.
-       1200-EXIT.
-           DISPLAY 'SPECTER-TRACE:1200-EXIT'.
-      *    CONTINUE.
-       S-2000-MAIN-PROCESS.
-           DISPLAY 'SPECTER-TRACE:S-2000-MAIN-PROCESS'.
-      *    CONTINUE.
-       2000-EXIT.
-           DISPLAY 'SPECTER-TRACE:2000-EXIT'.
-      *    CONTINUE.
-       2100-EXTRACT-REQUEST-MSG.
-           DISPLAY 'SPECTER-TRACE:2100-EXTRACT-REQUEST-MSG'.
-      *    CONTINUE.
-       2100-EXIT.
-           DISPLAY 'SPECTER-TRACE:2100-EXIT'.
-      *    CONTINUE.
-       3100-READ-REQUEST-MQ.
-           DISPLAY 'SPECTER-TRACE:3100-READ-REQUEST-MQ'.
-      *    CONTINUE.
-       3100-EXIT.
-           DISPLAY 'SPECTER-TRACE:3100-EXIT'.
-      *    CONTINUE.
-       5000-PROCESS-AUTH.
-           DISPLAY 'SPECTER-TRACE:5000-PROCESS-AUTH'.
-      *    CONTINUE.
-       5000-EXIT.
-           DISPLAY 'SPECTER-TRACE:5000-EXIT'.
-      *    CONTINUE.
-       5100-READ-XREF-RECORD.
-           DISPLAY 'SPECTER-TRACE:5100-READ-XREF-RECORD'.
-      *    CONTINUE.
-       5100-EXIT.
-           DISPLAY 'SPECTER-TRACE:5100-EXIT'.
-      *    CONTINUE.
-       5200-READ-ACCT-RECORD.
-           DISPLAY 'SPECTER-TRACE:5200-READ-ACCT-RECORD'.
-      *    CONTINUE.
-       5200-EXIT.
-           DISPLAY 'SPECTER-TRACE:5200-EXIT'.
-      *    CONTINUE.
-       5300-READ-CUST-RECORD.
-           DISPLAY 'SPECTER-TRACE:5300-READ-CUST-RECORD'.
-      *    CONTINUE.
-       5300-EXIT.
-           DISPLAY 'SPECTER-TRACE:5300-EXIT'.
-      *    CONTINUE.
-       5500-READ-AUTH-SUMMRY.
-           DISPLAY 'SPECTER-TRACE:5500-READ-AUTH-SUMMRY'.
-      *    CONTINUE.
-       5500-EXIT.
-           DISPLAY 'SPECTER-TRACE:5500-EXIT'.
-      *    CONTINUE.
-       5600-READ-PROFILE-DATA.
-           DISPLAY 'SPECTER-TRACE:5600-READ-PROFILE-DATA'.
-      *    CONTINUE.
-       5600-EXIT.
-           DISPLAY 'SPECTER-TRACE:5600-EXIT'.
-      *    CONTINUE.
-       6000-MAKE-DECISION.
-           DISPLAY 'SPECTER-TRACE:6000-MAKE-DECISION'.
-      *    CONTINUE.
-       6000-EXIT.
-           DISPLAY 'SPECTER-TRACE:6000-EXIT'.
-      *    CONTINUE.
-       7100-SEND-RESPONSE.
-           DISPLAY 'SPECTER-TRACE:7100-SEND-RESPONSE'.
-      *    CONTINUE.
-       7100-EXIT.
-           DISPLAY 'SPECTER-TRACE:7100-EXIT'.
-      *    CONTINUE.
-       8000-WRITE-AUTH-TO-DB.
-           DISPLAY 'SPECTER-TRACE:8000-WRITE-AUTH-TO-DB'.
-      *    CONTINUE.
-       8000-EXIT.
-           DISPLAY 'SPECTER-TRACE:8000-EXIT'.
-      *    CONTINUE.
-       8400-UPDATE-SUMMARY.
-           DISPLAY 'SPECTER-TRACE:8400-UPDATE-SUMMARY'.
-      *    CONTINUE.
-       8400-EXIT.
-           DISPLAY 'SPECTER-TRACE:8400-EXIT'.
-      *    CONTINUE.
-       8500-INSERT-AUTH.
-           DISPLAY 'SPECTER-TRACE:8500-INSERT-AUTH'.
-      *    CONTINUE.
-       8500-EXIT.
-           DISPLAY 'SPECTER-TRACE:8500-EXIT'.
-      *    CONTINUE.
-       9000-TERMINATE.
-           DISPLAY 'SPECTER-TRACE:9000-TERMINATE'.
-      *    CONTINUE.
-       S-9000-EXIT.
-           DISPLAY 'SPECTER-TRACE:S-9000-EXIT'.
-      *    CONTINUE.
-       9100-CLOSE-REQUEST-QUEUE.
-           DISPLAY 'SPECTER-TRACE:9100-CLOSE-REQUEST-QUEUE'.
-      *    CONTINUE.
-       9100-EXIT.
-           DISPLAY 'SPECTER-TRACE:9100-EXIT'.
-      *    CONTINUE.
-       9500-LOG-ERROR.
-           DISPLAY 'SPECTER-TRACE:9500-LOG-ERROR'.
-      *    CONTINUE.
-       9500-EXIT.
-           DISPLAY 'SPECTER-TRACE:9500-EXIT'.
-      *    CONTINUE.
-       9990-END-ROUTINE.
-           DISPLAY 'SPECTER-TRACE:9990-END-ROUTINE'.
-      *    CONTINUE.
-       9990-EXIT.
-           DISPLAY 'SPECTER-TRACE:9990-EXIT'.
-      *    CONTINUE.
-       SPECTER-EXIT-PARA.
-           DISPLAY 'SPECTER-TRACE:SPECTER-EXIT-PARA'.
-      *    CONTINUE.
+       PROCEDURE DIVISION.                                                      
       * ------------------------------------------------------------- *         
-      *MAIN-PARA.                                                               
-      *    OPEN INPUT MOCK-FILE
-      *    DISPLAY 'SPECTER-TRACE:MAIN-PARA'.
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=1000-INITIALIZE'.
-      *    PERFORM 1000-INITIALIZE    THRU 1000-EXIT                            
-      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=S-2000-MAIN-PROCESS'. 
-      *    PERFORM S-2000-MAIN-PROCESS  THRU 2000-EXIT                    
-      *    DISPLAY 'SPECTER-CALL:FROM=MAIN-PARA:TO=9000-TERMINATE'.
-      *    PERFORM 9000-TERMINATE     THRU S-9000-EXIT                    
-      *                                                                         
+       MAIN-PARA.                                                               
+           OPEN INPUT MOCK-FILE
+           DISPLAY 'SPECTER-TRACE:MAIN-PARA'
+                                                                                
+           PERFORM 1000-INITIALIZE    THRU 1000-EXIT                            
+           PERFORM 2000-MAIN-PROCESS  THRU 2000-EXIT                            
+           PERFORM 9000-TERMINATE     THRU 9000-EXIT                            
+                                                                                
       *    EXEC CICS RETURN                                                     
       *    END-EXEC.                                                            
-      *    DISPLAY 'SPECTER-CICS:RETURN'
-      *    GO TO SPECTER-EXIT-PARA.
-      *                                                                         
+           DISPLAY 'SPECTER-CICS:RETURN'
+           GO TO SPECTER-EXIT-PARA.
+                                                                                
       * ------------------------------------------------------------- *         
-      *1000-INITIALIZE.                                                         
-      *    CONTINUE.
+       1000-INITIALIZE.                                                         
+           CONTINUE.
       * ------------------------------------------------------------- *         
       *                                                                         
       *    EXEC CICS RETRIEVE                                                   
@@ -749,22 +500,20 @@
       *                                                                         
       *    MOVE 5000                       TO WS-WAIT-INTERVAL                  
       *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=1000-INITIALIZE:TO=1100-OPEN-REQUEST-QUEUE'.
       *    PERFORM 1100-OPEN-REQUEST-QUEUE THRU 1100-EXIT                       
       *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=1000-INITIALIZE:TO=3100-READ-REQUEST-MQ'.
       *    PERFORM 3100-READ-REQUEST-MQ    THRU 3100-EXIT                       
       *    .                                                                    
       *                                                                         
-      *1000-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:1000-EXIT'.
-      *    EXIT.                                                                
+       1000-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:1000-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
       *  OPEN THE REQUEST QUEUE                                       *         
       * ------------------------------------------_------------------ *         
-      *1100-OPEN-REQUEST-QUEUE.                                                 
-      *    CONTINUE.
+       1100-OPEN-REQUEST-QUEUE.                                                 
+           CONTINUE.
       *                                                                         
       *    MOVE MQOT-Q             TO MQOD-OBJECTTYPE OF MQM-OD-REQUEST         
       *    MOVE WS-REQUEST-QNAME   TO MQOD-OBJECTNAME OF MQM-OD-REQUEST         
@@ -797,104 +546,103 @@
       *       MOVE WS-CODE-DISPLAY TO ERR-CODE-2                                
       *       MOVE 'REQ MQ OPEN ERROR'                                          
       *                            TO ERR-MESSAGE                               
-      *    DISPLAY 'SPECTER-CALL:FROM=1100-OPEN-REQUEST-QUEUE:TO=9500-LOG-ERROR'.
       *       PERFORM 9500-LOG-ERROR                                            
       *    END-IF                                                               
       *    .                                                                    
       *                                                                         
-      *1100-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:1100-EXIT'.
-      *    EXIT.                                                                
+       1100-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:1100-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
       * SCHEDULE PSB                                                  * 08470000
       * ------------------------------------------------------------- *         
-      *1200-SCHEDULE-PSB.                                               08490000
+       1200-SCHEDULE-PSB.                                               08490000
       *    EXEC DLI SCHD                                                        
       *         PSB((PSB-NAME))                                                 
       *         NODHABEND                                                       
       *    END-EXEC                                                             
-      *    CONTINUE.
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '  ' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *    MOVE MOCK-ALPHA-STATUS TO DIBSTAT
-      *    MOVE DIBSTAT        TO IMS-RETURN-CODE                               
-      *    IF PSB-SCHEDULED-MORE-THAN-ONCE                                      
+           DISPLAY 'SPECTER-MOCK:DLI-SCHD'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '  ' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+           MOVE MOCK-ALPHA-STATUS TO DIBSTAT
+           MOVE DIBSTAT        TO IMS-RETURN-CODE                               
+           IF PSB-SCHEDULED-MORE-THAN-ONCE                                      
       *       EXEC DLI TERM                                                     
       *       END-EXEC                                                          
-      *    DISPLAY 'SPECTER-MOCK:DLI-TERM'
-      *    CONTINUE
-      *                                                                         
+           DISPLAY 'SPECTER-MOCK:DLI-TERM'
+           CONTINUE
+                                                                                
       *       EXEC DLI SCHD                                                     
       *            PSB((PSB-NAME))                                              
       *            NODHABEND                                                    
       *       END-EXEC                                                          
-      *    DISPLAY 'SPECTER-MOCK:DLI-SCHD'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '  ' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *    MOVE MOCK-ALPHA-STATUS TO DIBSTAT
-      *       MOVE DIBSTAT     TO IMS-RETURN-CODE                               
-      *    END-IF                                                               
-      *    IF STATUS-OK                                                         
-      *       SET IMS-PSB-SCHD           TO TRUE                                
-      *    ELSE                                                                 
-      *       MOVE 'I001'                TO ERR-LOCATION                        
-      *       SET  ERR-CRITICAL          TO TRUE                                
-      *       SET  ERR-IMS               TO TRUE                                
-      *       MOVE IMS-RETURN-CODE       TO ERR-CODE-1                          
-      *       MOVE 'IMS SCHD FAILED'     TO ERR-MESSAGE                         
-      *    DISPLAY 'SPECTER-CALL:FROM=1100-EXIT:TO=9500-LOG-ERROR'.
-      *       PERFORM 9500-LOG-ERROR                                            
-      *    END-IF                                                               
-      *    .
-      *1200-EXIT.
-      *    DISPLAY 'SPECTER-TRACE:1200-EXIT'.
-      *    EXIT
-      *    .
+           DISPLAY 'SPECTER-MOCK:DLI-SCHD'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '  ' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+           MOVE MOCK-ALPHA-STATUS TO DIBSTAT
+              MOVE DIBSTAT     TO IMS-RETURN-CODE                               
+           END-IF                                                               
+           IF STATUS-OK                                                         
+           DISPLAY '@@B:1:T'
+              SET IMS-PSB-SCHD           TO TRUE                                
+           ELSE                                                                 
+           DISPLAY '@@B:1:F'
+              MOVE 'I001'                TO ERR-LOCATION                        
+              SET  ERR-CRITICAL          TO TRUE                                
+              SET  ERR-IMS               TO TRUE                                
+              MOVE IMS-RETURN-CODE       TO ERR-CODE-1                          
+              MOVE 'IMS SCHD FAILED'     TO ERR-MESSAGE                         
+              PERFORM 9500-LOG-ERROR                                            
+           END-IF                                                               
+           .
+       1200-EXIT.
+           DISPLAY 'SPECTER-TRACE:1200-EXIT'
+           EXIT
+           .
       * ------------------------------------------------------------- *         
-      *S-2000-MAIN-PROCESS.                                               
-      *    DISPLAY 'SPECTER-TRACE:S-2000-MAIN-PROCESS'. 
+       2000-MAIN-PROCESS.                                                       
+           DISPLAY 'SPECTER-TRACE:2000-MAIN-PROCESS'
       * ------------------------------------------------------------- *         
       *                                                                         
-      *    PERFORM UNTIL NO-MORE-MSG-AVAILABLE OR WS-LOOP-END                   
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=S-2000-MAIN-PROCESS:TO=2100-EXTRACT-
-      *      PERFORM 2100-EXTRACT-REQUEST-MSG THRU 2100-EXIT                    
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=S-2000-MAIN-PROCESS:TO=5000-PROCESS-
-      *      PERFORM 5000-PROCESS-AUTH        THRU 5000-EXIT                    
-      *                                                                         
-      *      ADD 1                            TO WS-MSG-PROCESSED               
-      *                                                                         
+           PERFORM UNTIL NO-MORE-MSG-AVAILABLE OR WS-LOOP-END                   
+                                                                                
+             PERFORM 2100-EXTRACT-REQUEST-MSG THRU 2100-EXIT                    
+                                                                                
+             PERFORM 5000-PROCESS-AUTH        THRU 5000-EXIT                    
+                                                                                
+             ADD 1                            TO WS-MSG-PROCESSED               
+                                                                                
       *      EXEC CICS                                                          
       *           SYNCPOINT                                                     
       *      END-EXEC                                                           
-      *    DISPLAY 'SPECTER-CICS:SYNCPOINT'
-      *    CONTINUE
-      *      SET IMS-PSB-NOT-SCHD            TO TRUE                            
+           DISPLAY 'SPECTER-CICS:SYNCPOINT'
+           CONTINUE
+             SET IMS-PSB-NOT-SCHD            TO TRUE                            
+                                                                                
+             IF WS-MSG-PROCESSED > WS-REQSTS-PROCESS-LIMIT                      
+           DISPLAY '@@B:2:T'
+                SET  WS-LOOP-END             TO TRUE                            
+             ELSE                                                               
+           DISPLAY '@@B:2:F'
+                PERFORM 3100-READ-REQUEST-MQ THRU 3100-EXIT                     
+             END-IF                                                             
+           END-PERFORM                                                          
+           .                                                                    
       *                                                                         
-      *      IF WS-MSG-PROCESSED > WS-REQSTS-PROCESS-LIMIT                      
-      *         SET  WS-LOOP-END             TO TRUE                            
-      *      ELSE                                                               
-      *    DISPLAY 'SPECTER-CALL:FROM=S-2000-MAIN-PROCESS:TO=3100-READ-REQ
-      *         PERFORM 3100-READ-REQUEST-MQ THRU 3100-EXIT                     
-      *      END-IF                                                             
-      *    END-PERFORM                                                          
-      *    .                                                                    
-      *                                                                         
-      *2000-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:2000-EXIT'.
-      *    EXIT.                                                                
+       2000-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:2000-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *2100-EXTRACT-REQUEST-MSG.                                                
-      *    DISPLAY 'SPECTER-TRACE:2100-EXTRACT-REQUEST-MSG'.
+       2100-EXTRACT-REQUEST-MSG.                                                
+           CONTINUE.
       * ------------------------------------------------------------- *         
       *                                                                         
       *    UNSTRING W01-GET-BUFFER(1:W01-DATALEN)                               
@@ -925,13 +673,13 @@
       *    MOVE PA-RQ-TRANSACTION-AMT  TO WS-TRANSACTION-AMT                    
       *    .                                                                    
       *                                                                         
-      *2100-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:2100-EXIT'.
-      *    EXIT.                                                                
+       2100-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:2100-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *3100-READ-REQUEST-MQ.                                                    
-      *    CONTINUE.
+       3100-READ-REQUEST-MQ.                                                    
+           CONTINUE.
       * ------------------------------------------------------------- *         
       *                                                                         
       *    COMPUTE MQGMO-OPTIONS  =  MQGMO-NO-SYNCPOINT + MQGMO-WAIT            
@@ -980,64 +728,60 @@
       *         MOVE 'FAILED TO READ REQUEST MQ'                                
       *                                    TO ERR-MESSAGE                       
       *         MOVE PA-CARD-NUM           TO ERR-EVENT-KEY                     
-      *    DISPLAY 'SPECTER-CALL:FROM=3100-READ-REQUEST-MQ:TO=9500-LOG-ERROR'.
       *         PERFORM 9500-LOG-ERROR                                          
       *       END-IF                                                            
       *    END-IF                                                               
       *    .                                                                    
       *                                                                         
-      *3100-EXIT.                                                               
-      *    CONTINUE.
-      *    EXIT.                                                                
+       3100-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:3100-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *5000-PROCESS-AUTH.                                                       
-      *    CONTINUE.
+       5000-PROCESS-AUTH.                                                       
+           DISPLAY 'SPECTER-TRACE:5000-PROCESS-AUTH'
       * ------------------------------------------------------------- *         
       *                                                                         
-      *    SET APPROVE-AUTH                  TO TRUE                            
+           SET APPROVE-AUTH                  TO TRUE                            
+                                                                                
+           PERFORM 1200-SCHEDULE-PSB         THRU 1200-EXIT                     
+                                                                                
+           SET CARD-FOUND-XREF               TO TRUE                            
+           SET FOUND-ACCT-IN-MSTR            TO TRUE                            
+                                                                                
+           PERFORM 5100-READ-XREF-RECORD     THRU 5100-EXIT                     
+                                                                                
+           IF CARD-FOUND-XREF                                                   
+           DISPLAY '@@B:3:T'
+              PERFORM 5200-READ-ACCT-RECORD  THRU 5200-EXIT                     
+              PERFORM 5300-READ-CUST-RECORD  THRU 5300-EXIT                     
+                                                                                
+              PERFORM 5500-READ-AUTH-SUMMRY  THRU 5500-EXIT                     
+                                                                                
+              PERFORM 5600-READ-PROFILE-DATA THRU 5600-EXIT                     
+           ELSE
+           DISPLAY '@@B:3:F'
+           END-IF                                                               
+                                                                                
+           PERFORM 6000-MAKE-DECISION        THRU 6000-EXIT                     
+                                                                                
+           PERFORM 7100-SEND-RESPONSE        THRU 7100-EXIT                     
+                                                                                
+           IF CARD-FOUND-XREF                                                   
+           DISPLAY '@@B:4:T'
+              PERFORM 8000-WRITE-AUTH-TO-DB  THRU 8000-EXIT                     
+           ELSE
+           DISPLAY '@@B:4:F'
+           END-IF                                                               
+           .                                                                    
       *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=1200-SCHEDULE-PSB'.
-      *    PERFORM 1200-SCHEDULE-PSB         THRU 1200-EXIT                     
-      *                                                                         
-      *    SET CARD-FOUND-XREF               TO TRUE                            
-      *    SET FOUND-ACCT-IN-MSTR            TO TRUE                            
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=5100-READ-XREF-RECORD'.
-      *    PERFORM 5100-READ-XREF-RECORD     THRU 5100-EXIT                     
-      *                                                                         
-      *    IF CARD-FOUND-XREF                                                   
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=5200-READ-ACCT-RECORD'.
-      *       PERFORM 5200-READ-ACCT-RECORD  THRU 5200-EXIT                     
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=5300-READ-CUST-RECORD'.
-      *       PERFORM 5300-READ-CUST-RECORD  THRU 5300-EXIT                     
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=5500-READ-AUTH-SUMMRY'.
-      *       PERFORM 5500-READ-AUTH-SUMMRY  THRU 5500-EXIT                     
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=5600-READ-PROFILE-DATA'.
-      *       PERFORM 5600-READ-PROFILE-DATA THRU 5600-EXIT                     
-      *    END-IF                                                               
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=6000-MAKE-DECISION'.
-      *    PERFORM 6000-MAKE-DECISION        THRU 6000-EXIT                     
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=7100-SEND-RESPONSE'.
-      *    PERFORM 7100-SEND-RESPONSE        THRU 7100-EXIT                     
-      *                                                                         
-      *    IF CARD-FOUND-XREF                                                   
-      *    DISPLAY 'SPECTER-CALL:FROM=5000-PROCESS-AUTH:TO=8000-WRITE-AUTH-TO-DB'.
-      *       PERFORM 8000-WRITE-AUTH-TO-DB  THRU 8000-EXIT                     
-      *    END-IF                                                               
-      *    .                                                                    
-      *                                                                         
-      *5000-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:5000-EXIT'.
-      *    EXIT.                                                                
+       5000-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:5000-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *5100-READ-XREF-RECORD.                                                   
-      *    CONTINUE.
+       5100-READ-XREF-RECORD.                                                   
+           CONTINUE.
       * ------------------------------------------------------------- *         
       *                                                                         
       *    MOVE PA-RQ-CARD-NUM           TO XREF-CARD-NUM                       
@@ -1073,7 +817,6 @@
       *            MOVE 'CARD NOT FOUND IN XREF'                                
       *                                 TO ERR-MESSAGE                          
       *            MOVE XREF-CARD-NUM   TO ERR-EVENT-KEY                        
-      *    DISPLAY 'SPECTER-CALL:FROM=5100-READ-XREF-RECORD:TO=9500-LOG-ERROR'.
       *            PERFORM 9500-LOG-ERROR                                       
       *        WHEN OTHER                                                       
       *            MOVE 'C001'          TO ERR-LOCATION                         
@@ -1086,18 +829,17 @@
       *            MOVE 'FAILED TO READ XREF FILE'                              
       *                                 TO ERR-MESSAGE                          
       *            MOVE XREF-CARD-NUM   TO ERR-EVENT-KEY                        
-      *    DISPLAY 'SPECTER-CALL:FROM=5100-READ-XREF-RECORD:TO=9500-LOG-ERROR'.
       *            PERFORM 9500-LOG-ERROR                                       
       *    END-EVALUATE                                                         
       *    .                                                                    
       *                                                                         
-      *5100-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:5100-EXIT'.
-      *    EXIT.                                                                
+       5100-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:5100-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *5200-READ-ACCT-RECORD.                                                   
-      *    CONTINUE.
+       5200-READ-ACCT-RECORD.                                                   
+           CONTINUE.
       * ------------------------------------------------------------- *         
       *                                                                         
       *    MOVE XREF-ACCT-ID          TO WS-CARD-RID-ACCT-ID                    
@@ -1132,7 +874,6 @@
       *           MOVE 'ACCT NOT FOUND IN XREF'                                 
       *                                      TO ERR-MESSAGE                     
       *           MOVE WS-CARD-RID-ACCT-ID-X TO ERR-EVENT-KEY                   
-      *    DISPLAY 'SPECTER-CALL:FROM=5200-READ-ACCT-RECORD:TO=9500-LOG-ERROR'.
       *           PERFORM 9500-LOG-ERROR                                        
       *                                                                         
       *        WHEN OTHER                                                       
@@ -1146,18 +887,17 @@
       *           MOVE 'FAILED TO READ ACCT FILE'                               
       *                                      TO ERR-MESSAGE                     
       *           MOVE WS-CARD-RID-ACCT-ID-X TO ERR-EVENT-KEY                   
-      *    DISPLAY 'SPECTER-CALL:FROM=5200-READ-ACCT-RECORD:TO=9500-LOG-ERROR'.
       *           PERFORM 9500-LOG-ERROR                                        
       *    END-EVALUATE                                                         
       *    .                                                                    
       *                                                                         
-      *5200-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:5200-EXIT'.
-      *    EXIT.                                                                
+       5200-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:5200-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *5300-READ-CUST-RECORD.                                                   
-      *    CONTINUE.
+       5300-READ-CUST-RECORD.                                                   
+           CONTINUE.
       * ------------------------------------------------------------- *         
       *                                                                         
       *    MOVE XREF-CUST-ID                 TO WS-CARD-RID-CUST-ID             
@@ -1192,7 +932,6 @@
       *           MOVE 'CUST NOT FOUND IN XREF'                                 
       *                                      TO ERR-MESSAGE                     
       *           MOVE WS-CARD-RID-CUST-ID   TO ERR-EVENT-KEY                   
-      *    DISPLAY 'SPECTER-CALL:FROM=5300-READ-CUST-RECORD:TO=9500-LOG-ERROR'.
       *           PERFORM 9500-LOG-ERROR                                        
       *                                                                         
       *        WHEN OTHER                                                       
@@ -1206,71 +945,72 @@
       *           MOVE 'FAILED TO READ CUST FILE'                               
       *                                      TO ERR-MESSAGE                     
       *           MOVE WS-CARD-RID-CUST-ID   TO ERR-EVENT-KEY                   
-      *    DISPLAY 'SPECTER-CALL:FROM=5300-READ-CUST-RECORD:TO=9500-LOG-ERROR'.
       *           PERFORM 9500-LOG-ERROR                                        
       *    END-EVALUATE                                                         
       *    .                                                                    
       *                                                                         
-      *5300-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:5300-EXIT'.
-      *    EXIT.                                                                
+       5300-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:5300-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *5500-READ-AUTH-SUMMRY.                                                   
-      *    CONTINUE.
+       5500-READ-AUTH-SUMMRY.                                                   
+           DISPLAY 'SPECTER-TRACE:5500-READ-AUTH-SUMMRY'
       * ------------------------------------------------------------- *         
       *                                                                         
-      *    MOVE XREF-ACCT-ID                    TO PA-ACCT-ID                   
+           MOVE XREF-ACCT-ID                    TO PA-ACCT-ID                   
       *    EXEC DLI GU USING PCB(PAUT-PCB-NUM)                                  
       *        SEGMENT (PAUTSUM0)                                               
       *        INTO (PENDING-AUTH-SUMMARY)                                      
       *        WHERE (ACCNTID = PA-ACCT-ID)                                     
       *    END-EXEC                                                             
-      *    DISPLAY 'SPECTER-MOCK:DLI-GU'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '  ' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *    MOVE MOCK-ALPHA-STATUS TO DIBSTAT
+           DISPLAY 'SPECTER-MOCK:DLI-GU'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '  ' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+           MOVE MOCK-ALPHA-STATUS TO DIBSTAT
+                                                                                
+           MOVE DIBSTAT                          TO IMS-RETURN-CODE             
+           EVALUATE TRUE                                                        
+               WHEN STATUS-OK                                                   
+           DISPLAY '@@B:5:W1'
+                  SET FOUND-PAUT-SMRY-SEG        TO TRUE                        
+               WHEN SEGMENT-NOT-FOUND                                           
+           DISPLAY '@@B:5:W2'
+                  SET NFOUND-PAUT-SMRY-SEG       TO TRUE                        
+               WHEN OTHER                                                       
+           DISPLAY '@@B:5:WO'
+                  MOVE 'I002'                    TO ERR-LOCATION                
+                  SET  ERR-CRITICAL              TO TRUE                        
+                  SET  ERR-IMS                   TO TRUE                        
+                  MOVE IMS-RETURN-CODE           TO ERR-CODE-1                  
+                  MOVE 'IMS GET SUMMARY FAILED'  TO ERR-MESSAGE                 
+                  MOVE PA-CARD-NUM               TO ERR-EVENT-KEY               
+                  PERFORM 9500-LOG-ERROR                                        
+           END-EVALUATE                                                         
+           .                                                                    
       *                                                                         
-      *    MOVE DIBSTAT                          TO IMS-RETURN-CODE             
-      *    EVALUATE TRUE                                                        
-      *        WHEN STATUS-OK                                                   
-      *           SET FOUND-PAUT-SMRY-SEG        TO TRUE                        
-      *        WHEN SEGMENT-NOT-FOUND                                           
-      *           SET NFOUND-PAUT-SMRY-SEG       TO TRUE                        
-      *        WHEN OTHER                                                       
-      *           MOVE 'I002'                    TO ERR-LOCATION                
-      *           SET  ERR-CRITICAL              TO TRUE                        
-      *           SET  ERR-IMS                   TO TRUE                        
-      *           MOVE IMS-RETURN-CODE           TO ERR-CODE-1                  
-      *           MOVE 'IMS GET SUMMARY FAILED'  TO ERR-MESSAGE                 
-      *           MOVE PA-CARD-NUM               TO ERR-EVENT-KEY               
-      *    DISPLAY 'SPECTER-CALL:FROM=5500-READ-AUTH-SUMMRY:TO=9500-LOG-ERROR'.
-      *           PERFORM 9500-LOG-ERROR                                        
-      *    END-EVALUATE                                                         
-      *    .                                                                    
-      *                                                                         
-      *5500-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:5500-EXIT'.
-      *    EXIT.                                                                
-      *                                                                         
-      * ------------------------------------------------------------- *         
-      *5600-READ-PROFILE-DATA.                                                  
-      *    DISPLAY 'SPECTER-TRACE:5600-READ-PROFILE-DATA'.
-      * ------------------------------------------------------------- *         
-      *                                                                         
-      *    CONTINUE                                                             
-      *    .                                                                    
-      *                                                                         
-      *5600-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:5600-EXIT'.
-      *    EXIT.                                                                
+       5500-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:5500-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *6000-MAKE-DECISION.                                                      
-      *    CONTINUE.
+       5600-READ-PROFILE-DATA.                                                  
+           DISPLAY 'SPECTER-TRACE:5600-READ-PROFILE-DATA'
+      * ------------------------------------------------------------- *         
+      *                                                                         
+           CONTINUE                                                             
+           .                                                                    
+      *                                                                         
+       5600-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:5600-EXIT'
+           EXIT.                                                                
+      *                                                                         
+      * ------------------------------------------------------------- *         
+       6000-MAKE-DECISION.                                                      
+           CONTINUE.
       * ------------------------------------------------------------- *         
       *                                                                         
       *    MOVE PA-RQ-CARD-NUM         TO PA-RL-CARD-NUM                        
@@ -1347,13 +1087,13 @@
       *    END-STRING                                                           
       *    .                                                                    
       *                                                                         
-      *6000-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:6000-EXIT'.
-      *    EXIT.                                                                
+       6000-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:6000-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *7100-SEND-RESPONSE.                                                      
-      *    CONTINUE.
+       7100-SEND-RESPONSE.                                                      
+           CONTINUE.
       * ------------------------------------------------------------- *         
       *                                                                         
       *    MOVE MQOT-Q               TO MQOD-OBJECTTYPE OF MQM-OD-REPLY         
@@ -1399,177 +1139,182 @@
       *       MOVE 'FAILED TO PUT ON REPLY MQ'                                  
       *                                  TO ERR-MESSAGE                         
       *       MOVE PA-CARD-NUM           TO ERR-EVENT-KEY                       
-      *    DISPLAY 'SPECTER-CALL:FROM=7100-SEND-RESPONSE:TO=9500-LOG-ERROR'.
       *       PERFORM 9500-LOG-ERROR                                            
       *    END-IF                                                               
       *    .                                                                    
       *                                                                         
-      *7100-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:7100-EXIT'.
-      *    EXIT.                                                                
+       7100-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:7100-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *8000-WRITE-AUTH-TO-DB.                                                   
-      *    DISPLAY 'SPECTER-TRACE:8000-WRITE-AUTH-TO-DB'.
+       8000-WRITE-AUTH-TO-DB.                                                   
+           DISPLAY 'SPECTER-TRACE:8000-WRITE-AUTH-TO-DB'
       * ------------------------------------------------------------- *         
       *                                                                         
+                                                                                
+           PERFORM 8400-UPDATE-SUMMARY      THRU 8400-EXIT                      
+           PERFORM 8500-INSERT-AUTH         THRU 8500-EXIT                      
+           .                                                                    
       *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=8000-WRITE-AUTH-TO-DB:TO=8400-UPDATE-SUMMARY'.
-      *    PERFORM 8400-UPDATE-SUMMARY      THRU 8400-EXIT                      
-      *    DISPLAY 'SPECTER-CALL:FROM=8000-WRITE-AUTH-TO-DB:TO=8500-INSERT-AUTH'.
-      *    PERFORM 8500-INSERT-AUTH         THRU 8500-EXIT                      
-      *    .                                                                    
-      *                                                                         
-      *8000-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:8000-EXIT'.
-      *    EXIT.                                                                
+       8000-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:8000-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *8400-UPDATE-SUMMARY.                                                     
-      *    DISPLAY 'SPECTER-TRACE:8400-UPDATE-SUMMARY'.
+       8400-UPDATE-SUMMARY.                                                     
+           DISPLAY 'SPECTER-TRACE:8400-UPDATE-SUMMARY'
       * ------------------------------------------------------------- *         
       *                                                                         
-      *    IF NFOUND-PAUT-SMRY-SEG                                              
-      *       INITIALIZE PENDING-AUTH-SUMMARY                                   
-      *         REPLACING NUMERIC DATA BY ZERO                                  
-      *                                                                         
-      *       MOVE XREF-ACCT-ID             TO PA-ACCT-ID                       
-      *       MOVE XREF-CUST-ID             TO PA-CUST-ID                       
-      *                                                                         
-      *    END-IF                                                               
-      *                                                                         
-      *    MOVE ACCT-CREDIT-LIMIT           TO PA-CREDIT-LIMIT                  
-      *    MOVE ACCT-CASH-CREDIT-LIMIT      TO PA-CASH-LIMIT                    
-      *                                                                         
-      *    IF AUTH-RESP-APPROVED                                                
-      *       ADD 1                         TO PA-APPROVED-AUTH-CNT             
-      *       ADD WS-APPROVED-AMT           TO PA-APPROVED-AUTH-AMT             
-      *                                                                         
-      *       ADD WS-APPROVED-AMT           TO PA-CREDIT-BALANCE                
-      *       MOVE 0                        TO PA-CASH-BALANCE                  
-      *    ELSE                                                                 
-      *       ADD 1                         TO PA-DECLINED-AUTH-CNT             
-      *       ADD PA-TRANSACTION-AMT        TO PA-DECLINED-AUTH-AMT             
-      *    END-IF                                                               
-      *                                                                         
-      *    IF FOUND-PAUT-SMRY-SEG                                               
+           IF NFOUND-PAUT-SMRY-SEG                                              
+           DISPLAY '@@B:6:T'
+              INITIALIZE PENDING-AUTH-SUMMARY                                   
+                REPLACING NUMERIC DATA BY ZERO                                  
+                                                                                
+              MOVE XREF-ACCT-ID             TO PA-ACCT-ID                       
+              MOVE XREF-CUST-ID             TO PA-CUST-ID                       
+                                                                                
+           ELSE
+           DISPLAY '@@B:6:F'
+           END-IF                                                               
+                                                                                
+           MOVE ACCT-CREDIT-LIMIT           TO PA-CREDIT-LIMIT                  
+           MOVE ACCT-CASH-CREDIT-LIMIT      TO PA-CASH-LIMIT                    
+                                                                                
+           IF AUTH-RESP-APPROVED                                                
+           DISPLAY '@@B:7:T'
+              ADD 1                         TO PA-APPROVED-AUTH-CNT             
+              ADD WS-APPROVED-AMT           TO PA-APPROVED-AUTH-AMT             
+                                                                                
+              ADD WS-APPROVED-AMT           TO PA-CREDIT-BALANCE                
+              MOVE 0                        TO PA-CASH-BALANCE                  
+           ELSE                                                                 
+           DISPLAY '@@B:7:F'
+              ADD 1                         TO PA-DECLINED-AUTH-CNT             
+              ADD PA-TRANSACTION-AMT        TO PA-DECLINED-AUTH-AMT             
+           END-IF                                                               
+                                                                                
+           IF FOUND-PAUT-SMRY-SEG                                               
       *       EXEC DLI REPL USING PCB(PAUT-PCB-NUM)                             
       *            SEGMENT (PAUTSUM0)                                           
       *            FROM (PENDING-AUTH-SUMMARY)                                  
       *       END-EXEC                                                          
-      *    DISPLAY 'SPECTER-MOCK:DLI-REPL'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '  ' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *    MOVE MOCK-ALPHA-STATUS TO DIBSTAT
-      *    ELSE                                                                 
+           DISPLAY 'SPECTER-MOCK:DLI-REPL'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '  ' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+           MOVE MOCK-ALPHA-STATUS TO DIBSTAT
+           ELSE                                                                 
       *       EXEC DLI ISRT USING PCB(PAUT-PCB-NUM)                             
       *            SEGMENT (PAUTSUM0)                                           
       *            FROM (PENDING-AUTH-SUMMARY)                                  
       *       END-EXEC                                                          
-      *    DISPLAY 'SPECTER-MOCK:DLI-ISRT'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '  ' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *    MOVE MOCK-ALPHA-STATUS TO DIBSTAT
-      *    END-IF                                                               
-      *    MOVE DIBSTAT                     TO IMS-RETURN-CODE                  
+           DISPLAY 'SPECTER-MOCK:DLI-ISRT'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '  ' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+           MOVE MOCK-ALPHA-STATUS TO DIBSTAT
+           END-IF                                                               
+           MOVE DIBSTAT                     TO IMS-RETURN-CODE                  
+                                                                                
+           IF STATUS-OK                                                         
+           DISPLAY '@@B:8:T'
+             CONTINUE                                                           
+           ELSE                                                                 
+           DISPLAY '@@B:8:F'
+             MOVE 'I003'                    TO ERR-LOCATION                     
+             SET  ERR-CRITICAL              TO TRUE                             
+             SET  ERR-IMS                   TO TRUE                             
+             MOVE IMS-RETURN-CODE           TO ERR-CODE-1                       
+             MOVE 'IMS UPDATE SUMRY FAILED' TO ERR-MESSAGE                      
+             MOVE PA-CARD-NUM               TO ERR-EVENT-KEY                    
+             PERFORM 9500-LOG-ERROR                                             
+           END-IF                                                               
+           .                                                                    
       *                                                                         
-      *    IF STATUS-OK                                                         
-      *      CONTINUE                                                           
-      *    ELSE                                                                 
-      *      MOVE 'I003'                    TO ERR-LOCATION                     
-      *      SET  ERR-CRITICAL              TO TRUE                             
-      *      SET  ERR-IMS                   TO TRUE                             
-      *      MOVE IMS-RETURN-CODE           TO ERR-CODE-1                       
-      *      MOVE 'IMS UPDATE SUMRY FAILED' TO ERR-MESSAGE                      
-      *      MOVE PA-CARD-NUM               TO ERR-EVENT-KEY                    
-      *    DISPLAY 'SPECTER-CALL:FROM=8400-UPDATE-SUMMARY:TO=9500-LOG-ERROR'.
-      *      PERFORM 9500-LOG-ERROR                                             
-      *    END-IF                                                               
-      *    .                                                                    
-      *                                                                         
-      *8400-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:8400-EXIT'.
-      *    EXIT.                                                                
+       8400-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:8400-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *8500-INSERT-AUTH.                                                        
-      *    DISPLAY 'SPECTER-TRACE:8500-INSERT-AUTH'.
+       8500-INSERT-AUTH.                                                        
+           DISPLAY 'SPECTER-TRACE:8500-INSERT-AUTH'
       * ------------------------------------------------------------- *         
       *                                                                         
       *    EXEC CICS ASKTIME NOHANDLE                                           
       *       ABSTIME(WS-ABS-TIME)                                              
       *    END-EXEC                                                             
-      *    DISPLAY 'SPECTER-MOCK:CICS'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '00' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *                                                                         
+           DISPLAY 'SPECTER-MOCK:CICS'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '00' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+                                                                                
       *    EXEC CICS FORMATTIME                                                 
       *      ABSTIME(WS-ABS-TIME)                                               
       *      YYDDD(WS-CUR-DATE-X6)                                              
       *      TIME(WS-CUR-TIME-X6)                                               
       *      MILLISECONDS(WS-CUR-TIME-MS)                                       
       *    END-EXEC                                                             
-      *    DISPLAY 'SPECTER-MOCK:CICS'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '00' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *                                                                         
-      *    MOVE WS-CUR-DATE-X6(1:5)         TO WS-YYDDD                         
-      *    MOVE WS-CUR-TIME-X6              TO WS-CUR-TIME-N6                   
-      *                                                                         
+           DISPLAY 'SPECTER-MOCK:CICS'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '00' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+                                                                                
+           MOVE WS-CUR-DATE-X6(1:5)         TO WS-YYDDD                         
+           MOVE WS-CUR-TIME-X6              TO WS-CUR-TIME-N6                   
+                                                                                
       *    COMPUTE WS-TIME-WITH-MS = (WS-CUR-TIME-N6 * 1000) +                  
       *                              WS-CUR-TIME-MS                             
-      *                                                                         
-      *    COMPUTE PA-AUTH-DATE-9C = 99999 - WS-YYDDD                           
-      *    COMPUTE PA-AUTH-TIME-9C = 999999999 - WS-TIME-WITH-MS                
-      *                                                                         
-      *    MOVE PA-RQ-AUTH-DATE             TO PA-AUTH-ORIG-DATE                
-      *    MOVE PA-RQ-AUTH-TIME             TO PA-AUTH-ORIG-TIME                
-      *    MOVE PA-RQ-CARD-NUM              TO PA-CARD-NUM                      
-      *    MOVE PA-RQ-AUTH-TYPE             TO PA-AUTH-TYPE                     
-      *    MOVE PA-RQ-CARD-EXPIRY-DATE      TO PA-CARD-EXPIRY-DATE              
-      *    MOVE PA-RQ-MESSAGE-TYPE          TO PA-MESSAGE-TYPE                  
-      *    MOVE PA-RQ-MESSAGE-SOURCE        TO PA-MESSAGE-SOURCE                
-      *    MOVE PA-RQ-PROCESSING-CODE       TO PA-PROCESSING-CODE               
-      *    MOVE PA-RQ-TRANSACTION-AMT       TO PA-TRANSACTION-AMT               
-      *    MOVE PA-RQ-MERCHANT-CATAGORY-CODE                                    
-      *                                     TO PA-MERCHANT-CATAGORY-CODE        
-      *    MOVE PA-RQ-ACQR-COUNTRY-CODE     TO PA-ACQR-COUNTRY-CODE             
-      *    MOVE PA-RQ-POS-ENTRY-MODE        TO PA-POS-ENTRY-MODE                
-      *    MOVE PA-RQ-MERCHANT-ID           TO PA-MERCHANT-ID                   
-      *    MOVE PA-RQ-MERCHANT-NAME         TO PA-MERCHANT-NAME                 
-      *    MOVE PA-RQ-MERCHANT-CITY         TO PA-MERCHANT-CITY                 
-      *    MOVE PA-RQ-MERCHANT-STATE        TO PA-MERCHANT-STATE                
-      *    MOVE PA-RQ-MERCHANT-ZIP          TO PA-MERCHANT-ZIP                  
-      *    MOVE PA-RQ-TRANSACTION-ID        TO PA-TRANSACTION-ID                
-      *                                                                         
-      *    MOVE PA-RL-AUTH-ID-CODE          TO PA-AUTH-ID-CODE                  
-      *    MOVE PA-RL-AUTH-RESP-CODE        TO PA-AUTH-RESP-CODE                
-      *    MOVE PA-RL-AUTH-RESP-REASON      TO PA-AUTH-RESP-REASON              
-      *    MOVE PA-RL-APPROVED-AMT          TO PA-APPROVED-AMT                  
-      *                                                                         
-      *    IF AUTH-RESP-APPROVED                                                
-      *       SET  PA-MATCH-PENDING         TO TRUE
-      *    ELSE                                                                 
-      *       SET  PA-MATCH-AUTH-DECLINED   TO TRUE
-      *    END-IF                                                               
+                                                                                
+           COMPUTE PA-AUTH-DATE-9C = 99999 - WS-YYDDD                           
+           COMPUTE PA-AUTH-TIME-9C = 999999999 - WS-TIME-WITH-MS                
+                                                                                
+           MOVE PA-RQ-AUTH-DATE             TO PA-AUTH-ORIG-DATE                
+           MOVE PA-RQ-AUTH-TIME             TO PA-AUTH-ORIG-TIME                
+           MOVE PA-RQ-CARD-NUM              TO PA-CARD-NUM                      
+           MOVE PA-RQ-AUTH-TYPE             TO PA-AUTH-TYPE                     
+           MOVE PA-RQ-CARD-EXPIRY-DATE      TO PA-CARD-EXPIRY-DATE              
+           MOVE PA-RQ-MESSAGE-TYPE          TO PA-MESSAGE-TYPE                  
+           MOVE PA-RQ-MESSAGE-SOURCE        TO PA-MESSAGE-SOURCE                
+           MOVE PA-RQ-PROCESSING-CODE       TO PA-PROCESSING-CODE               
+           MOVE PA-RQ-TRANSACTION-AMT       TO PA-TRANSACTION-AMT               
+           MOVE PA-RQ-MERCHANT-CATAGORY-CODE                                    
+                                            TO PA-MERCHANT-CATAGORY-CODE        
+           MOVE PA-RQ-ACQR-COUNTRY-CODE     TO PA-ACQR-COUNTRY-CODE             
+           MOVE PA-RQ-POS-ENTRY-MODE        TO PA-POS-ENTRY-MODE                
+           MOVE PA-RQ-MERCHANT-ID           TO PA-MERCHANT-ID                   
+           MOVE PA-RQ-MERCHANT-NAME         TO PA-MERCHANT-NAME                 
+           MOVE PA-RQ-MERCHANT-CITY         TO PA-MERCHANT-CITY                 
+           MOVE PA-RQ-MERCHANT-STATE        TO PA-MERCHANT-STATE                
+           MOVE PA-RQ-MERCHANT-ZIP          TO PA-MERCHANT-ZIP                  
+           MOVE PA-RQ-TRANSACTION-ID        TO PA-TRANSACTION-ID                
+                                                                                
+           MOVE PA-RL-AUTH-ID-CODE          TO PA-AUTH-ID-CODE                  
+           MOVE PA-RL-AUTH-RESP-CODE        TO PA-AUTH-RESP-CODE                
+           MOVE PA-RL-AUTH-RESP-REASON      TO PA-AUTH-RESP-REASON              
+           MOVE PA-RL-APPROVED-AMT          TO PA-APPROVED-AMT                  
+                                                                                
+           IF AUTH-RESP-APPROVED                                                
+           DISPLAY '@@B:9:T'
+              SET  PA-MATCH-PENDING         TO TRUE
+           ELSE                                                                 
+           DISPLAY '@@B:9:F'
+              SET  PA-MATCH-AUTH-DECLINED   TO TRUE
+           END-IF                                                               
 
-      *    MOVE SPACE                       TO PA-AUTH-FRAUD
+           MOVE SPACE                       TO PA-AUTH-FRAUD
       *                                        PA-FRAUD-RPT-DATE
 
-      *    MOVE XREF-ACCT-ID                TO PA-ACCT-ID                       
-      *                                                                         
+           MOVE XREF-ACCT-ID                TO PA-ACCT-ID                       
+                                                                                
       *    EXEC DLI ISRT USING PCB(PAUT-PCB-NUM)
       *         SEGMENT (PAUTSUM0)
       *         WHERE (ACCNTID = PA-ACCT-ID)
@@ -1577,164 +1322,166 @@
       *         FROM (PENDING-AUTH-DETAILS)
       *         SEGLENGTH (LENGTH OF PENDING-AUTH-DETAILS)
       *    END-EXEC
-      *    DISPLAY 'SPECTER-MOCK:DLI-ISRT'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '  ' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *    MOVE MOCK-ALPHA-STATUS TO DIBSTAT
-      *    MOVE DIBSTAT                     TO IMS-RETURN-CODE                  
+           DISPLAY 'SPECTER-MOCK:DLI-ISRT'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '  ' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+           MOVE MOCK-ALPHA-STATUS TO DIBSTAT
+           MOVE DIBSTAT                     TO IMS-RETURN-CODE                  
+                                                                                
+           IF STATUS-OK                                                         
+           DISPLAY '@@B:10:T'
+             CONTINUE                                                           
+           ELSE                                                                 
+           DISPLAY '@@B:10:F'
+             MOVE 'I004'                    TO ERR-LOCATION                     
+             SET  ERR-CRITICAL              TO TRUE                             
+             SET  ERR-IMS                   TO TRUE                             
+             MOVE IMS-RETURN-CODE           TO ERR-CODE-1                       
+             MOVE 'IMS INSERT DETL FAILED'  TO ERR-MESSAGE                      
+             MOVE PA-CARD-NUM               TO ERR-EVENT-KEY                    
+             PERFORM 9500-LOG-ERROR                                             
+           END-IF                                                               
+           .                                                                    
       *                                                                         
-      *    IF STATUS-OK                                                         
-      *      CONTINUE                                                           
-      *    ELSE                                                                 
-      *      MOVE 'I004'                    TO ERR-LOCATION                     
-      *      SET  ERR-CRITICAL              TO TRUE                             
-      *      SET  ERR-IMS                   TO TRUE                             
-      *      MOVE IMS-RETURN-CODE           TO ERR-CODE-1                       
-      *      MOVE 'IMS INSERT DETL FAILED'  TO ERR-MESSAGE                      
-      *      MOVE PA-CARD-NUM               TO ERR-EVENT-KEY                    
-      *    DISPLAY 'SPECTER-CALL:FROM=8500-INSERT-AUTH:TO=9500-LOG-ERROR'.
-      *      PERFORM 9500-LOG-ERROR                                             
-      *    END-IF                                                               
-      *    .                                                                    
-      *                                                                         
-      *8500-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:8500-EXIT'.
-      *    EXIT.                                                                
+       8500-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:8500-EXIT'
+           EXIT.                                                                
       *                                                                         
 
       * ------------------------------------------------------------- *         
-      *9000-TERMINATE.                                                          
-      *    DISPLAY 'SPECTER-TRACE:9000-TERMINATE'.
+       9000-TERMINATE.                                                          
+           DISPLAY 'SPECTER-TRACE:9000-TERMINATE'
       * ------------------------------------------------------------- *         
       *                                                                         
-      *    IF IMS-PSB-SCHD                                                      
+           IF IMS-PSB-SCHD                                                      
       *       EXEC DLI TERM END-EXEC                                            
-      *    DISPLAY 'SPECTER-MOCK:DLI-TERM'
-      *    CONTINUE
-      *    END-IF                                                               
+           DISPLAY 'SPECTER-MOCK:DLI-TERM'
+           CONTINUE
+           END-IF                                                               
+                                                                                
+           PERFORM 9100-CLOSE-REQUEST-QUEUE THRU 9100-EXIT                      
+           .                                                                    
       *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=9000-TERMINATE:TO=9100-CLOSE-REQUEST-QUEUE'.
-      *    PERFORM 9100-CLOSE-REQUEST-QUEUE THRU 9100-EXIT                      
-      *    .                                                                    
-      *                                                                         
-      *S-9000-EXIT.                                                       
-      *    DISPLAY 'SPECTER-TRACE:S-9000-EXIT'. 
-      *    EXIT.                                                                
+       9000-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:9000-EXIT'
+           EXIT.                                                                
       * ------------------------------------------------------------- *         
-      *9100-CLOSE-REQUEST-QUEUE.                                                
-      *    DISPLAY 'SPECTER-TRACE:9100-CLOSE-REQUEST-QUEUE'.
+       9100-CLOSE-REQUEST-QUEUE.                                                
+           DISPLAY 'SPECTER-TRACE:9100-CLOSE-REQUEST-QUEUE'
       * ------------------------------------------------------------ *          
-      *    IF WS-REQUEST-MQ-OPEN                                                
+           IF WS-REQUEST-MQ-OPEN                                                
       *       CALL 'MQCLOSE' USING W01-HCONN-REQUEST                            
       *                         W01-HOBJ-REQUEST                                
       *                         MQCO-NONE                                       
       *                         WS-COMPCODE                                     
       *                         WS-REASON                                       
       *       END-CALL                                                          
-      *    DISPLAY 'SPECTER-MOCK:CALL:MQCLOSE'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *    MOVE MOCK-NUM-STATUS TO RETURN-CODE
+           DISPLAY 'SPECTER-MOCK:CALL:MQCLOSE'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+           MOVE MOCK-NUM-STATUS TO RETURN-CODE
       *                                                                         
-      *       IF WS-COMPCODE = MQCC-OK                                          
-      *          SET WS-REQUEST-MQ-CLSE TO TRUE                                 
-      *       ELSE                                                              
-      *          MOVE 'M005'                TO ERR-LOCATION                     
-      *          SET  ERR-WARNING           TO TRUE                             
-      *          SET  ERR-MQ                TO TRUE                             
-      *          MOVE WS-COMPCODE           TO WS-CODE-DISPLAY                  
-      *          MOVE WS-CODE-DISPLAY       TO ERR-CODE-1                       
-      *          MOVE WS-REASON             TO WS-CODE-DISPLAY                  
-      *          MOVE WS-CODE-DISPLAY       TO ERR-CODE-2                       
-      *          MOVE 'FAILED TO CLOSE REQUEST MQ'                              
-      *                                     TO ERR-MESSAGE                      
-      *    DISPLAY 'SPECTER-CALL:FROM=9100-CLOSE-REQUEST-QUEUE:TO=9500-LOG-ERROR'.
-      *          PERFORM 9500-LOG-ERROR                                         
-      *       END-IF                                                            
-      *    END-IF.                                                              
+              IF WS-COMPCODE = MQCC-OK                                          
+           DISPLAY '@@B:11:T'
+                 SET WS-REQUEST-MQ-CLSE TO TRUE                                 
+              ELSE                                                              
+           DISPLAY '@@B:11:F'
+                 MOVE 'M005'                TO ERR-LOCATION                     
+                 SET  ERR-WARNING           TO TRUE                             
+                 SET  ERR-MQ                TO TRUE                             
+                 MOVE WS-COMPCODE           TO WS-CODE-DISPLAY                  
+                 MOVE WS-CODE-DISPLAY       TO ERR-CODE-1                       
+                 MOVE WS-REASON             TO WS-CODE-DISPLAY                  
+                 MOVE WS-CODE-DISPLAY       TO ERR-CODE-2                       
+                 MOVE 'FAILED TO CLOSE REQUEST MQ'                              
+                                            TO ERR-MESSAGE                      
+                 PERFORM 9500-LOG-ERROR                                         
+              END-IF                                                            
+           END-IF.                                                              
       *                                                                         
-      *9100-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:9100-EXIT'.
-      *    EXIT.                                                                
+       9100-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:9100-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *9500-LOG-ERROR.                                                          
-      *    DISPLAY 'SPECTER-TRACE:9500-LOG-ERROR'.
+       9500-LOG-ERROR.                                                          
+           DISPLAY 'SPECTER-TRACE:9500-LOG-ERROR'
       * ------------------------------------------------------------ *          
-      *                                                                         
+                                                                                
       *    EXEC CICS ASKTIME NOHANDLE                                           
       *       ABSTIME(WS-ABS-TIME)                                              
       *    END-EXEC                                                             
-      *    DISPLAY 'SPECTER-MOCK:CICS'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '00' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *                                                                         
+           DISPLAY 'SPECTER-MOCK:CICS'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '00' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+                                                                                
       *    EXEC CICS FORMATTIME                                                 
       *      ABSTIME(WS-ABS-TIME)                                               
       *      YYMMDD(WS-CUR-DATE-X6)                                             
       *      TIME(WS-CUR-TIME-X6)                                               
       *    END-EXEC                                                             
-      *    DISPLAY 'SPECTER-MOCK:CICS'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '00' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *                                                                         
-      *    MOVE WS-CICS-TRANID            TO ERR-APPLICATION                    
-      *    MOVE WS-PGM-AUTH               TO ERR-PROGRAM                        
-      *    MOVE WS-CUR-DATE-X6            TO ERR-DATE                           
-      *    MOVE WS-CUR-TIME-X6            TO ERR-TIME                           
-      *                                                                         
+           DISPLAY 'SPECTER-MOCK:CICS'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '00' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+                                                                                
+           MOVE WS-CICS-TRANID            TO ERR-APPLICATION                    
+           MOVE WS-PGM-AUTH               TO ERR-PROGRAM                        
+           MOVE WS-CUR-DATE-X6            TO ERR-DATE                           
+           MOVE WS-CUR-TIME-X6            TO ERR-TIME                           
+                                                                                
       *    EXEC CICS WRITEQ                                                     
       *         TD QUEUE('CSSL')                                                
       *         FROM (ERROR-LOG-RECORD)                                         
       *         LENGTH (LENGTH OF ERROR-LOG-RECORD)                             
       *         NOHANDLE                                                        
       *    END-EXEC                                                             
-      *    DISPLAY 'SPECTER-MOCK:CICS-WRITEQ'
-      *    READ MOCK-FILE INTO MOCK-RECORD
-      *       AT END
-      *         MOVE '00' TO MOCK-ALPHA-STATUS
-      *         MOVE 0 TO MOCK-NUM-STATUS
-      *    END-READ
-      *                                                                         
-      *    IF ERR-CRITICAL                                                      
-      *    DISPLAY 'SPECTER-CALL:FROM=9500-LOG-ERROR:TO=9990-END-ROUTINE'.
-      *       PERFORM 9990-END-ROUTINE                                          
-      *    END-IF                                                               
-      *    .                                                                    
-      *9500-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:9500-EXIT'.
-      *    EXIT.                                                                
+           DISPLAY 'SPECTER-MOCK:CICS-WRITEQ'
+           READ MOCK-FILE INTO MOCK-RECORD
+              AT END
+                MOVE '00' TO MOCK-ALPHA-STATUS
+                MOVE 0 TO MOCK-NUM-STATUS
+           END-READ
+                                                                                
+           IF ERR-CRITICAL                                                      
+           DISPLAY '@@B:12:T'
+              PERFORM 9990-END-ROUTINE                                          
+           ELSE
+           DISPLAY '@@B:12:F'
+           END-IF                                                               
+           .                                                                    
+       9500-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:9500-EXIT'
+           EXIT.                                                                
       *                                                                         
       * ------------------------------------------------------------- *         
-      *9990-END-ROUTINE.                                                        
-      *    DISPLAY 'SPECTER-TRACE:9990-END-ROUTINE'.
+       9990-END-ROUTINE.                                                        
+           DISPLAY 'SPECTER-TRACE:9990-END-ROUTINE'
       * ------------------------------------------------------------ *          
-      *                                                                         
-      *    DISPLAY 'SPECTER-CALL:FROM=9990-END-ROUTINE:TO=9000-TERMINATE'.
-      *    PERFORM 9000-TERMINATE                                               
-      *                                                                         
+                                                                                
+           PERFORM 9000-TERMINATE                                               
+                                                                                
       *    EXEC CICS RETURN                                                     
       *    END-EXEC                                                             
-      *    DISPLAY 'SPECTER-CICS:RETURN'
-      *    GO TO SPECTER-EXIT-PARA
-      *    .                                                                    
-      *9990-EXIT.                                                               
-      *    DISPLAY 'SPECTER-TRACE:9990-EXIT'.
-      *    EXIT.                                                                
+           DISPLAY 'SPECTER-CICS:RETURN'
+           GO TO SPECTER-EXIT-PARA
+           .                                                                    
+       9990-EXIT.                                                               
+           DISPLAY 'SPECTER-TRACE:9990-EXIT'
+           EXIT.                                                                
       *                                                                         
 
       * SPECTER: exit paragraph for CICS RETURN/XCTL
-      *SPECTER-EXIT-PARA.
-      *    CLOSE MOCK-FILE
-      *    STOP RUN.
+       SPECTER-EXIT-PARA.
+           CLOSE MOCK-FILE
+           STOP RUN.
