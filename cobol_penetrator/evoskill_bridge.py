@@ -51,6 +51,11 @@ def make_sync_evoskill_llm(
     ``complete`` method.  Intended for EvoSkill's sync-only APIs like
     ``consolidate()``.
 
+    .. warning::
+        Must be called from a thread **without** a running event loop
+        (e.g. via ``loop.run_in_executor``).  Calling from an async
+        context directly will raise ``RuntimeError``.
+
     Args:
         provider: A codecrawler LLMProvider instance.
 
@@ -70,15 +75,7 @@ def make_sync_evoskill_llm(
             )
             return response.content
 
-        try:
-            asyncio.get_running_loop()
-        except RuntimeError:
-            return asyncio.run(_call())
-        else:
-            import concurrent.futures
-
-            with concurrent.futures.ThreadPoolExecutor() as pool:
-                return pool.submit(asyncio.run, _call()).result()
+        return asyncio.run(_call())
 
     return _llm
 

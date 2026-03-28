@@ -827,14 +827,27 @@ async def run(config: PenetratorConfig) -> dict:
                 coverage.state.total_paragraphs,
             )
 
-    # Consolidate EvoSkill skills (prune ineffective ones)
+    # Consolidate EvoSkill skills (prune ineffective ones).
+    # consolidate() is sync and calls the sync LLM adapter which uses
+    # asyncio.run(), so we must run it in a thread to avoid conflicts
+    # with the already-running event loop.
     if skill_store is not None and evoskill_llm_sync is not None:
+        import asyncio as _aio
+        _loop = _aio.get_running_loop()
+        consolidated_roles: list[str] = []
         for _role in ("recon", "paragraph", "branch"):
             try:
-                skill_store.consolidate(role=_role, llm=evoskill_llm_sync)
+                await _loop.run_in_executor(
+                    None,
+                    lambda r=_role: skill_store.consolidate(role=r, llm=evoskill_llm_sync),
+                )
+                consolidated_roles.append(_role)
             except Exception:
                 logger.debug("EvoSkill consolidation failed for role=%s", _role, exc_info=True)
-        logger.info("EvoSkill skills consolidated")
+        if consolidated_roles:
+            logger.info("EvoSkill skills consolidated for roles: %s", consolidated_roles)
+        else:
+            logger.warning("EvoSkill consolidation failed for all roles")
 
     # Save final state
     coverage.save(config.coverage_path)
