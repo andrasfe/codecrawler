@@ -406,6 +406,7 @@ async def run(config: PenetratorConfig) -> dict:
             logger.warning("Failed to initialize EvoSkill", exc_info=True)
             skill_store = None
             evoskill_llm = None
+            evoskill_llm_sync = None
     elif config.evoskill_enabled and not _EVOSKILL_AVAILABLE:
         logger.info("EvoSkill not installed — skill learning disabled")
 
