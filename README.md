@@ -128,15 +128,93 @@ The orchestrator runs these phases in order:
    - Knowledge store records successes, failures, variable observations
    - Tickets cascade for newly discovered paragraphs and branches
 
-## Coverage Results (COPAUA0C)
+## Validation: COPAUA0C (AWS CardDemo Authorization)
 
-AWS CardDemo authorization program — 43 paragraphs, 25 branch directions:
+COPAUA0C is the primary validation target — an IMS/DB2/MQ authorization processing program from the [AWS CardDemo](https://github.com/aws-samples/aws-mainframe-modernization-carddemo) mainframe modernization sample. It exercises DLI database calls, CICS transactions, MQ messaging, and complex business logic with 43 paragraphs and 25 instrumented branch directions.
+
+### Reproducing the Test
+
+```bash
+# 1. Prerequisites
+#    - GnuCOBOL installed (cobc)
+#    - Specter at ~/specter with branch tracing enabled
+#    - AWS CardDemo repo at ~/aws-mainframe-modernization-carddemo
+#    - .env configured with LLM provider API key
+
+# 2. Instrument COPAUA0C with specter (paragraph + branch probes)
+CARDDEMO=~/aws-mainframe-modernization-carddemo/app
+~/specter/.venv/bin/specter \
+    $CARDDEMO/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl \
+    --mock-cobol \
+    --copybook-dir $CARDDEMO/cpy \
+    --copybook-dir $CARDDEMO/app-authorization-ims-db2-mq/cpy \
+    --output .specter_build_COPAUA0C/COPAUA0C.mock.cbl
+
+# 3. Compile with GnuCOBOL
+cobc -x -o .specter_build_COPAUA0C/COPAUA0C \
+    .specter_build_COPAUA0C/COPAUA0C.mock.cbl
+
+# 4. Verify the binary emits traces
+.specter_build_COPAUA0C/COPAUA0C 2>&1 | grep "SPECTER-TRACE:" | sort -u | wc -l
+# Expected: 28 unique paragraphs
+
+.specter_build_COPAUA0C/COPAUA0C 2>&1 | grep "@@B:" | sort -u | wc -l
+# Expected: 10-11 unique branch directions
+
+# 5. Run the penetrator
+python -m cobol_penetrator \
+    --executable .specter_build_COPAUA0C/COPAUA0C \
+    --mock-cbl .specter_build_COPAUA0C/COPAUA0C.mock.cbl \
+    --budget 300 --timeout 300 --max-attempts 10
+
+# 6. Check results
+python -m cobol_penetrator --status
+```
+
+### What the Penetrator Does on COPAUA0C
+
+The orchestrator runs these phases automatically:
+
+1. **Structure analysis** — Parses 43 paragraphs, 12 branch probes (25 directions), 33 call graph edges, 186 WORKING-STORAGE fields, 8 stub operations (DLI-SCHD, DLI-GU, DLI-REPL, DLI-ISRT, CICS, CICS-WRITEQ, CALL, DLI-TERM)
+
+2. **Baseline execution** (1 run, empty params) — Hits 28 paragraphs and 10 branch directions on the default success path. The program loops ~500 times processing authorization requests, with each iteration consuming 6 mock records (DLI-SCHD → DLI-GU → DLI-REPL → CICS → CICS → DLI-ISRT)
+
+3. **Position-aware stub sequencing** (~100 runs) — Detects the 6-record cycle and injects fault values (GE, GB, II, 10, 23, etc.) at each position:
+   - Position 0 (DLI-SCHD) with `'GE'` → triggers error handler `9500-LOG-ERROR`, flips branch 1:F (`STATUS-OK` = FALSE)
+   - Position 1 (DLI-GU) with `'GE'` → flips branch 5:W2 (EVALUATE WHEN clause 2) and 6:T (`NFOUND-PAUT-SMRY-SEG` = TRUE)
+   - Position 1 (DLI-GU) with `'GB'` → triggers branch 5:WO (EVALUATE WHEN OTHER)
+   - Position 2 (DLI-REPL) with `'GE'` → flips branch 8:F (`STATUS-OK` = FALSE in 8400-UPDATE-SUMMARY)
+   - Position 5 (DLI-ISRT) with `'GE'` → flips branch 10:F (`STATUS-OK` = FALSE in 8500-INSERT-AUTH)
+
+4. **LLM agent loop** (~80 runs) — Multi-turn agents with shared knowledge explore remaining tickets. Creates 48 tickets total (paragraph + branch), completes 16, blocks 4 after max attempts
+
+### Results
 
 | Metric | Raw | Of Reachable |
 |--------|-----|-------------|
 | Paragraphs | 30/43 (69.8%) | 30/33 traceable (90.9%) |
 | Branches | 18/25 (72.0%) | 18/18 reachable (100%) |
 | **Combined** | **48/68 (70.6%)** | **48/51 (94.1%)** |
+
+### Unreachable Code Analysis
+
+**13 unreachable paragraphs** (no SPECTER-TRACE instrumentation):
+- 10 paragraphs have their trace DISPLAY commented out by specter's EXEC neutralization (the paragraph body was replaced with `CONTINUE` when the original EXEC CICS/SQL/DLI block was stubbed)
+- 3 paragraphs have active traces but sit after `STOP RUN` or have commented-out callers (`9500-EXIT`, `9990-EXIT`, `1100-EXIT`)
+
+**7 unreachable branch directions:**
+- `3:F`, `4:F` — `CARD-FOUND-XREF` is unconditionally `SET ... TO TRUE` at line 749 before the IF check. The EVALUATE that would set it to FALSE (line 807-833) is in a commented-out EXEC CICS READ block
+- `7:T`, `9:T` — `AUTH-RESP-APPROVED` SET is inside commented-out EXEC CICS code (line 1048)
+- `11:T`, `11:F` — `WS-COMPCODE = MQCC-OK` checks are in commented-out MQ code (lines 527-543)
+- `12:F` — `ERR-CRITICAL` is always TRUE on the error path; the non-critical error path was commented out
+
+### Other CardDemo Programs Tested
+
+| Program | Paragraphs | Coverage | Notes |
+|---------|-----------|----------|-------|
+| COSGN00C (Sign-on) | 6 | 50.0% | Entry reached on 1st execution |
+| COUSR02C (User Update) | 7 | 71.4% | 5/7 paragraphs hit |
+| COTRN00C (Transaction) | 9 | 22.2% | Short execution path |
 
 ## COBOL Trace Formats
 
