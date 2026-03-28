@@ -231,54 +231,19 @@ def format_knowledge_context(
                 f"  {parent_params}"
             )
 
-    # Sibling branches and containing paragraph params
+    # Containing paragraph params for branch tickets
     if isinstance(ticket, BranchTicket):
-        siblings = knowledge.get_sibling_branch_params(ticket.branch_id)
-        if siblings:
-            for key, params in siblings.items():
-                sections.append(
-                    f"Sibling branch {key} was reached with: {params}"
-                )
         para_params = knowledge.successful_params.get(ticket.paragraph)
         if para_params:
             sections.append(
                 f"Containing paragraph reached with: {para_params}"
             )
 
-    # Variable observations for condition variables
-    relevant_vars: list[str] = []
-    if isinstance(ticket, BranchTicket) and ticket.condition_vars:
-        relevant_vars = list(ticket.condition_vars)
-    if relevant_vars and knowledge.variable_observations:
-        obs_lines: list[str] = []
-        for var in relevant_vars:
-            if var in knowledge.variable_observations:
-                vals = knowledge.variable_observations[var][:10]
-                obs_lines.append(f"  {var}: observed values {vals}")
-        if obs_lines:
-            sections.append(
-                "Variable observations from prior runs:\n"
-                + "\n".join(obs_lines)
-            )
-
-    # Stub outcomes
-    if knowledge.stub_outcomes:
-        stub_lines: list[str] = []
-        for op, outcomes in list(knowledge.stub_outcomes.items())[:5]:
-            stub_lines.append(
-                f"  {op}: produced coverage with {outcomes[:5]}"
-            )
-        if stub_lines:
-            sections.append(
-                "Stub outcomes that produced coverage:\n"
-                + "\n".join(stub_lines)
-            )
-
-    # Failed attempts
+    # Failed attempts (so agents don't repeat the same failing params)
     if isinstance(ticket, ParagraphTicket):
         target = ticket.paragraph
     elif isinstance(ticket, BranchTicket):
-        target = f"BRANCH-{ticket.branch_id}"
+        target = f"BRANCH-{ticket.branch_id}-{ticket.direction}"
     else:
         target = ""
 
@@ -288,10 +253,7 @@ def format_knowledge_context(
             f"Prior failed attempts ({len(fails)} total):"
         )
         for f in fails[-3:]:  # Show last 3
-            paras_count = len(f.get("paragraphs_hit", []))
-            sections.append(
-                f"  Tried: {f['params']} -> hit {paras_count} paragraphs"
-            )
+            sections.append(f"  Tried: {f}")
 
     return "\n\n".join(sections) if sections else ""
 

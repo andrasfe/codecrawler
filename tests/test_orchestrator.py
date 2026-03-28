@@ -544,11 +544,10 @@ class TestRunLoop:
     def test_run_populates_knowledge_store(
         self, tmp_path: Path
     ) -> None:
-        """run() creates and populates the shared knowledge store."""
+        """run() creates and populates the in-memory knowledge store."""
         executable = self._make_mock_executable(tmp_path)
         mock_cbl = self._make_mock_cbl(tmp_path)
 
-        knowledge_path = tmp_path / "knowledge.json"
         config = PenetratorConfig(
             executable=executable,
             mock_cbl=mock_cbl,
@@ -559,28 +558,32 @@ class TestRunLoop:
             coverage_path=tmp_path / "coverage.json",
             params_dir=tmp_path / "params",
             max_attempts=3,
-            knowledge_path=knowledge_path,
         )
 
         mock_provider = _make_mock_provider()
 
+        # Capture the knowledge object used during the run
+        captured_knowledge = {}
+
+        original_record = LearnedKnowledge.record_execution
+
+        def spy_record(self_k, params, result, ticket=None):
+            captured_knowledge["instance"] = self_k
+            return original_record(self_k, params, result, ticket)
+
         with patch(
             "cobol_penetrator.orchestrator.get_provider_from_env",
             return_value=mock_provider,
+        ), patch.object(
+            LearnedKnowledge, "record_execution", spy_record,
         ):
             result = asyncio.run(run(config))
 
-        # Knowledge file should be written
-        assert knowledge_path.exists()
-
-        # Load and verify content
-        knowledge = LearnedKnowledge.load(knowledge_path)
+        # Knowledge should have been populated in-memory
+        knowledge = captured_knowledge.get("instance")
+        assert knowledge is not None
         # Baseline + LLM executions should populate paragraphs
         assert len(knowledge.successful_params) >= 1
-        # Branch 1 with direction T should appear (from mock executable)
-        assert any(
-            k.startswith("1:") for k in knowledge.branch_params
-        )
 
     def test_run_uses_max_turns_per_ticket(
         self, tmp_path: Path
@@ -600,7 +603,6 @@ class TestRunLoop:
             params_dir=tmp_path / "params",
             max_attempts=5,
             max_turns_per_ticket=2,
-            knowledge_path=tmp_path / "knowledge.json",
         )
 
         mock_provider = _make_mock_provider()

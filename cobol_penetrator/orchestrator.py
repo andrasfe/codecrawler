@@ -371,12 +371,8 @@ async def run(config: PenetratorConfig) -> dict:
     store.load_or_create(config.tickets_path)
     engine = TicketEngine(store, max_attempts=config.max_attempts)
 
-    # 2b. Load or create shared knowledge store
-    knowledge = (
-        LearnedKnowledge.load(config.knowledge_path)
-        if config.resume
-        else LearnedKnowledge()
-    )
+    # 2b. Create within-run knowledge store (not persisted — EvoSkill handles cross-run)
+    knowledge = LearnedKnowledge()
 
     # 3. Create initial ticket if fresh run
     if not config.resume:
@@ -731,7 +727,7 @@ async def run(config: PenetratorConfig) -> dict:
 
         store.save(config.tickets_path)
         coverage.save(config.coverage_path)
-        knowledge.save(config.knowledge_path)
+        # knowledge is ephemeral (within-run only); EvoSkill handles cross-run persistence
 
     # 9. Fault exploration phase — try stub error codes to reach error handlers
     if executions < config.budget and coverage.coverage_pct < 100.0:
@@ -852,7 +848,7 @@ async def run(config: PenetratorConfig) -> dict:
     # Save final state
     coverage.save(config.coverage_path)
     store.save(config.tickets_path)
-    knowledge.save(config.knowledge_path)
+    # knowledge is ephemeral (within-run only) — no save needed
 
     all_tickets = store.all_tickets()
     summary = {
