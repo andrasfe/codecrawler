@@ -83,7 +83,7 @@ def load_config(args: list[str] | None = None) -> PenetratorConfig:
         llm_provider=os.getenv("LLM_PROVIDER", "openrouter"),
         llm_default_model=os.getenv("LLM_DEFAULT_MODEL"),
         llm_timeout=int(os.getenv("LLM_TIMEOUT", "600")),
-        evoskill_enabled=os.getenv("EVOSKILL_ENABLED", "1") not in ("0", "false", "no"),
+        evoskill_enabled=os.getenv("EVOSKILL_ENABLED", "1").lower() not in ("0", "false", "no"),
         evoskill_path=Path(os.getenv("EVOSKILL_STORAGE_PATH", "./evoskill_data")),
     )
 
