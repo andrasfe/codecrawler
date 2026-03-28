@@ -35,6 +35,13 @@ from cobol_penetrator.tickets import (
 from cobol_penetrator.llm_providers import get_provider_from_env
 from cobol_penetrator.trace_parser import ExecutionResult
 
+try:
+    from evoskill import SkillStore
+
+    _EVOSKILL_AVAILABLE = True
+except ImportError:  # pragma: no cover
+    _EVOSKILL_AVAILABLE = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -169,6 +176,9 @@ async def _multi_turn_execute(
     coverage: CoverageTracker | None = None,
     max_turns: int = 3,
     knowledge: LearnedKnowledge | None = None,
+    skill_store: SkillStore | None = None,
+    evoskill_llm: Any = None,
+    program_tag: str = "",
 ) -> tuple[dict | None, ExecutionResult | None]:
     """Execute multiple turns of agent -> execute -> analyze for a single ticket.
 
@@ -191,6 +201,22 @@ async def _multi_turn_execute(
             context.field_report = field_report
             context.execution_history = list(execution_history)
             context.knowledge = knowledge
+
+            # Inject EvoSkill learned skills into prompt
+            if skill_store is not None:
+                try:
+                    from cobol_penetrator.evoskill_bridge import (
+                        agent_to_evoskill_role,
+                    )
+
+                    evoskill_role = agent_to_evoskill_role(agent)
+                    context.evoskill_text = skill_store.get_skills_text(
+                        evoskill_role,
+                        tags=[program_tag] if program_tag else None,
+                        max_skills=10,
+                    )
+                except Exception:
+                    logger.debug("EvoSkill get_skills_text failed", exc_info=True)
 
             # Inject parent params from knowledge if available
             if knowledge is not None and context.parent_params is None:
@@ -261,6 +287,30 @@ async def _multi_turn_execute(
         })
 
         if ticket_target_reached(ticket, result):
+            # Learn from success via EvoSkill
+            if skill_store is not None and evoskill_llm is not None:
+                try:
+                    from cobol_penetrator.evoskill_feedback import (
+                        build_success_feedback,
+                    )
+                    from cobol_penetrator.evoskill_bridge import (
+                        agent_to_evoskill_role,
+                    )
+
+                    fb = build_success_feedback(ticket, params, result)
+                    es_role = agent_to_evoskill_role(agent)
+                    await skill_store.alearn_from_feedback(
+                        role=es_role,
+                        llm=evoskill_llm,
+                        tags=[program_tag] if program_tag else None,
+                        **fb,
+                    )
+                except Exception:
+                    logger.debug(
+                        "EvoSkill learn_from_feedback failed",
+                        exc_info=True,
+                    )
+
             if target_reached_turn is None:
                 target_reached_turn = turn
                 logger.info(
@@ -321,12 +371,8 @@ async def run(config: PenetratorConfig) -> dict:
     store.load_or_create(config.tickets_path)
     engine = TicketEngine(store, max_attempts=config.max_attempts)
 
-    # 2b. Load or create shared knowledge store
-    knowledge = (
-        LearnedKnowledge.load(config.knowledge_path)
-        if config.resume
-        else LearnedKnowledge()
-    )
+    # 2b. Create within-run knowledge store (not persisted — EvoSkill handles cross-run)
+    knowledge = LearnedKnowledge()
 
     # 3. Create initial ticket if fresh run
     if not config.resume:
@@ -334,6 +380,34 @@ async def run(config: PenetratorConfig) -> dict:
 
     # 4. Create LLM provider
     provider = get_provider_from_env()
+
+    # 4b. Initialize EvoSkill skill store (if available and enabled)
+    skill_store: SkillStore | None = None
+    evoskill_llm = None
+    evoskill_llm_sync = None
+    program_tag = Path(config.executable).stem if config.executable != Path(".") else ""
+    if config.evoskill_enabled and _EVOSKILL_AVAILABLE:
+        try:
+            from cobol_penetrator.evoskill_bridge import (
+                make_async_evoskill_llm,
+                make_sync_evoskill_llm,
+            )
+
+            skill_store = SkillStore(storage_path=config.evoskill_path)
+            evoskill_llm = make_async_evoskill_llm(provider)
+            evoskill_llm_sync = make_sync_evoskill_llm(provider)
+            logger.info(
+                "EvoSkill enabled: storage=%s, program_tag=%s",
+                config.evoskill_path,
+                program_tag,
+            )
+        except Exception:
+            logger.warning("Failed to initialize EvoSkill", exc_info=True)
+            skill_store = None
+            evoskill_llm = None
+            evoskill_llm_sync = None
+    elif config.evoskill_enabled and not _EVOSKILL_AVAILABLE:
+        logger.info("EvoSkill not installed — skill learning disabled")
 
     # 5. Coverage tracking
     if config.resume and config.coverage_path.exists():
@@ -555,6 +629,9 @@ async def run(config: PenetratorConfig) -> dict:
             history, coverage=coverage,
             max_turns=max(1, turns_per_ticket),
             knowledge=knowledge,
+            skill_store=skill_store,
+            evoskill_llm=evoskill_llm,
+            program_tag=program_tag,
         )
 
         if result is None:
@@ -613,13 +690,44 @@ async def run(config: PenetratorConfig) -> dict:
                 _cascade_from_trace(engine, store, structure, result, ticket)
 
             engine.record_attempt(ticket)
+
+            # Learn from failure via EvoSkill
+            if (
+                skill_store is not None
+                and evoskill_llm is not None
+                and ticket.attempts >= config.max_attempts
+            ):
+                try:
+                    from cobol_penetrator.evoskill_feedback import (
+                        build_failure_feedback,
+                    )
+                    from cobol_penetrator.evoskill_bridge import (
+                        agent_to_evoskill_role,
+                    )
+
+                    fb = build_failure_feedback(
+                        ticket, ticket.attempts, result,
+                    )
+                    es_role = agent_to_evoskill_role(agent)
+                    await skill_store.alearn_from_feedback(
+                        role=es_role,
+                        llm=evoskill_llm,
+                        tags=[program_tag] if program_tag else None,
+                        **fb,
+                    )
+                except Exception:
+                    logger.debug(
+                        "EvoSkill failure learning failed",
+                        exc_info=True,
+                    )
+
             if ticket.status != "BLOCKED":
                 ticket.status = "CREATED"
                 ticket.assigned_agent = None
 
         store.save(config.tickets_path)
         coverage.save(config.coverage_path)
-        knowledge.save(config.knowledge_path)
+        # knowledge is ephemeral (within-run only); EvoSkill handles cross-run persistence
 
     # 9. Fault exploration phase — try stub error codes to reach error handlers
     if executions < config.budget and coverage.coverage_pct < 100.0:
@@ -715,10 +823,32 @@ async def run(config: PenetratorConfig) -> dict:
                 coverage.state.total_paragraphs,
             )
 
+    # Consolidate EvoSkill skills (prune ineffective ones).
+    # consolidate() is sync and calls the sync LLM adapter which uses
+    # asyncio.run(), so we must run it in a thread to avoid conflicts
+    # with the already-running event loop.
+    if skill_store is not None and evoskill_llm_sync is not None:
+        import asyncio as _aio
+        _loop = _aio.get_running_loop()
+        consolidated_roles: list[str] = []
+        for _role in ("recon", "paragraph", "branch"):
+            try:
+                await _loop.run_in_executor(
+                    None,
+                    lambda r=_role: skill_store.consolidate(role=r, llm=evoskill_llm_sync),
+                )
+                consolidated_roles.append(_role)
+            except Exception:
+                logger.debug("EvoSkill consolidation failed for role=%s", _role, exc_info=True)
+        if consolidated_roles:
+            logger.info("EvoSkill skills consolidated for roles: %s", consolidated_roles)
+        else:
+            logger.warning("EvoSkill consolidation failed for all roles")
+
     # Save final state
     coverage.save(config.coverage_path)
     store.save(config.tickets_path)
-    knowledge.save(config.knowledge_path)
+    # knowledge is ephemeral (within-run only) — no save needed
 
     all_tickets = store.all_tickets()
     summary = {

@@ -1,0 +1,4514 @@
+[
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.174250+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.178703+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.183117+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.363048+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.367039+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.370857+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.549713+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.553938+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.557831+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.743162+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.747814+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.751847+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.935016+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.939586+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.944030+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.136872+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.141997+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.147838+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.529868+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.534354+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.538733+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.667896+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.672521+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.677038+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.848694+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.853091+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.857688+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.114864+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.120339+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.125521+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.258750+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.263477+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.268630+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.591218+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.596313+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.601226+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.741482+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.746370+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When tasked with navigating to a specific paragraph, identify the provided call path and execute the sequence of transitions sequentially to reach the target node. Maintain the current state and stub configuration throughout the traversal to ensure the path remains valid until the destination is reached.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:22.385194+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When navigating to a specific target node, explicitly map the provided call path as a sequence of state transitions and execute them in order until the target is reached. Maintain an empty state and stub configuration unless specific parameters are required to validate the path.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:24.974629+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When navigating to a target node via a specified call path, prioritize executing the sequence of transitions exactly as defined while maintaining an empty state and stub configuration to ensure successful traversal. If the target is reached, document the successful path and stub usage to optimize future navigation tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:27.117530+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When navigating to a target node via a specified call path, maintain a record of the total paragraph count and stub configuration used during the traversal to refine future path execution. Use this historical data to validate the efficiency of similar call chains and ensure consistent navigation across complex node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:29.820497+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path to reach a target node, analyze the sequence of transitions to identify the required paragraph count and stub configuration. Apply this historical data to validate the efficiency of future navigation tasks and ensure consistent, successful traversal through complex node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:32.939460+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When navigating to a target node via a specified call path, record the successful transition sequence and the resulting paragraph count to build a library of validated paths. Use this historical data to verify the efficiency of future navigation tasks and ensure consistent, successful traversal through complex node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:38.804536+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When navigating to a target node via a specified call path, consistently document the final paragraph count and stub configuration to build a library of validated path metrics. Use this historical data to verify the efficiency of future navigation tasks and ensure consistent, successful traversal through complex node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:41.031811+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When navigating to a target node via a specified call path, consistently document the final paragraph count and stub configuration to build a library of validated path metrics. Use this historical data to verify the efficiency of future navigation tasks and ensure consistent, successful traversal through complex node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:43.511686+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path to reach a target node, explicitly verify the total paragraph count and stub configuration upon arrival to ensure the traversal matches expected metrics. Store these validated parameters in a structured log to improve the accuracy and efficiency of future navigation tasks across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:49.433270+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, verify that the final paragraph count and stub configuration align with historical metrics for that specific sequence. Use these validated parameters to confirm the integrity of the traversal and update the internal log to improve the precision of future navigation tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:52.274965+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, verify that the final paragraph count and stub configuration align with historical metrics for that specific sequence. Use these validated parameters to confirm the integrity of the traversal and update the internal log to improve the precision of future navigation tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:55.847760+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the final paragraph count and stub configuration to validate the traversal against historical metrics. Use this data to refine future navigation strategies and ensure consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:57.938737+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, verify that the final paragraph count and stub configuration align with historical metrics for that specific sequence to confirm traversal integrity. Use these validated parameters to update the internal log, ensuring the precision of future navigation tasks across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:59.968377+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, verify that the final paragraph count and stub configuration align with historical metrics for that specific sequence to confirm traversal integrity. Use these validated parameters to update the internal log, ensuring the precision of future navigation tasks across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:02.237909+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify the specific parameter pattern associated with the successful traversal and store it as a template. Apply these verified parameter patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:05.541854+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify and store the specific parameter pattern used for a successful traversal as a reusable template. Apply these verified patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:09.517090+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify and store the specific parameter pattern used for a successful traversal as a reusable template. Apply these verified patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:11.705421+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify and store the specific parameter pattern used for a successful traversal as a reusable template. Apply these verified patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:14.388486+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify and store the specific parameter pattern used for a successful traversal as a reusable template. Apply these verified patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:17.852966+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify and store the specific parameter pattern used for a successful traversal as a reusable template. Apply these verified patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:21.094332+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify and store the specific parameter pattern used for a successful traversal as a reusable template. Apply these verified patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:23.047104+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify and store the specific parameter pattern used for a successful traversal as a reusable template. Apply these verified patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:25.669521+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, identify and store the specific parameter pattern used for a successful traversal as a reusable template. Apply these verified patterns to future navigation tasks involving similar call chains to improve execution speed and accuracy.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:27.735014+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the total paragraph count reached upon successful arrival. Use this metric to refine the expected traversal length for future navigation tasks and ensure consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:30.746234+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the total paragraph count reached upon successful arrival. Use this metric to refine the expected traversal length for future navigation tasks and ensure consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:33.243223+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:35.693209+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:38.567376+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:40.428089+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:43.002782+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:46.240426+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:49.260714+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:51.740250+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:56.553603+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:53:59.483805+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:02.257096+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly document the final paragraph count and stub configuration to build a library of validated path metrics. Use these metrics to refine the expected traversal length and parameter patterns for future navigation tasks, ensuring consistent performance across similar node sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:04.747367+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags alongside the stub configuration and paragraph count. Store these as a comprehensive parameter profile to ensure that future traversals of the same call chain maintain the exact state requirements needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:08.306873+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags alongside the stub configuration and paragraph count. Store these as a comprehensive parameter profile to ensure that future traversals of the same call chain maintain the exact state requirements needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:12.396355+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags alongside the stub configuration and paragraph count. Store these as a comprehensive parameter profile to ensure that future traversals of the same call chain maintain the exact state requirements needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:15.385423+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:19.225654+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:21.426613+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:24.474809+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:27.075879+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:30.301957+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:32.493685+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:35.937907+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:39.165544+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:41.622265+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:44.428951+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:47.751910+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:51.695972+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly capture the input state flags, stub configuration, and total paragraph count as a comprehensive parameter profile. Store these profiles to ensure that future traversals of the same call chain maintain the exact state requirements and performance metrics needed for successful execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:54.343053+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the specific parameter pattern and state configuration that led to a successful traversal. Use this data to create reusable templates for similar call chains, ensuring consistent state initialization and execution efficiency in future navigation tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:57.334895+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the specific parameter pattern and state configuration that led to a successful traversal. Use this data to create reusable templates for similar call chains, ensuring consistent state initialization and execution efficiency in future navigation tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:54:59.951690+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the successful parameter pattern, including input state flags and stub configurations, to create reusable templates. Apply these validated templates to future navigation tasks involving similar call chains to ensure consistent state initialization and execution efficiency.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:03.735605+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the successful parameter pattern, including input state flags and stub configurations, to create reusable templates. Apply these validated templates to future navigation tasks involving similar call chains to ensure consistent state initialization and execution efficiency.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:05.727056+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the successful parameter pattern, including input state flags, stub configurations, and the total paragraph count, to create reusable templates. Apply these validated templates to future navigation tasks involving similar call chains to ensure consistent state initialization and execution efficiency.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:08.029093+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the successful parameter pattern, including input state flags, stub configurations, and the total paragraph count, to create reusable templates. Apply these validated templates to future navigation tasks involving similar call chains to ensure consistent state initialization and execution efficiency.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:10.632440+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the successful parameter pattern, including input state flags, stub configurations, and the total paragraph count, to create reusable templates. Apply these validated templates to future navigation tasks involving similar call chains to ensure consistent state initialization and execution efficiency.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:12.911022+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, explicitly record the successful parameter pattern, including input state flags, stub configurations, and the total paragraph count, to create reusable templates. Apply these validated templates to future navigation tasks involving similar call chains to ensure consistent state initialization and execution efficiency.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:15.936012+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When executing a call path, verify that the output format explicitly includes the final paragraph count alongside the input state and stub configuration. Use this complete dataset to validate the success of the traversal and refine future navigation templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:18.713438+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output. This ensures the data is captured for future validation and helps refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:22.067685+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output. This ensures the data is captured for future validation and helps refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:24.607538+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output. This ensures the data is captured for future validation and helps refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:27.316927+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output to ensure the data is captured for future validation and to refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:29.977987+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output to ensure the data is captured for future validation and to refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:32.882701+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output to ensure the data is captured for future validation and to refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:35.384440+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output to ensure the data is captured for future validation and to refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:37.900915+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output to ensure the data is captured for future validation and to refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:41.237766+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count and the final state configuration in the output to ensure the data is captured for future validation and to refine the accuracy of subsequent path execution templates.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:43.444410+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used. This comprehensive documentation ensures that the parameter pattern is preserved for future reference and allows for the accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:48.920207+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used. This comprehensive documentation ensures that the parameter pattern is preserved for future reference and allows for the accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:53.915588+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used. This comprehensive documentation ensures that the parameter pattern is preserved for future reference and allows for the accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:55:57.870137+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used. This comprehensive documentation ensures that the parameter pattern is preserved for future reference and allows for the accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:56:01.858463+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used. This comprehensive documentation ensures that the parameter pattern is preserved for future reference and allows for the accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:56:06.842394+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used. This comprehensive documentation ensures that the parameter pattern is preserved for future reference and allows for the accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:56:11.320139+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used. This comprehensive documentation ensures that the parameter pattern is preserved for future reference and allows for the accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:56:15.528911+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:56:20.327233+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:56:25.251379+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:56:29.202369+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:04.731264+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:07.584386+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:10.231413+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:12.712959+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, the final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:15.922265+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:18.644584+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting the result of a successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:21.246424+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:24.009114+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:26.736021+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:29.328990+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:33.698980+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:36.870738+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:41.473588+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:46.782145+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:51.756328+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:57.291067+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:01.775817+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:05.588923+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:09.421051+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:13.168909+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:15.403583+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used to ensure the parameter pattern is preserved for future reference and accurate replication of successful traversal sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:18.193159+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly contains the final paragraph count and stub configuration alongside the state, rather than returning an empty state object. This ensures that the metadata required for future path validation is captured and preserved in the execution logs.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:21.307594+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly contains the final paragraph count and stub configuration alongside the state, rather than returning an empty state object. This ensures that the metadata required for future path validation is captured and preserved in the execution logs.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:23.420871+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly contains the final paragraph count, stub configuration, and the full call path used, rather than returning empty objects. This ensures that the complete metadata required for future path validation and template replication is captured and preserved in the execution logs.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:26.362310+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly contains the final paragraph count, stub configuration, and the full call path used, rather than returning empty objects. This ensures that the complete metadata required for future path validation and template replication is captured and preserved in the execution logs.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:28.924417+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. This ensures that the complete metadata required for future path validation and template replication is captured and preserved in the execution logs.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:31.254073+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. This ensures that the complete metadata required for future path validation and template replication is captured and preserved in the execution logs.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:34.066402+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly populate the output dictionary with the actual state, stub configuration, and total paragraph count used during the traversal instead of returning empty objects. This ensures that the complete metadata required for future path validation and template replication is captured and preserved in the execution logs.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:36.318090+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state, stub configuration, and total paragraph count with the actual values used during the traversal rather than returning empty objects. This ensures that the complete metadata required for future path validation and template replication is captured and preserved in the execution logs.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:38.587454+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used in the output dictionary to ensure all metadata is captured for future validation and template replication.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:42.958462+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used in the output dictionary to ensure all metadata is captured for future validation and template replication.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:45.864802+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used in the output dictionary to ensure all metadata is captured for future validation and template replication.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:49.650064+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used in the output dictionary to ensure all metadata is captured for future validation and template replication.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:52.922623+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used in the output dictionary to ensure all metadata is captured for future validation and template replication.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:55.739738+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly includes the total paragraph count, final state configuration, and the specific call path used to build a library of reusable, validated templates for future path execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:59:58.631000+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly includes the total paragraph count, final state configuration, and the specific call path used to build a library of reusable, validated templates for future path execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:01.735708+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly includes the total paragraph count, final state configuration, and the specific call path used to build a library of reusable, validated templates for future path execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:06.301400+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used in the output dictionary to build a library of reusable, validated templates for future path execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:11.188470+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the total paragraph count, final state configuration, and the specific call path used in the output dictionary to build a library of reusable, validated templates for future path execution.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:14.304493+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the parameter pattern and state configuration used to reach the target, as these specific values are critical for replicating successful traversals in future tasks. Use this data to build a library of validated templates that ensure consistent state initialization and execution efficiency across similar call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:17.251024+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly includes the final paragraph count, the full stub configuration, and the input state flags used during the traversal. This comprehensive documentation allows for the creation of precise, reusable templates that ensure consistent state initialization and execution efficiency for future navigation tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:20.748002+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly includes the final paragraph count, the full stub configuration, and the input state flags used during the traversal. This comprehensive documentation allows for the creation of precise, reusable templates that ensure consistent state initialization and execution efficiency for future navigation tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:23.440333+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, include a brief note in the metadata explaining the logic or business rule that necessitated specific state changes, such as setting a flag to trigger a required condition. This contextual information helps refine future navigation strategies by clarifying why certain parameters were chosen for specific call paths.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:27.081358+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, include a brief note in the metadata explaining the logic or business rule that necessitated specific state changes, such as setting a flag to trigger a required condition. This contextual information helps refine future navigation strategies by clarifying why certain parameters were chosen for specific call paths.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:31.426307+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, include a brief note in the metadata explaining the logic or business rule that necessitated specific state changes, such as setting a flag to trigger a required condition. This contextual information helps refine future navigation strategies by clarifying why certain parameters were chosen for specific call paths.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:33.757663+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, include a brief note in the metadata explaining the logic or business rule that necessitated specific state changes, such as setting a flag to trigger a required condition. This contextual information helps refine future navigation strategies by clarifying why certain parameters were chosen for specific call paths.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:36.847333+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, include a brief note in the metadata explaining the logic or business rule that necessitated specific state changes, such as setting a flag to trigger a required condition. This contextual information helps refine future navigation strategies by clarifying why certain parameters were chosen for specific call paths.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:41.499979+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern and the underlying business logic or condition that necessitated the state change. Storing this contextual metadata alongside the paragraph count and stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:46.370092+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern and the underlying business logic or condition that necessitated the state change. Storing this contextual metadata alongside the paragraph count and stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:50.574756+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern and the underlying business logic or condition that necessitated the state change. Storing this contextual metadata alongside the paragraph count and stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:53.836587+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:00:57.742330+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:01.042119+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:04.536481+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:07.915627+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:11.541699+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:14.860739+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:18.812659+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:23.062292+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, verify that the output dictionary includes the specific input state flags, stub configurations, and the total paragraph count used. Explicitly document the business logic or conditions that necessitated these parameters to create a comprehensive, reusable template for future traversals of similar call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:26.676079+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal, rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:29.030136+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:31.269215+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:34.349538+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:37.233491+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:39.482884+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:42.225961+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:44.911017+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:49.032704+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:52.297524+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, ensure the output dictionary explicitly populates the state and stub fields with the actual values used during the traversal rather than returning empty objects. Include the total paragraph count and a brief note on the business logic or conditions that necessitated these specific parameters to create a comprehensive, reusable template for future traversals.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:54.736225+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the specific parameter pattern, the underlying business logic or condition that necessitated the state change, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:01:58.508398+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly include the call path, the total paragraph count, the final state configuration, and the stub configuration in the output dictionary. Document the specific business logic or conditions that necessitated these parameters to ensure the creation of accurate, reusable templates for future traversals of similar call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:04.045117+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the parameter pattern, the underlying business logic that necessitated state changes, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:09.059744+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the parameter pattern, the underlying business logic that necessitated state changes, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:13.868513+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly document the parameter pattern, the underlying business logic that necessitated state changes, and the total paragraph count. Storing this contextual metadata alongside the stub configuration enables the creation of more accurate, reusable templates for complex call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:17.329653+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly map the required number of mock file operations (e.g., READ calls) within the logic notes to explain why specific stub configurations were necessary. This practice ensures that the relationship between code requirements and mock data is clearly documented for future troubleshooting and template refinement.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:22.226506+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly map the required number of mock file operations within the logic notes to explain why specific stub configurations were necessary. This practice ensures that the relationship between code requirements and mock data is clearly documented for future troubleshooting and template refinement.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:26.829978+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly map the required number of mock file operations within the logic notes to explain why specific stub configurations were necessary. This practice ensures that the relationship between code requirements and mock data is clearly documented for future troubleshooting and template refinement.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:32.576659+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly map the required number of mock file operations within the logic notes to explain why specific stub configurations were necessary. This practice ensures that the relationship between code requirements and mock data is clearly documented for future troubleshooting and template refinement.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:37.190596+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "When reporting successful navigation, explicitly map the required number of mock file operations within the logic notes to explain why specific stub configurations were necessary. This practice ensures that the relationship between code requirements and mock data is clearly documented for future troubleshooting and template refinement.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:02:41.134885+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.337150+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.344195+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.350502+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.531684+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.537103+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.542227+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.710150+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.715384+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.720734+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.886105+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.891483+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.896953+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.539922+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.545351+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.550626+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.702939+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.708455+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.713630+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.882832+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.888533+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.893825+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.161243+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.166617+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.172081+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.322214+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.327976+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.333448+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.695090+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.700243+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.706145+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.850544+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.856335+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.137075+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.143802+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.149907+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.328532+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.334698+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.340464+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.509348+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.514895+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.520440+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.693107+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.698876+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.704456+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.395503+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.402409+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.408552+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.567144+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.573190+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.579295+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.759631+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.766250+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.772279+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.067358+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.073619+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.079606+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.246235+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.252815+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.259122+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.648365+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.654813+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.661989+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.817687+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.824316+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:48.815216+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:48.821549+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:48.827922+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.029111+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.035402+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.041798+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.244236+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.250738+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.256654+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.474577+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.481082+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.487348+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.689490+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.696322+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.702612+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.908291+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.915086+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.921429+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.309375+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.316451+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.322821+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.461143+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.467741+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.474506+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.662015+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.668401+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.674815+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.946832+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.953816+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.960543+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.093540+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.099501+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.105528+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.442126+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.449074+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.456231+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.595783+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.602764+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.530564+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.537271+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.543617+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.683181+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.689977+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.696453+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.879248+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.885411+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.891318+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.157667+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.164701+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.171578+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.308766+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.315525+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.322001+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.656855+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.663818+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.670723+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.806134+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.813242+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.052058+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.059288+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.065963+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.280077+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.286797+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.293470+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.511965+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.518876+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.525467+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.733498+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.740347+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.747070+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.953135+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.960343+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.967343+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:02.201861+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:02.208694+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:02.215465+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:33.779337+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:33.786789+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:33.794064+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.012185+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.019084+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.025715+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.300246+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.307977+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.315315+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.537266+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.544042+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.550818+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.766685+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.773715+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.780880+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.996779+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.003768+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.010667+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.400754+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.407448+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.414066+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.550792+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.557819+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.564468+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.756799+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.763851+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.770701+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.059276+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.066893+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.074175+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.216105+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.223334+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.230155+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.579883+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.587255+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.594361+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.727497+00:00"
+  },
+  {
+    "role": "paragraph",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.735151+00:00"
+  }
+]

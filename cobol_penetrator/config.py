@@ -35,6 +35,10 @@ class PenetratorConfig:
     max_turns_per_ticket: int = 10
     knowledge_path: Path = field(default_factory=lambda: Path(".knowledge.json"))
 
+    # EvoSkill settings
+    evoskill_enabled: bool = True
+    evoskill_path: Path = field(default_factory=lambda: Path("./evoskill_data"))
+
     # LLM settings (loaded from .env)
     llm_provider: str = "openrouter"
     llm_default_model: str | None = None
@@ -79,6 +83,8 @@ def load_config(args: list[str] | None = None) -> PenetratorConfig:
         llm_provider=os.getenv("LLM_PROVIDER", "openrouter"),
         llm_default_model=os.getenv("LLM_DEFAULT_MODEL"),
         llm_timeout=int(os.getenv("LLM_TIMEOUT", "600")),
+        evoskill_enabled=os.getenv("EVOSKILL_ENABLED", "1").lower() not in ("0", "false", "no"),
+        evoskill_path=Path(os.getenv("EVOSKILL_STORAGE_PATH", "./evoskill_data")),
     )
 
     if parsed.executable:

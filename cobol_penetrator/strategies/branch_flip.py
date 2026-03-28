@@ -138,4 +138,7 @@ class BranchFlipStrategy(Strategy):
                     f"{knowledge_text}\n"
                 )
 
+        if context.evoskill_text:
+            prompt += f"\n\n{context.evoskill_text}"
+
         return prompt

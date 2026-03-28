@@ -298,12 +298,16 @@ class TestEntryPointStrategyKnowledgeContext:
             "input_state": {"WS-STATUS": "00"},
             "stubs": {},
         }
-        knowledge.stub_outcomes["READ-ACCOUNT"] = []
+        knowledge.failed_attempts["1000-MAIN"] = [
+            {"input_state": {"WS-STATUS": "99"}, "stubs": {}},
+        ]
 
         entry_context.knowledge = knowledge
+        # The entry ticket has call_path=[] so no parent params, but
+        # failed_attempts for the paragraph target should appear
         prompt = strategy.build_user_prompt(entry_context)
         assert "Learned knowledge from prior executions" in prompt
-        assert "Stub outcomes that produced coverage" in prompt
+        assert "Prior failed attempts" in prompt
 
     def test_no_knowledge_no_section(
         self, strategy: EntryPointStrategy, entry_context: AgentContext

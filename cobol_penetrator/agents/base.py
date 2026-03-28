@@ -63,6 +63,7 @@ class AgentContext:
     field_report: FieldReport | None = None
     execution_history: list[dict] = field(default_factory=list)
     knowledge: LearnedKnowledge | None = None
+    evoskill_text: str = ""
 
 
 # ---------------------------------------------------------------------------

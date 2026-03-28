@@ -325,16 +325,12 @@ class TestBranchFlipStrategyEnrichedPrompt:
 class TestBranchFlipStrategyKnowledgeContext:
     """Verify prompts include knowledge context when available."""
 
-    def test_prompt_includes_sibling_branch_params(
+    def test_prompt_includes_containing_paragraph_params(
         self, strategy: BranchFlipStrategy, branch_context: AgentContext
     ) -> None:
         from cobol_penetrator.knowledge import LearnedKnowledge
 
         knowledge = LearnedKnowledge()
-        knowledge.branch_params["1:F"] = {
-            "input_state": {"WS-STATUS": "99"},
-            "stubs": {},
-        }
         knowledge.successful_params["1000-MAIN"] = {
             "input_state": {"WS-STATUS": "00"},
             "stubs": {},
@@ -342,21 +338,7 @@ class TestBranchFlipStrategyKnowledgeContext:
         branch_context.knowledge = knowledge
         prompt = strategy.build_user_prompt(branch_context)
         assert "Learned knowledge from prior executions" in prompt
-        assert "Sibling branch 1:F was reached with" in prompt
         assert "Containing paragraph reached with" in prompt
-
-    def test_prompt_includes_variable_observations(
-        self, strategy: BranchFlipStrategy, branch_context: AgentContext
-    ) -> None:
-        from cobol_penetrator.knowledge import LearnedKnowledge
-
-        knowledge = LearnedKnowledge()
-        knowledge.variable_observations["WS-STATUS"] = ["00", "10", "99"]
-        branch_context.knowledge = knowledge
-        prompt = strategy.build_user_prompt(branch_context)
-        assert "Variable observations from prior runs" in prompt
-        assert "WS-STATUS" in prompt
-        assert "observed values" in prompt
 
     def test_no_knowledge_no_section(
         self, strategy: BranchFlipStrategy, branch_context: AgentContext
@@ -380,9 +362,9 @@ class TestBranchFlipStrategyKnowledgeContext:
         from cobol_penetrator.knowledge import LearnedKnowledge
 
         knowledge = LearnedKnowledge()
-        knowledge.failed_attempts["BRANCH-1"] = [
-            {"params": {"input_state": {}, "stubs": {}}, "paragraphs_hit": ["1000-MAIN"]},
-            {"params": {"input_state": {"WS-STATUS": "10"}, "stubs": {}}, "paragraphs_hit": []},
+        knowledge.failed_attempts["BRANCH-1-T"] = [
+            {"input_state": {}, "stubs": {}},
+            {"input_state": {"WS-STATUS": "10"}, "stubs": {}},
         ]
         branch_context.knowledge = knowledge
         prompt = strategy.build_user_prompt(branch_context)

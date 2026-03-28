@@ -1,0 +1,3386 @@
+[
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.156910+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.162823+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.168484+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.349488+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.353793+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.358118+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.535511+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.540343+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.544587+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.729007+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.733833+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.738055+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.919703+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.924745+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:33.929394+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.116364+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.123161+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.129493+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.300266+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.514476+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.519569+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.524249+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.652341+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.657571+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.662499+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.832669+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.838386+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:34.843544+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.096819+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.102810+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.108743+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.240624+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.247017+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.253046+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.362533+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.367583+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.372699+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.467048+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.472268+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.477696+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.574215+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.579911+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.584964+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.730174+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:35.735699+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When navigating to a target paragraph, identify and apply the specific state updates required by stubbed procedures to satisfy conditional branches. Maintain a record of successful input state and stub update mappings to replicate valid execution paths in future tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:51.055903+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "Analyze the call path and identify the specific conditional flags required to bypass intermediate logic. Prioritize updating the input state and stubs to match the exact values that trigger the transition to the target paragraph.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:53.913401+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When encountering complex call paths, prioritize documenting the specific mapping between stubbed procedure outputs and the resulting input state changes to build a library of reusable execution patterns. Use these historical state-stub pairings to preemptively configure the environment for similar navigation tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:56.379323+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When navigating to a target paragraph, verify that the final input state and stub outputs align with the specific conditional requirements of the target's entry logic. If a path is successful, explicitly catalog the combination of input flags and stub return values to serve as a template for future navigation through identical call chains.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:51:59.028655+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task is successful, explicitly log the specific input state and stub return values as a reusable template. Use these documented patterns to preemptively configure the environment for future requests involving identical call paths or paragraph structures.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:01.146114+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, categorize the resulting state and stub configuration by the specific call path used. Use these categorized templates to rapidly initialize the environment for future requests involving similar paragraph sequences or conditional logic.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:05.621875+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, extract the specific mapping of input flags to stub outputs and store it as a reusable execution template. Use these templates to preemptively configure the environment for future requests involving identical call paths or paragraph sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:09.001016+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, document the specific combination of input flags and stub return values as a reusable execution template. Reference these historical templates to preemptively configure the environment for future requests involving identical call paths or paragraph sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:13.252397+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "Upon successful navigation, map the specific input state flags and stub return values to the target paragraph's entry requirements. Store these successful configurations as reusable templates to accelerate the setup of future execution paths involving identical call sequences.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:16.808026+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, explicitly catalog the combination of input flags and stub return values as a reusable template. Reference these historical templates to preemptively configure the environment for future requests involving identical call paths or paragraph structures.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:52:20.063399+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, explicitly catalog the specific input state flags and stub return values as a reusable template. Reference these historical templates to preemptively configure the environment for future requests involving identical call paths or paragraph structures.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:33.357730+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "Upon successful navigation, explicitly catalog the combination of input flags and stub return values as a reusable template. Reference these historical templates to preemptively configure the environment for future requests involving identical call paths or paragraph structures.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:37.084730+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, explicitly catalog the combination of input flags and stub return values as a reusable template. Reference these historical templates to preemptively configure the environment for future requests involving identical call paths or paragraph structures.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:39.644258+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, explicitly catalog the combination of input flags and stub return values as a reusable template. Reference these historical templates to preemptively configure the environment for future requests involving identical call paths or paragraph structures.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:42.470190+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, explicitly catalog the combination of input flags and stub return values as a reusable template. Reference these historical templates to preemptively configure the environment for future requests involving identical call paths or paragraph structures.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:45.031750+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, explicitly catalog the combination of input flags and stub return values as a reusable template. Reference these historical templates to preemptively configure the environment for future requests involving identical call paths or paragraph structures.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:48.019215+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, analyze the total number of paragraphs traversed to assess the efficiency of the chosen execution path. Use this paragraph count as a metric to refine future stub configurations, prioritizing paths that minimize unnecessary logic execution while reaching the target.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:52.335000+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, record the total paragraph count alongside the successful input state and stub configuration. Use this metric to evaluate the efficiency of the execution path and prioritize configurations that minimize unnecessary logic traversal in future similar tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:55.731396+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, record the total paragraph count alongside the successful input state and stub configuration. Use this metric to evaluate the efficiency of the execution path and prioritize configurations that minimize unnecessary logic traversal in future similar tasks.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:57:59.447051+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "When a navigation task succeeds, record the total paragraph count alongside the successful input state and stub configuration to evaluate execution efficiency. Use this metric to prioritize and refine future configurations that minimize unnecessary logic traversal while reaching the target paragraph.",
+    "source": "learned",
+    "tags": [
+      "COPAUA0C"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T19:58:02.138570+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.314594+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.322766+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.329844+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.516255+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.521270+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.526164+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.694493+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.699560+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.704054+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.870396+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.875593+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:39.880370+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.145210+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.150141+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.154476+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.523135+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.528830+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.534152+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.686727+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.692187+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.697152+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.867110+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.872191+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:40.877156+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.145925+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.151091+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.155781+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.306188+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.311549+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.316429+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.442644+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.447617+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.452196+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.561237+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.566292+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.571092+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.679088+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.684538+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.689544+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.839248+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:12:41.844407+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.116089+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.123108+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.129685+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.311587+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.317120+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.322406+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.493771+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.498877+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.503552+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.676934+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.682161+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.687030+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.991156+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:32.997343+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.003376+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.377548+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.383785+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.389087+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.549833+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.555605+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.560994+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.740990+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.746899+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:33.753018+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.048289+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.054569+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.060526+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.228096+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.234009+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.239879+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.376501+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.382740+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.388397+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.502635+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.508179+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.513953+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.629678+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.635671+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.641723+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.804790+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:13:34.810825+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:48.795588+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:48.802287+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:48.808393+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.010743+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.016534+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.022493+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.225234+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.231376+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.237227+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.455345+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.461608+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.467842+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.669885+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.676450+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.682646+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.888108+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.894304+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:49.900160+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.067845+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.288101+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.295296+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.302028+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.441553+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.447917+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.454050+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.643682+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.649704+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.655471+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.925691+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.932791+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:50.939551+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.076192+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.081968+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.087306+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.202901+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.209497+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.215809+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.312271+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.318963+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.325370+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.421005+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.427874+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.434890+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.580872+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:51.588197+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.511202+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.517812+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.523936+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.663704+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.670224+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.676420+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.861855+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.867535+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:15:59.873022+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.135478+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.143060+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.150014+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.288883+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.295390+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.301765+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.417289+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.424242+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.430723+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.526684+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.533605+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.540513+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.635155+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.642604+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.649344+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.792015+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:00.798664+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.032162+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.038975+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.045058+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.258858+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.266060+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.272881+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.490669+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.497592+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.504887+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.713412+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.719903+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.726383+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.931796+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.939213+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:01.945702+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:02.179413+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:02.186488+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:02.193065+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:02.368801+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:33.756154+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:33.764000+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:33.771228+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:33.991461+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:33.998171+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.004994+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.277110+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.284990+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.292270+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.516106+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.523200+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.530163+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.743752+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.751153+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.758666+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.974757+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.981823+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:34.988331+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\", \"WS-FLAG\": \"Y\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.165752+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.381161+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.387731+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.393961+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.529836+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.536837+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.543490+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.734966+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.742293+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:35.749164+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.036254+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.044656+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.050954+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.194642+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.201748+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.208511+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.325089+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.331445+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.351503+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.448060+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.455095+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.461754+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.557078+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.565119+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.572288+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.711752+00:00"
+  },
+  {
+    "role": "recon",
+    "content": "{\"input_state\": {\"WS-STATUS\": \"00\"}, \"stubs\": {}}",
+    "source": "learned",
+    "tags": [
+      "mock_cobol"
+    ],
+    "enabled": true,
+    "hit_count": 0,
+    "miss_count": 0,
+    "created_at": "2026-03-28T20:16:36.719552+00:00"
+  }
+]
