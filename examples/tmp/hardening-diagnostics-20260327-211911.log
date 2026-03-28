@@ -1,0 +1,71 @@
+stage=post-salvage
+
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:691: error: continuation character expected
+  689 | ..
+  690 |            DISPLAY 'SPECTER-CALL:FROM=S-2000-MAIN-PROCESS:TO=2100-EXTRACT..
+  691 >              PERFORM 2100-EXTRACT-REQUEST-MSG THRU 2100-EXIT..
+  692 | ..
+  693 |       *    DISPLAY 'SPECTER-CALL:FROM=S-2000-MAIN-PROCESS:TO=5000-PROCESS..
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:709: error: continuation character expected
+  707 |              ELSE..
+  708 |            DISPLAY 'SPECTER-CALL:FROM=S-2000-MAIN-PROCESS:TO=3100-READ-RE..
+  709 >                 PERFORM 3100-READ-REQUEST-MQ THRU 3100-EXIT..
+  710 |              END-IF..
+  711 |       *    END-PERFORM..
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:1241: error: continuation character expected
+ 1239 | ..
+ 1240 |            DISPLAY 'SPECTER-CALL:FROM=8000-WRITE-AUTH-TO-DB:TO=8400-UPDAT..
+ 1241 >            PERFORM 8400-UPDATE-SUMMARY      THRU 8400-EXIT..
+ 1242 |            DISPLAY 'SPECTER-CALL:FROM=8000-WRITE-AUTH-TO-DB:TO=8500-INSER..
+ 1243 |       *    PERFORM 8500-INSERT-AUTH         THRU 8500-EXIT..
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:1244: error: continuation character expected
+ 1242 |            DISPLAY 'SPECTER-CALL:FROM=8000-WRITE-AUTH-TO-DB:TO=8500-INSER..
+ 1243 |       *    PERFORM 8500-INSERT-AUTH         THRU 8500-EXIT..
+ 1244 >            ...
+ 1245 |       *..
+ 1246 |       *8000-EXIT...
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:1315: error: continuation character expected
+ 1313 |              MOVE PA-CARD-NUM               TO ERR-EVENT-KEY..
+ 1314 |            DISPLAY 'SPECTER-CALL:FROM=8400-UPDATE-SUMMARY:TO=9500-LOG-ERR..
+ 1315 >              PERFORM 9500-LOG-ERROR..
+ 1316 |            END-IF..
+ 1317 |       *    ...
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:1422: error: continuation character expected
+ 1420 |              MOVE PA-CARD-NUM               TO ERR-EVENT-KEY..
+ 1421 |            DISPLAY 'SPECTER-CALL:FROM=8500-INSERT-AUTH:TO=9500-LOG-ERROR'
+ 1422 >              PERFORM 9500-LOG-ERROR..
+ 1423 |            END-IF..
+ 1424 |       *    ...
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:1443: error: continuation character expected
+ 1441 | ..
+ 1442 |            DISPLAY 'SPECTER-CALL:FROM=9000-TERMINATE:TO=9100-CLOSE-REQUES..
+ 1443 >            PERFORM 9100-CLOSE-REQUEST-QUEUE THRU 9100-EXIT..
+ 1444 |            ...
+ 1445 |       *..
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:1481: error: continuation character expected
+ 1479 |                                             TO ERR-MESSAGE..
+ 1480 |            DISPLAY 'SPECTER-CALL:FROM=9100-CLOSE-REQUEST-QUEUE:TO=9500-LO..
+ 1481 >                  PERFORM 9500-LOG-ERROR..
+ 1482 |               END-IF..
+ 1483 |            END-IF...
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:1536: error: continuation character expected
+ 1534 |            IF ERR-CRITICAL..
+ 1535 |            DISPLAY 'SPECTER-CALL:FROM=9500-LOG-ERROR:TO=9990-END-ROUTINE'
+ 1536 >               PERFORM 9990-END-ROUTINE..
+ 1537 |            END-IF..
+ 1538 |            ...
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:1549: error: continuation character expected
+ 1547 | ..
+ 1548 |            DISPLAY 'SPECTER-CALL:FROM=9990-END-ROUTINE:TO=9000-TERMINATE'
+ 1549 >            PERFORM 9000-TERMINATE..
+ 1550 | ..
+ 1551 |       *    EXEC CICS RETURN..
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl: in paragraph '1100-EXIT':
+/var/folders/5b/bcg8dj256hb_h594dkr61gr80000gn/T/specter-mock-wxnkov6j/autocheck-salvage2.cbl:634: error: redefinition of '1200-SCHEDULE-PSB'
+  632 |       * SCHEDULE PSB                                                  * 0..
+  633 |       * ------------------------------------------------------------- *..
+  634 >        1200-SCHEDULE-PSB.                                               0..
+  635 |       *    EXEC DLI SCHD..
+  636 |       *         PSB((PSB-NAME))..
+
+

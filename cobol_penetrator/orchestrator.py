@@ -304,6 +304,21 @@ async def run(config: PenetratorConfig) -> dict:
     executions = 0
     start_time = time.time()
 
+    # 6a. Baseline execution with EMPTY params to establish success-path coverage
+    if not config.resume:
+        try:
+            baseline_result = execute(config.executable, {"input_state": {}, "stubs": {}}, timeout=30)
+            coverage.update(baseline_result)
+            walker.record_result({"input_state": {}, "stubs": {}}, baseline_result)
+            executions += 1
+            logger.info(
+                "Baseline: %d paragraphs, %d branches hit",
+                len(set(baseline_result.paragraphs_hit)),
+                len(baseline_result.branches_hit),
+            )
+        except Exception:
+            logger.debug("Baseline execution failed")
+
     # 6b. FAST fault exploration phase BEFORE LLM calls
     # Run executable with each stub fault value to discover error paths quickly
     if field_report and not config.resume:
