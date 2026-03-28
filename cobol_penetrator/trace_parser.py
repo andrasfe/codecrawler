@@ -34,6 +34,7 @@ class ExecutionResult:
 
     paragraphs_hit: list[str] = field(default_factory=list)
     branches_hit: dict[str, str] = field(default_factory=dict)
+    all_branch_directions: set[str] = field(default_factory=set)  # "id:direction" for ALL directions
     call_chain: list[tuple[str, str]] = field(default_factory=list)
     variable_snapshots: dict[str, dict[str, str]] = field(default_factory=dict)
     mock_ops: list[str] = field(default_factory=list)
@@ -70,6 +71,8 @@ def _parse_branch_probe(line: str, result: ExecutionResult) -> bool:
     if len(parts) == 2:
         branch_id, direction = parts
         result.branches_hit[branch_id] = direction
+        # Track ALL directions seen (not just last) for coverage tracking
+        result.all_branch_directions.add(f"{branch_id}:{direction}")
     return True
 
 

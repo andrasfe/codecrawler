@@ -80,14 +80,19 @@ class CoverageTracker:
             if para not in self.state.hit_paragraphs:
                 self.state.hit_paragraphs.append(para)
 
-        # Add newly hit branch directions.
-        # The key in hit_branches is "<branch_id>:<direction>" to track
-        # each direction independently. A single branch ID can have
-        # both T and F hit in different executions.
-        for branch_id, direction in result.branches_hit.items():
-            composite_key = f"{branch_id}:{direction}"
-            if composite_key not in self.state.hit_branches:
-                self.state.hit_branches[composite_key] = direction
+        # Add newly hit branch directions from the all_branch_directions set
+        # which tracks EVERY direction seen (not just the last per branch ID).
+        if hasattr(result, 'all_branch_directions') and result.all_branch_directions:
+            for composite_key in result.all_branch_directions:
+                if composite_key not in self.state.hit_branches:
+                    direction = composite_key.split(":")[-1] if ":" in composite_key else ""
+                    self.state.hit_branches[composite_key] = direction
+        else:
+            # Fallback for backward compat (old results without all_branch_directions)
+            for branch_id, direction in result.branches_hit.items():
+                composite_key = f"{branch_id}:{direction}"
+                if composite_key not in self.state.hit_branches:
+                    self.state.hit_branches[composite_key] = direction
 
         # Recalculate coverage.
         self.state.coverage_pct = self._calculate_pct()

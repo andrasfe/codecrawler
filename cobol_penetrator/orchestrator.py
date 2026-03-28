@@ -362,9 +362,8 @@ async def run(config: PenetratorConfig) -> dict:
         except Exception:
             logger.debug("Baseline execution failed")
 
-    # 6b. FAST fault exploration phase BEFORE LLM calls
-    # Run executable with each stub fault value to discover error paths quickly
-    if field_report and not config.resume:
+    # 6b. FAST fault exploration phase (SKIPPED — position sequencing is more effective)
+    if False and field_report and not config.resume:
         from cobol_penetrator.heuristics.stub_fault_table import fault_values_for
         logger.info("Pre-scan: running stub fault sweeps to discover error paths")
         all_fault_values = (
@@ -453,13 +452,16 @@ async def run(config: PenetratorConfig) -> dict:
                 )
 
                 # For each position in the cycle, try fault values
-                fault_values = ["GE", "GB", "II", "10", "23"]
+                fault_values = [
+                    "GE", "GB", "II", "10", "23", "35", "AI",
+                    "00", "N", "Y", "A", "D", "04", "08", "12", "16",
+                ]
                 pre_cov = len(coverage.state.hit_branches)
                 for pos in range(cycle_len):
-                    if executions >= min(config.budget, 120):
+                    if executions >= min(config.budget, 200):
                         break
                     for fv in fault_values:
-                        if executions >= min(config.budget, 120):
+                        if executions >= min(config.budget, 200):
                             break
                         # Build records: success everywhere except position `pos`
                         from cobol_penetrator.mock_data import MockRecord, format_record

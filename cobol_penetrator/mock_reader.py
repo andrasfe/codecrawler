@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 _RE_PARAGRAPH = re.compile(r"^\s{6,7}([A-Z0-9][-A-Z0-9]*)\.\s*$")
 
 # Branch probe inserted by specter: DISPLAY "@@B:<id>:<direction>"
-_RE_BRANCH_PROBE = re.compile(r"@@B:(\d+):(T|F|W1|WO)")
+_RE_BRANCH_PROBE = re.compile(r"@@B:(\d+):(T|F|W\d+|WO)")
 
 # PERFORM <paragraph-name>
 _RE_PERFORM = re.compile(r"PERFORM\s+([A-Z0-9][-A-Z0-9]*)")
