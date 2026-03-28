@@ -422,6 +422,104 @@ async def run(config: PenetratorConfig) -> dict:
             executions, coverage.coverage_pct,
             len(coverage.state.hit_paragraphs), coverage.state.total_paragraphs,
         )
+
+    # 6c. Position-aware stub sequencing
+    # The COBOL mock reads records in FIFO order. Each iteration of the
+    # main loop consumes N records (one per SPECTER-MOCK operation).
+    # By injecting fault values at specific POSITIONS in the sequence,
+    # we can flip branches that depend on specific stub outcomes.
+    if not config.resume and executions < config.budget:
+        # Discover the mock operation sequence from baseline
+        try:
+            baseline_out = execute(
+                config.executable, {"input_state": {}, "stubs": {}}, timeout=30
+            )
+            mock_ops = baseline_out.mock_ops
+            # Find the repeating pattern (one iteration of the main loop)
+            if mock_ops:
+                # Detect cycle: find shortest prefix that repeats
+                cycle_len = 0
+                for cl in range(1, min(len(mock_ops) // 2 + 1, 20)):
+                    pattern = mock_ops[:cl]
+                    if mock_ops[cl:2*cl] == pattern:
+                        cycle_len = cl
+                        break
+                if cycle_len == 0:
+                    cycle_len = min(len(mock_ops), 10)
+
+                logger.info(
+                    "Position-aware sequencing: %d mock ops, cycle=%d (%s)",
+                    len(mock_ops), cycle_len, mock_ops[:cycle_len],
+                )
+
+                # For each position in the cycle, try fault values
+                fault_values = ["GE", "GB", "II", "10", "23"]
+                pre_cov = len(coverage.state.hit_branches)
+                for pos in range(cycle_len):
+                    if executions >= min(config.budget, 120):
+                        break
+                    for fv in fault_values:
+                        if executions >= min(config.budget, 120):
+                            break
+                        # Build records: success everywhere except position `pos`
+                        from cobol_penetrator.mock_data import MockRecord, format_record
+                        records = []
+                        num_iters = 100
+                        for _ in range(num_iters):
+                            for p in range(cycle_len):
+                                if p == pos:
+                                    records.append(format_record(
+                                        MockRecord(op_key="", alpha_status=fv, num_status="0")
+                                    ))
+                                else:
+                                    records.append(format_record(
+                                        MockRecord(op_key="", alpha_status="  ", num_status="0")
+                                    ))
+
+                        import tempfile
+                        with tempfile.NamedTemporaryFile(
+                            mode="w", suffix=".dat", delete=False, prefix="stub_seq_"
+                        ) as tf:
+                            for r in records:
+                                tf.write(r + "\n")
+                            dat_path = tf.name
+
+                        import os, subprocess
+                        try:
+                            env = os.environ.copy()
+                            env["MOCKDATA"] = dat_path
+                            proc = subprocess.run(
+                                [str(config.executable)],
+                                capture_output=True, text=True,
+                                timeout=30, env=env,
+                            )
+                            from cobol_penetrator.trace_parser import parse_traces
+                            result = parse_traces(proc.stdout)
+                            result.exit_code = proc.returncode
+                            result.stderr = proc.stderr
+                            executions += 1
+                            coverage.update(result)
+                            walker.record_result(
+                                {"input_state": {}, "stubs": {f"pos{pos}": fv}}, result
+                            )
+                            knowledge.record_execution(
+                                {"input_state": {}, "stubs": {f"pos{pos}": fv}}, result
+                            )
+                        except Exception:
+                            pass
+                        finally:
+                            try:
+                                os.unlink(dat_path)
+                            except OSError:
+                                pass
+
+                post_cov = len(coverage.state.hit_branches)
+                logger.info(
+                    "Position sequencing: %d new branch directions found (%d -> %d)",
+                    post_cov - pre_cov, pre_cov, post_cov,
+                )
+        except Exception:
+            logger.debug("Position-aware sequencing failed", exc_info=True)
         coverage.save(config.coverage_path)
 
     # 7. Per-ticket execution history (memory)
