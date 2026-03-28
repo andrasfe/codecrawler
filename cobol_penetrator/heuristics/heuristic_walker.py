@@ -243,9 +243,9 @@ class HeuristicWalker:
                         fields[name], "random_valid"
                     )
 
-        elif r < _MUT_MULTI_VAR and var_names:
+        elif r < _MUT_MULTI_VAR and len(var_names) >= 2:
             # Multi-var flip (2-4 variables)
-            n_changes = self.rng.randint(2, min(4, len(var_names)))
+            n_changes = self.rng.randint(2, max(2, min(4, len(var_names))))
             for name in self.rng.sample(var_names, n_changes):
                 if name in fields:
                     input_state[name] = self._generate_value_for_field(
