@@ -385,13 +385,18 @@ async def run(config: PenetratorConfig) -> dict:
     # 4b. Initialize EvoSkill skill store (if available and enabled)
     skill_store: SkillStore | None = None
     evoskill_llm = None
+    evoskill_llm_sync = None
     program_tag = Path(config.executable).stem if config.executable != Path(".") else ""
     if config.evoskill_enabled and _EVOSKILL_AVAILABLE:
         try:
-            from cobol_penetrator.evoskill_bridge import make_async_evoskill_llm
+            from cobol_penetrator.evoskill_bridge import (
+                make_async_evoskill_llm,
+                make_sync_evoskill_llm,
+            )
 
             skill_store = SkillStore(storage_path=config.evoskill_path)
             evoskill_llm = make_async_evoskill_llm(provider)
+            evoskill_llm_sync = make_sync_evoskill_llm(provider)
             logger.info(
                 "EvoSkill enabled: storage=%s, program_tag=%s",
                 config.evoskill_path,
@@ -819,12 +824,13 @@ async def run(config: PenetratorConfig) -> dict:
             )
 
     # Consolidate EvoSkill skills (prune ineffective ones)
-    if skill_store is not None:
-        try:
-            skill_store.consolidate()
-            logger.info("EvoSkill skills consolidated")
-        except Exception:
-            logger.debug("EvoSkill consolidation failed", exc_info=True)
+    if skill_store is not None and evoskill_llm_sync is not None:
+        for _role in ("recon", "paragraph", "branch"):
+            try:
+                skill_store.consolidate(role=_role, llm=evoskill_llm_sync)
+            except Exception:
+                logger.debug("EvoSkill consolidation failed for role=%s", _role, exc_info=True)
+        logger.info("EvoSkill skills consolidated")
 
     # Save final state
     coverage.save(config.coverage_path)
