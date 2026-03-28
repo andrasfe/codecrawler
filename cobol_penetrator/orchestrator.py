@@ -204,16 +204,19 @@ async def _multi_turn_execute(
 
             # Inject EvoSkill learned skills into prompt
             if skill_store is not None:
-                from cobol_penetrator.evoskill_bridge import (
-                    agent_to_evoskill_role,
-                )
+                try:
+                    from cobol_penetrator.evoskill_bridge import (
+                        agent_to_evoskill_role,
+                    )
 
-                evoskill_role = agent_to_evoskill_role(agent)
-                context.evoskill_text = skill_store.get_skills_text(
-                    evoskill_role,
-                    tags=[program_tag] if program_tag else None,
-                    max_skills=10,
-                )
+                    evoskill_role = agent_to_evoskill_role(agent)
+                    context.evoskill_text = skill_store.get_skills_text(
+                        evoskill_role,
+                        tags=[program_tag] if program_tag else None,
+                        max_skills=10,
+                    )
+                except Exception:
+                    logger.debug("EvoSkill get_skills_text failed", exc_info=True)
 
             # Inject parent params from knowledge if available
             if knowledge is not None and context.parent_params is None:
