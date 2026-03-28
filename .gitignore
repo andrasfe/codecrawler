@@ -13,3 +13,4 @@ reports/coverage.json
 reports/successful_params/
 *.dat
 .mypy_cache/
+.specter_build_*/
