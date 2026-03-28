@@ -141,6 +141,49 @@ class TicketStore:
         return list(self._tickets.values())
 
     # ------------------------------------------------------------------
+    # Knowledge helpers
+    # ------------------------------------------------------------------
+
+    def get_successful_params(self, paragraph: str) -> dict | None:
+        """Get successful params for a completed paragraph ticket.
+
+        Args:
+            paragraph: The paragraph name to look up.
+
+        Returns:
+            A copy of the successful params dict, or ``None`` if the
+            paragraph has not been completed.
+        """
+        for ticket in self._tickets.values():
+            if (
+                isinstance(ticket, ParagraphTicket)
+                and ticket.paragraph == paragraph
+                and ticket.status == DONE
+                and ticket.successful_params
+            ):
+                return dict(ticket.successful_params)
+        return None
+
+    def get_params_for_call_path(
+        self, call_path: list[str]
+    ) -> list[tuple[str, dict]]:
+        """Get successful params for each completed paragraph in a call path.
+
+        Args:
+            call_path: Ordered list of paragraph names.
+
+        Returns:
+            A list of ``(paragraph_name, params_dict)`` tuples for each
+            paragraph in the call path that has been completed.
+        """
+        results: list[tuple[str, dict]] = []
+        for para in call_path:
+            params = self.get_successful_params(para)
+            if params:
+                results.append((para, params))
+        return results
+
+    # ------------------------------------------------------------------
     # JSON persistence
     # ------------------------------------------------------------------
 

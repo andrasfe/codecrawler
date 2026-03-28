@@ -62,16 +62,21 @@ class HeuristicWalker:
             ``.stub_operations`` (list), and optionally
             ``.stub_variables`` (dict). Can be None for basic operation.
         rng: Random number generator for deterministic behavior.
+        knowledge: Optional shared knowledge store. When provided, the
+            walker can seed parameter generation from proven successful
+            params instead of starting from scratch.
     """
 
     def __init__(
         self,
         field_report: Any = None,
         rng: Random | None = None,
+        knowledge: Any = None,
     ) -> None:
         self.field_report = field_report
         self.rng = rng or Random()
         self.corpus = Corpus()
+        self.knowledge = knowledge
 
     # ------------------------------------------------------------------
     # Helpers
@@ -136,47 +141,110 @@ class HeuristicWalker:
         return {"alpha_status": str(val), "num_status": str(val) if isinstance(val, int) else "0"}
 
     # ------------------------------------------------------------------
+    # Knowledge seeding
+    # ------------------------------------------------------------------
+
+    def seed_from_knowledge(
+        self, paragraph: str | None = None
+    ) -> dict:
+        """Start from proven working params instead of random.
+
+        If a specific paragraph is requested and its params are known,
+        those are returned. Otherwise falls back to the most recently
+        recorded successful params, or empty params as a last resort.
+
+        Args:
+            paragraph: Optional target paragraph to look up.
+
+        Returns:
+            A params dict with ``"input_state"`` and ``"stubs"`` keys.
+        """
+        if self.knowledge is not None:
+            if (
+                paragraph
+                and hasattr(self.knowledge, "successful_params")
+                and paragraph in self.knowledge.successful_params
+            ):
+                return dict(self.knowledge.successful_params[paragraph])
+            if (
+                hasattr(self.knowledge, "successful_params")
+                and self.knowledge.successful_params
+            ):
+                # Use the most recently successful params as baseline
+                return dict(
+                    list(self.knowledge.successful_params.values())[-1]
+                )
+        return {"input_state": {}, "stubs": {}}
+
+    # ------------------------------------------------------------------
     # Public API: Parameter generation
     # ------------------------------------------------------------------
 
     def generate_initial_params(self) -> dict:
         """Generate domain-aware initial params with success bias.
 
-        For each known input variable, generates a semantic value
+        When shared knowledge is available, seeds from proven successful
+        params. For each known input variable, generates a semantic value
         (defaulting to the success path). For each known stub
         operation, uses the canonical success value.
 
         Returns:
             A dict with ``"input_state"`` and ``"stubs"`` keys.
         """
+        # Seed from knowledge if available
+        seed = self.seed_from_knowledge()
+        seed_input = seed.get("input_state", {})
+        seed_stubs = seed.get("stubs", {})
+
         fields = self._get_fields()
         stub_ops = self._get_stub_operations()
 
         input_state: dict[str, str | int | float] = {}
+        # Start with knowledge-seeded values
+        for k, v in seed_input.items():
+            input_state[k] = v
+        # Fill in any remaining fields from domain generation
         for name, domain in fields.items():
-            input_state[name] = self._generate_value_for_field(
-                domain, "semantic"
-            )
+            if name not in input_state:
+                input_state[name] = self._generate_value_for_field(
+                    domain, "semantic"
+                )
 
         stubs: dict[str, dict[str, str]] = {}
+        # Start with knowledge-seeded stubs
+        for k, v in seed_stubs.items():
+            if isinstance(v, dict):
+                stubs[k] = v
+        # Fill in remaining stubs
         for op in stub_ops:
-            stubs[op] = self._make_stub_success(op)
+            if op not in stubs:
+                stubs[op] = self._make_stub_success(op)
 
         return {"input_state": input_state, "stubs": stubs}
 
     def generate_exploratory_params(self) -> dict:
         """Generate random domain-aware params for exploration.
 
-        Uses a mix of strategies: 40% condition_literal, 30%
-        random_valid, 20% semantic, 10% boundary.
+        When shared knowledge is available, seeds from proven successful
+        params and then mutates a subset of fields. Uses a mix of
+        strategies: 40% condition_literal, 30% random_valid, 20%
+        semantic, 10% boundary.
 
         Returns:
             A dict with ``"input_state"`` and ``"stubs"`` keys.
         """
+        # Seed from knowledge if available
+        seed = self.seed_from_knowledge()
+        seed_input = seed.get("input_state", {})
+
         fields = self._get_fields()
         stub_ops = self._get_stub_operations()
 
         input_state: dict[str, str | int | float] = {}
+        # Start with knowledge-seeded values
+        for k, v in seed_input.items():
+            input_state[k] = v
+        # Then apply exploratory generation on top
         for name, domain in fields.items():
             strategy = self._pick_strategy()
             input_state[name] = self._generate_value_for_field(

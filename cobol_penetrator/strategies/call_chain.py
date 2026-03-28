@@ -112,6 +112,20 @@ class CallChainStrategy(Strategy):
             history = format_execution_history(context.execution_history)
             prompt += f"\nPrior attempts:\n{history}\n"
 
+        if context.knowledge:
+            from cobol_penetrator.strategies.prompt_enrichment import (
+                format_knowledge_context,
+            )
+
+            knowledge_text = format_knowledge_context(
+                context.knowledge, context.ticket, context.field_report
+            )
+            if knowledge_text:
+                prompt += (
+                    f"\n\nLearned knowledge from prior executions:\n"
+                    f"{knowledge_text}\n"
+                )
+
         return prompt
 
 

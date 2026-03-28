@@ -21,6 +21,7 @@ from cobol_penetrator.tickets.models import Ticket
 
 if TYPE_CHECKING:
     from cobol_penetrator.analysis.field_report import FieldReport
+    from cobol_penetrator.knowledge import LearnedKnowledge
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +49,8 @@ class AgentContext:
         extra: Arbitrary additional data for strategy-specific needs.
         field_report: Optional FieldReport from DATA DIVISION analysis.
         execution_history: Prior execution attempts for this ticket.
+        knowledge: Shared knowledge accumulated across all tickets in
+            the current penetration run. ``None`` for backward compat.
     """
 
     ticket: Ticket
@@ -59,6 +62,7 @@ class AgentContext:
     extra: dict[str, Any] = field(default_factory=dict)
     field_report: FieldReport | None = None
     execution_history: list[dict] = field(default_factory=list)
+    knowledge: LearnedKnowledge | None = None
 
 
 # ---------------------------------------------------------------------------

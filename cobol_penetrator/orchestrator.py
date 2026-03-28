@@ -22,6 +22,7 @@ from cobol_penetrator.agents.paragraph import ParagraphAgent
 from cobol_penetrator.agents.recon import ReconAgent
 from cobol_penetrator.config import PenetratorConfig
 from cobol_penetrator.executor import execute
+from cobol_penetrator.knowledge import LearnedKnowledge
 from cobol_penetrator.mock_reader import ProgramStructure, parse_mock_structure
 from cobol_penetrator.reports.coverage import CoverageTracker
 from cobol_penetrator.reports.params import save_successful_params
@@ -167,26 +168,40 @@ async def _multi_turn_execute(
     execution_history: list[dict],
     coverage: CoverageTracker | None = None,
     max_turns: int = 3,
+    knowledge: LearnedKnowledge | None = None,
 ) -> tuple[dict | None, ExecutionResult | None]:
-    """Execute multiple turns of agent → execute → analyze for a single ticket.
+    """Execute multiple turns of agent -> execute -> analyze for a single ticket.
 
     Each turn:
     1. Build context with execution history from prior turns
     2. Generate params (LLM + heuristics)
     3. Execute COBOL binary
-    4. If target reached, return success
+    4. If target reached, record success but continue exploring
     5. Otherwise, add result to history and try again
 
     Returns (params, result) on success, or (None, last_result) on failure.
     """
     best_result = None
     best_params = None
+    target_reached_turn: int | None = None
 
     for turn in range(max_turns):
         try:
             context = await agent.build_context(ticket, structure, config.mock_cbl)
             context.field_report = field_report
             context.execution_history = list(execution_history)
+            context.knowledge = knowledge
+
+            # Inject parent params from knowledge if available
+            if knowledge is not None and context.parent_params is None:
+                if isinstance(ticket, ParagraphTicket) and ticket.call_path:
+                    context.parent_params = knowledge.get_parent_params(
+                        ticket.call_path
+                    )
+                elif isinstance(ticket, BranchTicket):
+                    context.parent_params = knowledge.successful_params.get(
+                        ticket.paragraph
+                    )
 
             params = await agent.generate_params(context)
 
@@ -232,6 +247,10 @@ async def _multi_turn_execute(
         if coverage is not None:
             coverage.update(result)
 
+        # Record every execution into the shared knowledge store
+        if knowledge is not None:
+            knowledge.record_execution(params, result, ticket)
+
         # Record this turn in history for the next turn
         execution_history.append({
             "turn": turn + 1,
@@ -242,16 +261,31 @@ async def _multi_turn_execute(
         })
 
         if ticket_target_reached(ticket, result):
-            logger.info(
-                "Ticket %s target reached on turn %d",
-                ticket.id, turn + 1,
+            if target_reached_turn is None:
+                target_reached_turn = turn
+                logger.info(
+                    "Ticket %s target reached on turn %d",
+                    ticket.id, turn + 1,
+                )
+            # On the last turn or if we've explored enough, return
+            if turn >= max_turns - 1:
+                return params, result
+            # Otherwise continue exploring for additional branch coverage
+            logger.debug(
+                "Ticket %s: target reached, continuing exploration "
+                "(turn %d/%d)",
+                ticket.id, turn + 1, max_turns,
             )
-            return params, result
+            continue
 
         logger.debug(
             "Ticket %s turn %d: target not reached, hit %d paragraphs",
             ticket.id, turn + 1, len(set(result.paragraphs_hit)),
         )
+
+    # If we ever reached the target, return the best success result
+    if target_reached_turn is not None:
+        return best_params, best_result
 
     return best_params, best_result
 
@@ -287,6 +321,13 @@ async def run(config: PenetratorConfig) -> dict:
     store.load_or_create(config.tickets_path)
     engine = TicketEngine(store, max_attempts=config.max_attempts)
 
+    # 2b. Load or create shared knowledge store
+    knowledge = (
+        LearnedKnowledge.load(config.knowledge_path)
+        if config.resume
+        else LearnedKnowledge()
+    )
+
     # 3. Create initial ticket if fresh run
     if not config.resume:
         engine.create_entry_ticket(structure.entry_paragraph)
@@ -307,9 +348,11 @@ async def run(config: PenetratorConfig) -> dict:
     # 6a. Baseline execution with EMPTY params to establish success-path coverage
     if not config.resume:
         try:
-            baseline_result = execute(config.executable, {"input_state": {}, "stubs": {}}, timeout=30)
+            baseline_params = {"input_state": {}, "stubs": {}}
+            baseline_result = execute(config.executable, baseline_params, timeout=30)
             coverage.update(baseline_result)
-            walker.record_result({"input_state": {}, "stubs": {}}, baseline_result)
+            walker.record_result(baseline_params, baseline_result)
+            knowledge.record_execution(baseline_params, baseline_result)
             executions += 1
             logger.info(
                 "Baseline: %d paragraphs, %d branches hit",
@@ -349,6 +392,7 @@ async def run(config: PenetratorConfig) -> dict:
                     executions += 1
                     coverage.update(result)
                     walker.record_result(params, result)
+                    knowledge.record_execution(params, result)
                     new_paras = set(result.paragraphs_hit) - set(coverage.state.hit_paragraphs[:-len(result.paragraphs_hit)] if len(coverage.state.hit_paragraphs) > len(result.paragraphs_hit) else [])
                 except Exception:
                     pass
@@ -369,6 +413,7 @@ async def run(config: PenetratorConfig) -> dict:
                     executions += 1
                     coverage.update(result)
                     walker.record_result(params, result)
+                    knowledge.record_execution(params, result)
                 except Exception:
                     pass
 
@@ -401,10 +446,15 @@ async def run(config: PenetratorConfig) -> dict:
         history = ticket_histories.setdefault(ticket.id, [])
 
         # Multi-turn execution
-        turns_per_ticket = min(3, config.max_attempts - ticket.attempts)
+        turns_per_ticket = min(
+            config.max_turns_per_ticket,
+            config.max_attempts - ticket.attempts,
+        )
         params, result = await _multi_turn_execute(
             agent, ticket, structure, config, field_report, walker,
-            history, coverage=coverage, max_turns=max(1, turns_per_ticket),
+            history, coverage=coverage,
+            max_turns=max(1, turns_per_ticket),
+            knowledge=knowledge,
         )
 
         if result is None:
@@ -469,6 +519,7 @@ async def run(config: PenetratorConfig) -> dict:
 
         store.save(config.tickets_path)
         coverage.save(config.coverage_path)
+        knowledge.save(config.knowledge_path)
 
     # 9. Fault exploration phase — try stub error codes to reach error handlers
     if executions < config.budget and coverage.coverage_pct < 100.0:
@@ -507,6 +558,7 @@ async def run(config: PenetratorConfig) -> dict:
                         executions += 1
                         coverage.update(result)
                         walker.record_result(params, result)
+                        knowledge.record_execution(params, result)
 
                         new_paras = set(result.paragraphs_hit) - all_known_paras
                         if new_paras:
@@ -545,6 +597,7 @@ async def run(config: PenetratorConfig) -> dict:
                             executions += 1
                             coverage.update(result)
                             walker.record_result(params, result)
+                            knowledge.record_execution(params, result)
                             new_paras = set(result.paragraphs_hit) - all_known_paras
                             if new_paras:
                                 logger.info(
@@ -565,6 +618,7 @@ async def run(config: PenetratorConfig) -> dict:
     # Save final state
     coverage.save(config.coverage_path)
     store.save(config.tickets_path)
+    knowledge.save(config.knowledge_path)
 
     all_tickets = store.all_tickets()
     summary = {

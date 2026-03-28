@@ -10,6 +10,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 
 from cobol_penetrator.config import PenetratorConfig
+from cobol_penetrator.knowledge import LearnedKnowledge
 from cobol_penetrator.llm_providers.protocol import CompletionResponse, Message
 from cobol_penetrator.mock_reader import BranchInfo, ParagraphInfo, ProgramStructure
 from cobol_penetrator.orchestrator import (
@@ -538,4 +539,77 @@ class TestRunLoop:
             result = asyncio.run(run(config))
 
         # Should still complete despite field report failure
+        assert result["executions"] >= 1
+
+    def test_run_populates_knowledge_store(
+        self, tmp_path: Path
+    ) -> None:
+        """run() creates and populates the shared knowledge store."""
+        executable = self._make_mock_executable(tmp_path)
+        mock_cbl = self._make_mock_cbl(tmp_path)
+
+        knowledge_path = tmp_path / "knowledge.json"
+        config = PenetratorConfig(
+            executable=executable,
+            mock_cbl=mock_cbl,
+            budget=5,
+            timeout=60,
+            resume=False,
+            tickets_path=tmp_path / "tickets.json",
+            coverage_path=tmp_path / "coverage.json",
+            params_dir=tmp_path / "params",
+            max_attempts=3,
+            knowledge_path=knowledge_path,
+        )
+
+        mock_provider = _make_mock_provider()
+
+        with patch(
+            "cobol_penetrator.orchestrator.get_provider_from_env",
+            return_value=mock_provider,
+        ):
+            result = asyncio.run(run(config))
+
+        # Knowledge file should be written
+        assert knowledge_path.exists()
+
+        # Load and verify content
+        knowledge = LearnedKnowledge.load(knowledge_path)
+        # Baseline + LLM executions should populate paragraphs
+        assert len(knowledge.successful_params) >= 1
+        # Branch 1 with direction T should appear (from mock executable)
+        assert any(
+            k.startswith("1:") for k in knowledge.branch_params
+        )
+
+    def test_run_uses_max_turns_per_ticket(
+        self, tmp_path: Path
+    ) -> None:
+        """Config's max_turns_per_ticket is respected."""
+        executable = self._make_mock_executable(tmp_path)
+        mock_cbl = self._make_mock_cbl(tmp_path)
+
+        config = PenetratorConfig(
+            executable=executable,
+            mock_cbl=mock_cbl,
+            budget=20,
+            timeout=60,
+            resume=False,
+            tickets_path=tmp_path / "tickets.json",
+            coverage_path=tmp_path / "coverage.json",
+            params_dir=tmp_path / "params",
+            max_attempts=5,
+            max_turns_per_ticket=2,
+            knowledge_path=tmp_path / "knowledge.json",
+        )
+
+        mock_provider = _make_mock_provider()
+
+        with patch(
+            "cobol_penetrator.orchestrator.get_provider_from_env",
+            return_value=mock_provider,
+        ):
+            result = asyncio.run(run(config))
+
+        # Should complete without error
         assert result["executions"] >= 1

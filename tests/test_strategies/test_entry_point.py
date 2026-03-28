@@ -278,3 +278,45 @@ class TestEntryPointStrategyEnrichedPrompt:
         status_pos = prompt.find("WS-STATUS")
         internal_pos = prompt.find("WS-INTERNAL")
         assert status_pos < internal_pos
+
+
+# ---------------------------------------------------------------------------
+# Tests: Knowledge context in prompts
+# ---------------------------------------------------------------------------
+
+
+class TestEntryPointStrategyKnowledgeContext:
+    """Verify prompts include knowledge context when available."""
+
+    def test_prompt_includes_knowledge_section(
+        self, strategy: EntryPointStrategy, entry_context: AgentContext
+    ) -> None:
+        from cobol_penetrator.knowledge import LearnedKnowledge
+
+        knowledge = LearnedKnowledge()
+        knowledge.successful_params["1000-MAIN"] = {
+            "input_state": {"WS-STATUS": "00"},
+            "stubs": {},
+        }
+        knowledge.stub_outcomes["READ-ACCOUNT"] = []
+
+        entry_context.knowledge = knowledge
+        prompt = strategy.build_user_prompt(entry_context)
+        assert "Learned knowledge from prior executions" in prompt
+        assert "Stub outcomes that produced coverage" in prompt
+
+    def test_no_knowledge_no_section(
+        self, strategy: EntryPointStrategy, entry_context: AgentContext
+    ) -> None:
+        entry_context.knowledge = None
+        prompt = strategy.build_user_prompt(entry_context)
+        assert "Learned knowledge from prior executions" not in prompt
+
+    def test_empty_knowledge_no_section(
+        self, strategy: EntryPointStrategy, entry_context: AgentContext
+    ) -> None:
+        from cobol_penetrator.knowledge import LearnedKnowledge
+
+        entry_context.knowledge = LearnedKnowledge()
+        prompt = strategy.build_user_prompt(entry_context)
+        assert "Learned knowledge from prior executions" not in prompt

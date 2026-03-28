@@ -8,6 +8,7 @@ build/
 .venv/
 .pytest_cache/
 .tickets.json
+.knowledge.json
 reports/coverage.json
 reports/successful_params/
 *.dat

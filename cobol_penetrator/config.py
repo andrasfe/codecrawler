@@ -32,6 +32,8 @@ class PenetratorConfig:
     coverage_path: Path = field(default_factory=lambda: Path("reports/coverage.json"))
     params_dir: Path = field(default_factory=lambda: Path("reports/successful_params"))
     max_attempts: int = 5
+    max_turns_per_ticket: int = 10
+    knowledge_path: Path = field(default_factory=lambda: Path(".knowledge.json"))
 
     # LLM settings (loaded from .env)
     llm_provider: str = "openrouter"

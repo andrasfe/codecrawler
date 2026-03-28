@@ -270,3 +270,56 @@ class TestCallChainStrategyEnrichedPrompt:
         # If WS-STATUS is found in code, it appears; WS-UNRELATED might
         # appear if no code-based vars found (fallback to all fields)
         assert "Variable definitions from DATA DIVISION:" in prompt
+
+
+# ---------------------------------------------------------------------------
+# Tests: Knowledge context in prompts
+# ---------------------------------------------------------------------------
+
+
+class TestCallChainStrategyKnowledgeContext:
+    """Verify prompts include knowledge context when available."""
+
+    def test_prompt_includes_parent_params_from_knowledge(
+        self, strategy: CallChainStrategy, call_chain_context: AgentContext
+    ) -> None:
+        from cobol_penetrator.knowledge import LearnedKnowledge
+
+        knowledge = LearnedKnowledge()
+        knowledge.successful_params["1000-MAIN"] = {
+            "input_state": {"WS-STATUS": "00"},
+            "stubs": {},
+        }
+        call_chain_context.knowledge = knowledge
+        prompt = strategy.build_user_prompt(call_chain_context)
+        assert "Learned knowledge from prior executions" in prompt
+        assert "Parent paragraph's successful params" in prompt
+
+    def test_no_knowledge_no_section(
+        self, strategy: CallChainStrategy, call_chain_context: AgentContext
+    ) -> None:
+        call_chain_context.knowledge = None
+        prompt = strategy.build_user_prompt(call_chain_context)
+        assert "Learned knowledge from prior executions" not in prompt
+
+    def test_empty_knowledge_no_section(
+        self, strategy: CallChainStrategy, call_chain_context: AgentContext
+    ) -> None:
+        from cobol_penetrator.knowledge import LearnedKnowledge
+
+        call_chain_context.knowledge = LearnedKnowledge()
+        prompt = strategy.build_user_prompt(call_chain_context)
+        assert "Learned knowledge from prior executions" not in prompt
+
+    def test_failed_attempts_appear(
+        self, strategy: CallChainStrategy, call_chain_context: AgentContext
+    ) -> None:
+        from cobol_penetrator.knowledge import LearnedKnowledge
+
+        knowledge = LearnedKnowledge()
+        knowledge.failed_attempts["2000-VALIDATE"] = [
+            {"params": {"input_state": {}, "stubs": {}}, "paragraphs_hit": ["1000-MAIN"]},
+        ]
+        call_chain_context.knowledge = knowledge
+        prompt = strategy.build_user_prompt(call_chain_context)
+        assert "Prior failed attempts" in prompt
