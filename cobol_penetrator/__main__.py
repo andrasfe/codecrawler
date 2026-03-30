@@ -15,6 +15,9 @@ Usage:
 
     # Status report
     python -m cobol_penetrator --status --tickets-path .tickets.json
+    
+    # Restart (clear all state and start fresh)
+    python -m cobol_penetrator --restart
 """
 
 from __future__ import annotations
@@ -22,12 +25,58 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import shutil
 import sys
 from pathlib import Path
 
 from cobol_penetrator.config import load_config
 
 logger = logging.getLogger(__name__)
+
+
+def restart_clean(config) -> None:
+    """Clear all state files and directories to start fresh.
+    
+    Removes:
+    - Ticket store (.tickets.json)
+    - Knowledge store (.knowledge.json)
+    - Reports directory (reports/)
+    - EvoSkill data directory (evoskill_data/)
+    
+    Args:
+        config: The penetrator configuration with file paths.
+    """
+    cleaned = []
+    
+    # Remove ticket store
+    if config.tickets_path.exists():
+        config.tickets_path.unlink()
+        cleaned.append(str(config.tickets_path))
+    
+    # Remove knowledge store
+    if config.knowledge_path.exists():
+        config.knowledge_path.unlink()
+        cleaned.append(str(config.knowledge_path))
+    
+    # Remove reports directory
+    reports_dir = config.coverage_path.parent
+    if reports_dir.exists() and reports_dir.name == "reports":
+        shutil.rmtree(reports_dir)
+        cleaned.append(str(reports_dir))
+    
+    # Remove EvoSkill data directory
+    if config.evoskill_path.exists():
+        shutil.rmtree(config.evoskill_path)
+        cleaned.append(str(config.evoskill_path))
+    
+    print("=== COBOL Penetrator Restart ===")
+    if cleaned:
+        print("Cleaned state files and directories:")
+        for item in cleaned:
+            print(f"  - {item}")
+    else:
+        print("No state files found to clean.")
+    print("Ready to start fresh!")
 
 
 def show_status(config) -> None:
@@ -84,11 +133,16 @@ def main() -> None:
         format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
     )
 
-    # Check for --status in sys.argv before argparse consumes it,
-    # so we can handle it without requiring --executable / --mock-cbl.
+    # Check for --status or --restart in sys.argv before argparse consumes it,
+    # so we can handle them without requiring --executable / --mock-cbl.
     if "--status" in sys.argv:
         config = load_config()
         show_status(config)
+        return
+    
+    if "--restart" in sys.argv:
+        config = load_config()
+        restart_clean(config)
         return
 
     config = load_config()
