@@ -221,6 +221,8 @@ async def _multi_turn_execute(
     skill_store: SkillStore | None = None,
     evoskill_llm: Any = None,
     program_tag: str = "",
+    fingerprint: Any = None,
+    program_dataflow: Any = None,
 ) -> tuple[dict | None, ExecutionResult | None]:
     """Execute multiple turns of agent -> execute -> analyze for a single ticket.
 
@@ -243,6 +245,10 @@ async def _multi_turn_execute(
             context.field_report = field_report
             context.execution_history = list(execution_history)
             context.knowledge = knowledge
+            context.fingerprint = fingerprint
+            # Inject AST dataflow for branch tickets
+            if program_dataflow and isinstance(ticket, BranchTicket):
+                context.extra["dataflow"] = program_dataflow
 
             # Inject EvoSkill learned skills into prompt
             if skill_store is not None:
@@ -320,13 +326,19 @@ async def _multi_turn_execute(
             knowledge.record_execution(params, result, ticket)
 
         # Record this turn in history for the next turn
-        execution_history.append({
+        history_entry: dict[str, Any] = {
             "turn": turn + 1,
             "params": params,
             "paragraphs_hit": list(set(result.paragraphs_hit)),
             "branches_hit": dict(result.branches_hit),
+            "variable_snapshots": dict(result.variable_snapshots),
+            "all_branch_directions": list(result.all_branch_directions),
             "target_reached": ticket_target_reached(ticket, result),
-        })
+        }
+        # For branch tickets, add the containing paragraph for feedback
+        if isinstance(ticket, BranchTicket):
+            history_entry["paragraph"] = ticket.paragraph
+        execution_history.append(history_entry)
 
         if ticket_target_reached(ticket, result):
             # Learn from success via EvoSkill
@@ -404,7 +416,25 @@ async def run(config: PenetratorConfig) -> dict:
         except Exception:
             logger.warning("Failed to build field report", exc_info=True)
 
-    # 1c. Initialize heuristic walker
+    # 1c. Load AST dataflow (if .cbl.ast exists alongside .mock.cbl)
+    from cobol_penetrator.analysis.ast_tracer import load_program_dataflow
+    program_dataflow = None
+    ast_path = config.mock_cbl.with_suffix(".cbl.ast")
+    # Also check without .mock prefix: PROG.mock.cbl → PROG.cbl.ast
+    if not ast_path.exists():
+        stem = config.mock_cbl.stem
+        if stem.endswith(".mock"):
+            ast_path = config.mock_cbl.parent / (stem[:-5] + ".cbl.ast")
+    if ast_path.exists():
+        try:
+            program_dataflow = load_program_dataflow(ast_path)
+            logger.info("Loaded AST dataflow: %d paragraphs, %d edges",
+                        len(program_dataflow.paragraphs),
+                        sum(len(p.edges) for p in program_dataflow.paragraphs.values()))
+        except Exception:
+            logger.warning("Failed to load AST dataflow", exc_info=True)
+
+    # 1d. Initialize heuristic walker
     from cobol_penetrator.heuristics.heuristic_walker import HeuristicWalker
     walker = HeuristicWalker(field_report)
 
@@ -545,21 +575,24 @@ async def run(config: PenetratorConfig) -> dict:
             len(coverage.state.hit_paragraphs), coverage.state.total_paragraphs,
         )
 
-    # 6c. Position-aware stub sequencing
+    # 6c. Position-aware stub sequencing with causal fingerprinting
     # The COBOL mock reads records in FIFO order. Each iteration of the
     # main loop consumes N records (one per SPECTER-MOCK operation).
     # By injecting fault values at specific POSITIONS in the sequence,
     # we can flip branches that depend on specific stub outcomes.
+    # Results are captured into a StubFingerprint for LLM-guided branch work.
+    from cobol_penetrator.analysis.stub_fingerprint import (
+        PerturbationResult,
+        build_fingerprint,
+    )
+    fingerprint = None
     if not config.resume and executions < config.budget:
-        # Discover the mock operation sequence from baseline
         try:
             baseline_out = execute(
                 config.executable, {"input_state": {}, "stubs": {}}, timeout=30
             )
             mock_ops = baseline_out.mock_ops
-            # Find the repeating pattern (one iteration of the main loop)
             if mock_ops:
-                # Detect cycle: find shortest prefix that repeats
                 cycle_len = 0
                 for cl in range(1, min(len(mock_ops) // 2 + 1, 20)):
                     pattern = mock_ops[:cl]
@@ -574,7 +607,16 @@ async def run(config: PenetratorConfig) -> dict:
                     len(mock_ops), cycle_len, mock_ops[:cycle_len],
                 )
 
-                # For each position in the cycle, try fault values
+                # Baseline perturbation result
+                baseline_pr = PerturbationResult(
+                    position=-1,
+                    fault_value="",
+                    branch_directions=set(baseline_out.all_branch_directions),
+                    variable_snapshots=dict(baseline_out.variable_snapshots),
+                    paragraphs_hit=set(baseline_out.paragraphs_hit),
+                )
+                perturbation_results: list[PerturbationResult] = []
+
                 fault_values = [
                     "GE", "GB", "II", "10", "23", "35", "AI",
                     "00", "N", "Y", "A", "D", "04", "08", "12", "16",
@@ -586,7 +628,6 @@ async def run(config: PenetratorConfig) -> dict:
                     for fv in fault_values:
                         if executions >= min(config.budget, 200):
                             break
-                        # Build records: success everywhere except position `pos`
                         from cobol_penetrator.mock_data import MockRecord, format_record
                         records = []
                         num_iters = 100
@@ -630,6 +671,14 @@ async def run(config: PenetratorConfig) -> dict:
                             knowledge.record_execution(
                                 {"input_state": {}, "stubs": {f"pos{pos}": fv}}, result
                             )
+                            # Capture for fingerprinting
+                            perturbation_results.append(PerturbationResult(
+                                position=pos,
+                                fault_value=fv,
+                                branch_directions=set(result.all_branch_directions),
+                                variable_snapshots=dict(result.variable_snapshots),
+                                paragraphs_hit=set(result.paragraphs_hit),
+                            ))
                         except Exception:
                             pass
                         finally:
@@ -642,6 +691,16 @@ async def run(config: PenetratorConfig) -> dict:
                 logger.info(
                     "Position sequencing: %d new branch directions found (%d -> %d)",
                     post_cov - pre_cov, pre_cov, post_cov,
+                )
+
+                # Build causal fingerprint
+                fingerprint = build_fingerprint(
+                    baseline_pr, perturbation_results, mock_ops[:cycle_len]
+                )
+                logger.info(
+                    "Built stub fingerprint: %d triggers, %d variable diffs",
+                    len(fingerprint.branch_triggers),
+                    len(fingerprint.variable_diffs),
                 )
         except Exception:
             logger.debug("Position-aware sequencing failed", exc_info=True)
@@ -691,6 +750,8 @@ async def run(config: PenetratorConfig) -> dict:
             skill_store=skill_store,
             evoskill_llm=evoskill_llm,
             program_tag=program_tag,
+            fingerprint=fingerprint,
+            program_dataflow=program_dataflow,
         )
 
         if result is None:

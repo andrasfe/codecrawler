@@ -263,6 +263,232 @@ def format_knowledge_context(
 # ---------------------------------------------------------------------------
 
 
+def format_ast_dataflow(
+    dataflow: Any,
+    paragraph: str,
+    condition_vars: list[str],
+    condition_text: str = "",
+) -> str:
+    """Format AST-derived dataflow for a branch's condition variables.
+
+    Shows the LLM exactly where each condition variable gets its value
+    (MOVE from another variable, stub result, literal, etc.) and which
+    stubs execute before the branch condition.
+
+    Args:
+        dataflow: A :class:`ProgramDataflow` instance (or ``None``).
+        paragraph: The paragraph containing the branch.
+        condition_vars: Variables in the branch condition.
+        condition_text: The condition expression.
+
+    Returns:
+        Formatted string, or empty string if no dataflow info.
+    """
+    if dataflow is None:
+        return ""
+
+    pdf = dataflow.paragraphs.get(paragraph)
+    if not pdf:
+        return ""
+
+    lines: list[str] = [
+        f"AST dataflow analysis for paragraph {paragraph}:"
+    ]
+
+    # Show how each condition variable is assigned
+    for var in condition_vars:
+        chain = dataflow.variable_source_chain(var, paragraph)
+        if chain:
+            for edge in chain:
+                lines.append(
+                    f"  {edge.target_variable} ← {edge.source_type}: "
+                    f"{edge.source_name} (line {edge.line_number})"
+                )
+        else:
+            # Check across the whole program
+            all_edges = dataflow.edges_for_variable(var)
+            if all_edges:
+                for edge in all_edges[:3]:
+                    lines.append(
+                        f"  {edge.target_variable} ← {edge.source_type}: "
+                        f"{edge.source_name} in {edge.paragraph} "
+                        f"(line {edge.line_number})"
+                    )
+            else:
+                lines.append(f"  {var}: no assignment found (may be 88-level)")
+
+    # Show stubs that execute before the condition
+    if condition_text:
+        stubs = dataflow.stubs_before_condition(paragraph, condition_text)
+        if stubs:
+            lines.append(f"  Stubs before condition:")
+            for s in stubs:
+                lines.append(f"    {s['op']} (line {s['line']})")
+
+    if len(lines) <= 1:
+        return ""
+    return "\n".join(lines)
+
+
+def format_directional_feedback(
+    execution_history: list[dict],
+    branch_id: str,
+    target_direction: str,
+    condition_text: str,
+) -> str:
+    """Format feedback on *why* prior attempts missed the target direction.
+
+    For each prior execution that reached the branch, reports the actual
+    direction taken and the variable values at that point.
+
+    Args:
+        execution_history: Prior turn dicts (must include ``branches_hit``
+            and optionally ``variable_snapshots``).
+        branch_id: The target branch ID.
+        target_direction: The desired direction (T/F/W1/WO).
+        condition_text: The branch condition expression.
+
+    Returns:
+        Formatted feedback string, or empty string if no relevant data.
+    """
+    if not execution_history:
+        return ""
+
+    lines: list[str] = []
+    for i, entry in enumerate(execution_history, 1):
+        branches = entry.get("branches_hit", {})
+        snapshots = entry.get("variable_snapshots", {})
+        paras = entry.get("paragraphs_hit", [])
+
+        if branch_id in branches:
+            actual = branches[branch_id]
+            snap = snapshots.get(branch_id, {})
+            snap_text = ", ".join(
+                f"{v}='{val}'" for v, val in snap.items()
+            ) if snap else "no snapshot"
+            lines.append(
+                f"  Turn {i}: Branch {branch_id} took {actual} "
+                f"(need {target_direction}). At evaluation: {snap_text}."
+            )
+            if actual != target_direction and condition_text:
+                lines.append(
+                    f"    Condition: {condition_text}"
+                )
+        else:
+            # Check if paragraph was even reached
+            paragraph_info = entry.get("paragraph", "")
+            if paragraph_info and paragraph_info not in paras:
+                lines.append(
+                    f"  Turn {i}: Branch {branch_id} not reached "
+                    f"(paragraph {paragraph_info} not hit)."
+                )
+            else:
+                lines.append(
+                    f"  Turn {i}: Branch {branch_id} not evaluated."
+                )
+
+    if not lines:
+        return ""
+    return "Directional feedback from prior attempts:\n" + "\n".join(lines)
+
+
+def format_stub_fingerprint(
+    fingerprint: Any,
+    branch_id: str,
+    target_direction: str,
+) -> str:
+    """Format empirical stub fingerprint data for a branch.
+
+    Shows which FIFO position perturbations flip the branch to the
+    target direction, including side-effect warnings.
+
+    Args:
+        fingerprint: A :class:`StubFingerprint` instance (or ``None``).
+        branch_id: The target branch ID.
+        target_direction: The desired direction.
+
+    Returns:
+        Formatted string, or empty string if no triggers found.
+    """
+    if fingerprint is None:
+        return ""
+
+    triggers = fingerprint.get_triggers(branch_id, target_direction)
+    if not triggers:
+        return ""
+
+    lines: list[str] = [
+        f"Empirical stub fingerprint for branch {branch_id} "
+        f"direction {target_direction}:"
+    ]
+    for pos, fv in triggers[:5]:  # cap at 5
+        op = fingerprint.op_name(pos)
+        lines.append(f"  Position {pos} ({op}) with value '{fv}' "
+                      f"flips {branch_id} to {target_direction}.")
+        # Side-effect warnings
+        side = fingerprint.get_side_effects(pos, fv)
+        other = {s for s in side if not s.startswith(f"{branch_id}:")}
+        if other:
+            lines.append("  WARNING: this also changes:")
+            for s in sorted(other)[:3]:
+                lines.append(f"    - {s}")
+
+    return "\n".join(lines)
+
+
+def format_variable_differential(
+    fingerprint: Any,
+    branch_id: str,
+) -> str:
+    """Format variable value differences at a branch point.
+
+    Compares variable snapshots between baseline and the first
+    perturbation that changed this branch.
+
+    Args:
+        fingerprint: A :class:`StubFingerprint` instance (or ``None``).
+        branch_id: The branch ID to compare.
+
+    Returns:
+        Formatted string, or empty string if no diff data.
+    """
+    if fingerprint is None:
+        return ""
+
+    diffs = fingerprint.get_variable_diff(branch_id)
+    if not diffs:
+        return ""
+
+    lines = [f"Variable differences at branch {branch_id}:"]
+
+    base_snap = fingerprint.baseline.variable_snapshots.get(branch_id, {})
+    if base_snap:
+        vals = ", ".join(f"{v}='{val}'" for v, val in base_snap.items())
+        lines.append(f"  Baseline: {vals}")
+
+    changed: list[str] = []
+    unchanged: list[str] = []
+    for var, (old, new) in diffs.items():
+        changed.append(f"{var} ('{old}' -> '{new}')")
+
+    if base_snap:
+        for var in base_snap:
+            if var not in diffs:
+                unchanged.append(var)
+
+    if changed:
+        lines.append(f"  Changed: {', '.join(changed)}")
+    if unchanged:
+        lines.append(f"  Unchanged: {', '.join(unchanged)}")
+
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# Internal helpers
+# ---------------------------------------------------------------------------
+
+
 def _format_pic(domain: Any) -> str:
     """Format a PIC-like description from a VariableDomain."""
     if domain.data_type == "alpha":

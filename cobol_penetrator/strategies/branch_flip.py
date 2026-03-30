@@ -9,8 +9,12 @@ from __future__ import annotations
 from cobol_penetrator.agents.base import AgentContext
 from cobol_penetrator.strategies.base import Strategy
 from cobol_penetrator.strategies.prompt_enrichment import (
+    format_ast_dataflow,
     format_condition_hints,
+    format_directional_feedback,
     format_execution_history,
+    format_stub_fingerprint,
+    format_variable_differential,
     format_variable_metadata,
 )
 
@@ -39,9 +43,11 @@ class BranchFlipStrategy(Strategy):
             "what input variables and stub outcomes are needed to make "
             "a specific branch take a particular direction (T for true, "
             "F for false, W1 for WHEN clause 1, WO for WHEN OTHER). "
-            "Analyze the branch condition, the variable snapshots from "
-            "prior runs, and the containing paragraph's code to produce "
-            "the correct parameter set."
+            "You will be given the branch condition, AST-derived dataflow "
+            "showing exactly where condition variables get their values, "
+            "empirical data on which stub perturbations flip the branch, "
+            "and variable value diffs between branch directions. "
+            "Use this data to determine precise parameter changes."
         )
 
     def build_user_prompt(self, context: AgentContext) -> str:
@@ -137,6 +143,43 @@ class BranchFlipStrategy(Strategy):
                     f"\n\nLearned knowledge from prior executions:\n"
                     f"{knowledge_text}\n"
                 )
+
+        # AST dataflow analysis (precise variable provenance)
+        if hasattr(context, "extra") and context.extra.get("dataflow"):
+            ast_text = format_ast_dataflow(
+                context.extra["dataflow"],
+                containing_paragraph,
+                condition_vars,
+                condition_text,
+            )
+            if ast_text:
+                prompt += f"\n\n{ast_text}\n"
+
+        # Directional feedback (why prior attempts failed)
+        if context.execution_history:
+            dir_feedback = format_directional_feedback(
+                context.execution_history,
+                branch_id,
+                target_direction,
+                condition_text,
+            )
+            if dir_feedback:
+                prompt += f"\n\n{dir_feedback}\n"
+
+        # Empirical stub fingerprint
+        if context.fingerprint:
+            fp_text = format_stub_fingerprint(
+                context.fingerprint, branch_id, target_direction,
+            )
+            if fp_text:
+                prompt += f"\n\n{fp_text}\n"
+
+            # Variable differential
+            diff_text = format_variable_differential(
+                context.fingerprint, branch_id,
+            )
+            if diff_text:
+                prompt += f"\n\n{diff_text}\n"
 
         if context.evoskill_text:
             prompt += f"\n\n{context.evoskill_text}"

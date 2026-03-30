@@ -103,11 +103,11 @@ class TestBranchFlipStrategySystemPrompt:
         assert "T for true" in prompt
         assert "F for false" in prompt
 
-    def test_mentions_variable_snapshots(
+    def test_mentions_dataflow_or_empirical(
         self, strategy: BranchFlipStrategy, branch_context: AgentContext
     ) -> None:
         prompt = strategy.build_system_prompt(branch_context)
-        assert "variable snapshots" in prompt or "snapshot" in prompt
+        assert "dataflow" in prompt or "empirical" in prompt
 
 
 class TestBranchFlipStrategyUserPrompt:

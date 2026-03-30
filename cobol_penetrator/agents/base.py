@@ -64,6 +64,7 @@ class AgentContext:
     execution_history: list[dict] = field(default_factory=list)
     knowledge: LearnedKnowledge | None = None
     evoskill_text: str = ""
+    fingerprint: Any = None  # StubFingerprint when available
 
 
 # ---------------------------------------------------------------------------
