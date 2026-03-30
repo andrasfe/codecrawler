@@ -314,6 +314,36 @@ class TestParseJsonResponse:
         result = BaseAgent._parse_json_response(text)
         assert result == {"key": "value"}
 
+    def test_github_issue_case_json_with_newlines(self) -> None:
+        """Test the specific case from GitHub issue #2 with ```json wrapper."""
+        text = '''```json
+{
+  "input_state": {
+    "WS-STATUS": "00"
+  },
+  "stubs": {}
+}
+```'''
+        result = BaseAgent._parse_json_response(text)
+        assert result == {"input_state": {"WS-STATUS": "00"}, "stubs": {}}
+
+    def test_json_code_block_with_extra_whitespace(self) -> None:
+        """Test ```json with extra whitespace around the JSON content."""
+        text = '''```json  
+  {
+    "input_state": {"WS-STATUS": "00"},
+    "stubs": {}
+  }  
+  ```'''
+        result = BaseAgent._parse_json_response(text)
+        assert result == {"input_state": {"WS-STATUS": "00"}, "stubs": {}}
+
+    def test_json_code_block_no_newlines(self) -> None:
+        """Test ```json format without newlines."""
+        text = '```json{"input_state": {"WS-STATUS": "00"}, "stubs": {}}```'
+        result = BaseAgent._parse_json_response(text)
+        assert result == {"input_state": {"WS-STATUS": "00"}, "stubs": {}}
+
 
 # ===========================================================================
 # _complete tests

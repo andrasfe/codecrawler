@@ -212,11 +212,19 @@ class BaseAgent(ABC):
         candidates.append(text)
 
         # 2. Markdown code block content
-        code_block = re.search(
-            r"```(?:json)?\s*\n?(.*?)\n?```", text, re.DOTALL
-        )
-        if code_block:
-            candidates.append(code_block.group(1).strip())
+        # Try multiple patterns to handle various markdown formats
+        code_block_patterns = [
+            r"```json\s*\n(.*?)\n\s*```",  # ```json with newlines
+            r"```json\s*(.*?)\s*```",      # ```json without required newlines
+            r"```\s*\n(.*?)\n\s*```",      # ``` without json tag with newlines
+            r"```\s*(.*?)\s*```",          # ``` without json tag or required newlines
+        ]
+        
+        for pattern in code_block_patterns:
+            code_block = re.search(pattern, text, re.DOTALL)
+            if code_block:
+                candidates.append(code_block.group(1).strip())
+                break
 
         # 3. First { to last }
         first_brace = text.find("{")
