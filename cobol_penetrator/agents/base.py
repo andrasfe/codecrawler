@@ -170,6 +170,22 @@ class BaseAgent(ABC):
     # ------------------------------------------------------------------
 
     @staticmethod
+    def _strip_trailing_commas(s: str) -> str:
+        """Remove trailing commas before ``}`` and ``]`` (common LLM quirk)."""
+        return re.sub(r",\s*([}\]])", r"\1", s)
+
+    @staticmethod
+    def _try_parse_dict(s: str) -> dict | None:
+        """Attempt ``json.loads``; return dict or None."""
+        try:
+            result = json.loads(s)
+            if isinstance(result, dict):
+                return result
+        except (json.JSONDecodeError, ValueError):
+            pass
+        return None
+
+    @staticmethod
     def _parse_json_response(text: str) -> dict:
         """Extract a JSON dict from LLM response text.
 
@@ -177,6 +193,9 @@ class BaseAgent(ABC):
         1. Raw JSON string
         2. JSON inside markdown code blocks (````` ```json ... ``` `````)
         3. JSON embedded in natural language (first ``{`` to last ``}``)
+
+        Each format is attempted first as-is, then with trailing-comma
+        stripping (a frequent LLM output quirk).
 
         Args:
             text: Raw text from the LLM response.
@@ -186,36 +205,35 @@ class BaseAgent(ABC):
         """
         text = text.strip()
 
-        # Try direct parse
-        try:
-            result = json.loads(text)
-            if isinstance(result, dict):
-                return result
-        except json.JSONDecodeError:
-            pass
+        # Collect candidate JSON strings to try (in priority order)
+        candidates: list[str] = []
 
-        # Try extracting from markdown code blocks
+        # 1. Full text
+        candidates.append(text)
+
+        # 2. Markdown code block content
         code_block = re.search(
             r"```(?:json)?\s*\n?(.*?)\n?```", text, re.DOTALL
         )
         if code_block:
-            try:
-                result = json.loads(code_block.group(1).strip())
-                if isinstance(result, dict):
-                    return result
-            except json.JSONDecodeError:
-                pass
+            candidates.append(code_block.group(1).strip())
 
-        # Try finding first { to last }
+        # 3. First { to last }
         first_brace = text.find("{")
         last_brace = text.rfind("}")
         if first_brace != -1 and last_brace > first_brace:
-            try:
-                result = json.loads(text[first_brace : last_brace + 1])
-                if isinstance(result, dict):
+            candidates.append(text[first_brace : last_brace + 1])
+
+        # Try each candidate as-is, then with trailing commas stripped
+        for candidate in candidates:
+            result = BaseAgent._try_parse_dict(candidate)
+            if result is not None:
+                return result
+            cleaned = BaseAgent._strip_trailing_commas(candidate)
+            if cleaned != candidate:
+                result = BaseAgent._try_parse_dict(cleaned)
+                if result is not None:
                     return result
-            except json.JSONDecodeError:
-                pass
 
         logger.warning("Failed to parse JSON from LLM response: %.200s", text)
         return {}

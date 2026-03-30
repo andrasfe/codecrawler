@@ -284,6 +284,36 @@ class TestParseJsonResponse:
     def test_no_braces_at_all(self) -> None:
         assert BaseAgent._parse_json_response("plain text no braces") == {}
 
+    def test_trailing_comma_in_code_block(self) -> None:
+        """LLMs frequently emit trailing commas before } or ]."""
+        text = '```json\n{"input_state": {"WS-STATUS": "00",}, "stubs": {}}\n```'
+        result = BaseAgent._parse_json_response(text)
+        assert result == {"input_state": {"WS-STATUS": "00"}, "stubs": {}}
+
+    def test_trailing_comma_multiline(self) -> None:
+        text = (
+            '```json\n'
+            '{\n'
+            '  "input_state": {\n'
+            '    "WS-FLAG": "Y",\n'
+            '  },\n'
+            '  "stubs": {\n'
+            '    "READ-FILE": "00",\n'
+            '  }\n'
+            '}\n'
+            '```'
+        )
+        result = BaseAgent._parse_json_response(text)
+        assert result == {
+            "input_state": {"WS-FLAG": "Y"},
+            "stubs": {"READ-FILE": "00"},
+        }
+
+    def test_trailing_comma_raw_json(self) -> None:
+        text = '{"key": "value",}'
+        result = BaseAgent._parse_json_response(text)
+        assert result == {"key": "value"}
+
 
 # ===========================================================================
 # _complete tests
