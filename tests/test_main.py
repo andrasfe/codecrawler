@@ -93,3 +93,58 @@ def test_restart_arg_parsing():
     # Test without --restart
     config = load_config([])
     assert config.restart is False
+
+
+def test_restart_with_other_args():
+    """Test that --restart can be used with other arguments."""
+    # Test --restart with executable and mock-cbl
+    config = load_config([
+        '--restart',
+        '--executable', 'test.exe',
+        '--mock-cbl', 'test.mock.cbl',
+        '--budget', '100',
+        '--timeout', '300'
+    ])
+    assert config.restart is True
+    assert str(config.executable) == 'test.exe'
+    assert str(config.mock_cbl) == 'test.mock.cbl'
+    assert config.budget == 100
+    assert config.timeout == 300
+
+
+@patch('cobol_penetrator.__main__.restart_clean')
+@patch('cobol_penetrator.__main__.asyncio.run')
+def test_main_with_restart_continues_processing(mock_asyncio_run, mock_restart_clean):
+    """Test that main() with --restart calls restart_clean and continues with processing."""
+    from cobol_penetrator.__main__ import main
+    
+    # Create temporary executable and mock files
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_path = Path(temp_dir)
+        exe_file = temp_path / "test.exe"
+        mock_file = temp_path / "test.mock.cbl"
+        exe_file.write_text("dummy executable")
+        mock_file.write_text("dummy mock cobol")
+        
+        with patch('sys.argv', [
+            'cobol_penetrator',
+            '--restart',
+            '--executable', str(exe_file),
+            '--mock-cbl', str(mock_file)
+        ]):
+            with patch('cobol_penetrator.config.load_config') as mock_load_config:
+                # Mock the config to return our test paths
+                mock_config = PenetratorConfig(
+                    executable=exe_file,
+                    mock_cbl=mock_file,
+                )
+                mock_load_config.return_value = mock_config
+                
+                # Call main
+                main()
+                
+                # Verify restart_clean was called
+                mock_restart_clean.assert_called_once_with(mock_config)
+                
+                # Verify processing continued (asyncio.run was called)
+                mock_asyncio_run.assert_called_once()
