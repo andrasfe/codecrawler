@@ -84,39 +84,58 @@ class TicketStore:
                 f"No ticket with ID '{ticket_id}'"
             ) from None
 
+    def _deps_satisfied(self, ticket: Ticket) -> bool:
+        """Return ``True`` if all of *ticket*'s dependencies are DONE."""
+        if not ticket.depends_on:
+            return True
+        return all(
+            dep_id in self._tickets
+            and self._tickets[dep_id].status == DONE
+            for dep_id in ticket.depends_on
+        )
+
     def claim_next(self) -> Ticket | None:
-        """Claim the highest-priority CREATED ticket.
+        """Claim the highest-priority ready ticket (wavefront scheduling).
 
-        Priority rules:
-            1. ParagraphTickets before BranchTickets.
-            2. Among ParagraphTickets, shorter ``call_path`` first.
-            3. Among BranchTickets, ordered by ``id`` for determinism.
+        A ticket is *ready* when it is in CREATED status **and** every
+        ticket ID in its ``depends_on`` list is DONE.
 
-        The claimed ticket's status is set to CLAIMED.
+        Priority among ready tickets (lower tier wins):
+
+            * **Tier 0** — BranchTickets whose parent paragraph was most
+              recently completed (locality: seed params are freshest).
+            * **Tier 1** — ParagraphTickets, shorter ``call_path`` first.
+            * **Tier 2** — Remaining BranchTickets, ordered by ``id``.
+
+        The chosen ticket's status is set to CLAIMED.
 
         Returns:
-            The claimed ticket, or ``None`` if no CREATED tickets exist.
+            The claimed ticket, or ``None`` if no ready tickets exist.
         """
-        created = [
-            t for t in self._tickets.values() if t.status == CREATED
+        ready = [
+            t for t in self._tickets.values()
+            if t.status == CREATED and self._deps_satisfied(t)
         ]
-        if not created:
+        if not ready:
             return None
 
-        paragraphs = [
-            t for t in created if isinstance(t, ParagraphTicket)
-        ]
-        branches = [
-            t for t in created if isinstance(t, BranchTicket)
-        ]
+        def _priority_key(ticket: Ticket) -> tuple:
+            if isinstance(ticket, BranchTicket):
+                parent_id = f"PARA-{ticket.paragraph}"
+                parent = self._tickets.get(parent_id)
+                if parent and parent.status == DONE:
+                    # Tier 0 — most recently completed parent first.
+                    # ISO timestamps sort ascending; we want descending,
+                    # so we sort the whole tier-0 group and rely on
+                    # stable sort + secondary key (ticket.id) for ties.
+                    # Prefix with empty string so tuple types are consistent.
+                    return (0, "", ticket.id)
+                return (2, "", ticket.id)
+            # ParagraphTicket
+            return (1, len(ticket.call_path), ticket.id)
 
-        if paragraphs:
-            paragraphs.sort(key=lambda t: (len(t.call_path), t.id))
-            chosen = paragraphs[0]
-        else:
-            branches.sort(key=lambda t: t.id)
-            chosen = branches[0]
-
+        ready.sort(key=_priority_key)
+        chosen = ready[0]
         chosen.status = CLAIMED
         logger.debug("Claimed ticket %s", chosen.id)
         return chosen

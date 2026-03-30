@@ -27,6 +27,8 @@ from cobol_penetrator.mock_reader import ProgramStructure, parse_mock_structure
 from cobol_penetrator.reports.coverage import CoverageTracker
 from cobol_penetrator.reports.params import save_successful_params
 from cobol_penetrator.tickets import (
+    CLAIMED,
+    CREATED,
     BranchTicket,
     ParagraphTicket,
     TicketEngine,
@@ -163,6 +165,46 @@ def _cascade_branch_tickets(
                 )
             except Exception:
                 pass
+
+
+def _auto_resolve_branches(
+    engine: TicketEngine,
+    store: TicketStore,
+    result: ExecutionResult,
+    params: dict,
+) -> int:
+    """Mark CREATED branch tickets as DONE if their direction was already hit.
+
+    Scans ``result.all_branch_directions`` and fast-tracks matching
+    tickets through CLAIMED → IN_PROGRESS → DONE.
+
+    Returns:
+        Number of tickets auto-resolved.
+    """
+    resolved = 0
+    for composite in result.all_branch_directions:
+        parts = composite.split(":", 1)
+        if len(parts) != 2:
+            continue
+        branch_id, direction = parts
+        ticket_id = f"BRANCH-{branch_id}-{direction}"
+        try:
+            ticket = store.get(ticket_id)
+        except Exception:
+            continue
+        if ticket.status != CREATED:
+            continue
+        # Fast-track: CREATED → CLAIMED → IN_PROGRESS → DONE
+        ticket.status = CLAIMED
+        engine.start_work(ticket)
+        result_meta = {
+            "variable_snapshot": result.variable_snapshots.get(branch_id),
+        }
+        engine.complete(ticket, params, result_meta)
+        resolved += 1
+    if resolved:
+        logger.info("Auto-resolved %d branch tickets from execution", resolved)
+    return resolved
 
 
 async def _multi_turn_execute(
@@ -378,9 +420,10 @@ async def run(config: PenetratorConfig) -> dict:
     # 2b. Create within-run knowledge store (not persisted — EvoSkill handles cross-run)
     knowledge = LearnedKnowledge()
 
-    # 3. Create initial ticket if fresh run
+    # 3. Build full ticket DAG if fresh run
     if not config.resume:
-        engine.create_entry_ticket(structure.entry_paragraph)
+        dag_count = engine.build_dag(structure)
+        logger.info("Built ticket DAG: %d tickets", dag_count)
 
     # 4. Create LLM provider
     provider = get_provider_from_env()
@@ -437,6 +480,8 @@ async def run(config: PenetratorConfig) -> dict:
                 len(set(baseline_result.paragraphs_hit)),
                 len(baseline_result.branches_hit),
             )
+            # Auto-resolve branch tickets already hit in baseline
+            _auto_resolve_branches(engine, store, baseline_result, baseline_params)
         except Exception:
             logger.debug("Baseline execution failed")
 
@@ -614,7 +659,17 @@ async def run(config: PenetratorConfig) -> dict:
 
         ticket = engine.claim_next()
         if ticket is None:
-            logger.info("No more claimable tickets")
+            # Distinguish "all done" from "wavefront stalled"
+            created_count = sum(
+                1 for t in store.all_tickets() if t.status == CREATED
+            )
+            if created_count:
+                logger.warning(
+                    "Wavefront stalled: %d tickets have unmet dependencies",
+                    created_count,
+                )
+            else:
+                logger.info("No more claimable tickets")
             break
 
         engine.start_work(ticket)
@@ -665,9 +720,11 @@ async def run(config: PenetratorConfig) -> dict:
 
             engine.complete(ticket, params, result_meta)
 
-            # Cascade using BOTH trace output AND static call graph
+            # Auto-resolve any branch directions hit as side effects
+            _auto_resolve_branches(engine, store, result, params)
+
+            # Cascade dynamically discovered paragraphs (not in static call graph)
             if isinstance(ticket, ParagraphTicket):
-                _cascade_branch_tickets(engine, structure, ticket)
                 new_tickets = _cascade_from_trace(
                     engine, store, structure, result, ticket
                 )

@@ -159,3 +159,39 @@ class TestStatusConstants:
         b = BranchTicket(id="B", branch_id="1", direction="T", paragraph="P")
         assert p.status == CREATED
         assert b.status == CREATED
+
+
+# ------------------------------------------------------------------
+# depends_on field
+# ------------------------------------------------------------------
+
+
+class TestDependsOn:
+    """Verify the depends_on field on both ticket types."""
+
+    def test_paragraph_default_empty(self) -> None:
+        t = ParagraphTicket(id="P", paragraph="P")
+        assert t.depends_on == []
+
+    def test_branch_default_empty(self) -> None:
+        t = BranchTicket(id="B", branch_id="1", direction="T", paragraph="P")
+        assert t.depends_on == []
+
+    def test_paragraph_explicit(self) -> None:
+        t = ParagraphTicket(
+            id="PARA-B", paragraph="B", depends_on=["PARA-A"]
+        )
+        assert t.depends_on == ["PARA-A"]
+
+    def test_branch_explicit(self) -> None:
+        t = BranchTicket(
+            id="BRANCH-1-T", branch_id="1", direction="T",
+            paragraph="A", depends_on=["PARA-A"],
+        )
+        assert t.depends_on == ["PARA-A"]
+
+    def test_independent_lists(self) -> None:
+        t1 = ParagraphTicket(id="P1", paragraph="P1")
+        t2 = ParagraphTicket(id="P2", paragraph="P2")
+        t1.depends_on.append("X")
+        assert t2.depends_on == []

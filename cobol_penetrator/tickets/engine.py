@@ -14,7 +14,11 @@ All state transitions are validated; invalid transitions raise
 from __future__ import annotations
 
 import logging
-from typing import Any
+from collections import deque
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from cobol_penetrator.mock_reader import ProgramStructure
 
 from .models import (
     BLOCKED,
@@ -89,6 +93,7 @@ class TicketEngine:
         paragraph: str,
         call_path: list[str],
         required_stubs: list[str] | None = None,
+        depends_on: list[str] | None = None,
     ) -> ParagraphTicket:
         """Create a ParagraphTicket for a discovered callee.
 
@@ -96,6 +101,7 @@ class TicketEngine:
             paragraph: Target paragraph name.
             call_path: Ordered call chain from entry to *paragraph*.
             required_stubs: Stub operations needed to reach this paragraph.
+            depends_on: Ticket IDs that must be DONE before this is claimable.
 
         Returns:
             The newly created ticket.
@@ -105,6 +111,7 @@ class TicketEngine:
             paragraph=paragraph,
             call_path=list(call_path),
             required_stubs=list(required_stubs) if required_stubs else [],
+            depends_on=list(depends_on) if depends_on else [],
         )
         self.store.add(ticket)
         logger.info("Created paragraph ticket %s", ticket.id)
@@ -117,6 +124,7 @@ class TicketEngine:
         paragraph: str,
         condition_text: str = "",
         condition_vars: list[str] | None = None,
+        depends_on: list[str] | None = None,
     ) -> BranchTicket:
         """Create a BranchTicket for a specific branch direction.
 
@@ -126,6 +134,7 @@ class TicketEngine:
             paragraph: The paragraph containing this branch.
             condition_text: Readable condition expression.
             condition_vars: COBOL variables involved in the condition.
+            depends_on: Ticket IDs that must be DONE before this is claimable.
 
         Returns:
             The newly created ticket.
@@ -137,10 +146,84 @@ class TicketEngine:
             paragraph=paragraph,
             condition_text=condition_text,
             condition_vars=list(condition_vars) if condition_vars else [],
+            depends_on=list(depends_on) if depends_on else [],
         )
         self.store.add(ticket)
         logger.info("Created branch ticket %s", ticket.id)
         return ticket
+
+    def build_dag(self, structure: ProgramStructure) -> int:
+        """Build the full ticket DAG from the static call graph.
+
+        Creates paragraph tickets for all reachable paragraphs and branch
+        tickets for all their branches, with dependency edges so that:
+
+        - Child paragraph tickets depend on their caller's paragraph ticket.
+        - Branch tickets depend on their containing paragraph's ticket.
+
+        Uses BFS from the entry paragraph.  Cycles and multiple paths to the
+        same paragraph are handled: the first (shortest) path wins.
+
+        Args:
+            structure: Parsed program structure with call graph and branches.
+
+        Returns:
+            Total number of tickets created.
+        """
+        created = 0
+        visited: set[str] = set()
+
+        # Entry ticket — no dependencies
+        entry = structure.entry_paragraph
+        entry_id = f"PARA-{entry}"
+        self.create_entry_ticket(entry)
+        created += 1
+        visited.add(entry)
+
+        # BFS queue: (paragraph_name, call_path, ticket_id)
+        queue: deque[tuple[str, list[str], str]] = deque()
+        queue.append((entry, [entry], entry_id))
+
+        while queue:
+            para, path, para_ticket_id = queue.popleft()
+
+            # Create branch tickets for this paragraph
+            for branch_id in structure.branches_in(para):
+                branch_info = structure.branches[branch_id]
+                for direction in branch_info.directions:
+                    try:
+                        self.create_branch_ticket(
+                            branch_id=branch_id,
+                            direction=direction,
+                            paragraph=para,
+                            condition_text=branch_info.condition_text,
+                            condition_vars=branch_info.condition_vars,
+                            depends_on=[para_ticket_id],
+                        )
+                        created += 1
+                    except Exception:
+                        pass  # duplicate — already created
+
+            # Enqueue callees
+            for callee in structure.call_graph.get(para, []):
+                if callee not in visited and callee in structure.paragraphs:
+                    visited.add(callee)
+                    callee_path = path + [callee]
+                    callee_id = f"PARA-{callee}"
+                    try:
+                        self.create_paragraph_ticket(
+                            paragraph=callee,
+                            call_path=callee_path,
+                            depends_on=[para_ticket_id],
+                        )
+                        created += 1
+                    except Exception:
+                        pass  # duplicate
+                    queue.append((callee, callee_path, callee_id))
+
+        logger.info("Built ticket DAG: %d tickets from %d reachable paragraphs",
+                     created, len(visited))
+        return created
 
     # ------------------------------------------------------------------
     # State transitions

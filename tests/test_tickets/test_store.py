@@ -322,3 +322,89 @@ class TestLoadOrCreate:
         store = TicketStore()
         store.load_or_create(tmp_path / "nonexistent.json")
         assert store.all_tickets() == []
+
+
+# ------------------------------------------------------------------
+# Dependency-aware claiming
+# ------------------------------------------------------------------
+
+
+class TestDependencyAwareClaiming:
+    """Verify wavefront scheduling respects depends_on."""
+
+    def test_unmet_dep_skipped(self, store: TicketStore) -> None:
+        """A ticket with an unmet dependency is not claimable."""
+        parent = _para("MAIN")
+        child = _para("CHILD", call_path=["MAIN", "CHILD"])
+        child.depends_on = ["PARA-MAIN"]
+        store.add(parent)
+        store.add(child)
+        # Only MAIN should be claimable
+        claimed = store.claim_next()
+        assert claimed is parent
+
+    def test_met_dep_claimable(self, store: TicketStore) -> None:
+        """A ticket becomes claimable when its dependency is DONE."""
+        parent = _para("MAIN", status=DONE)
+        child = _para("CHILD", call_path=["MAIN", "CHILD"])
+        child.depends_on = ["PARA-MAIN"]
+        store.add(parent)
+        store.add(child)
+        claimed = store.claim_next()
+        assert claimed is child
+
+    def test_all_deps_must_be_done(self, store: TicketStore) -> None:
+        """Ticket with 2 deps, only 1 DONE, is not ready."""
+        dep1 = _para("A", status=DONE)
+        dep2 = _para("B")  # still CREATED
+        child = _para("C", call_path=["A", "B", "C"])
+        child.depends_on = ["PARA-A", "PARA-B"]
+        store.add(dep1)
+        store.add(dep2)
+        store.add(child)
+        claimed = store.claim_next()
+        # B is claimable (no deps), C is not (B not done)
+        assert claimed is dep2
+
+    def test_branch_after_paragraph_locality(self, store: TicketStore) -> None:
+        """Branches of a completed paragraph are preferred over deeper paragraphs."""
+        parent = _para("MAIN", status=DONE)
+        branch = _branch("1", paragraph="MAIN")
+        branch.depends_on = ["PARA-MAIN"]
+        deeper = _para("CHILD", call_path=["MAIN", "CHILD"])
+        deeper.depends_on = ["PARA-MAIN"]
+        store.add(parent)
+        store.add(branch)
+        store.add(deeper)
+        # Branch (tier 0) should win over paragraph (tier 1)
+        claimed = store.claim_next()
+        assert claimed is branch
+
+    def test_no_deps_always_ready(self, store: TicketStore) -> None:
+        """Tickets with empty depends_on are immediately claimable."""
+        t = _para("MAIN")
+        assert t.depends_on == []
+        store.add(t)
+        assert store.claim_next() is t
+
+    def test_missing_dep_not_ready(self, store: TicketStore) -> None:
+        """If depends_on references a non-existent ticket, not claimable."""
+        t = _para("X")
+        t.depends_on = ["PARA-NONEXISTENT"]
+        store.add(t)
+        assert store.claim_next() is None
+
+    def test_json_round_trip_with_depends_on(
+        self, store: TicketStore, tmp_path: Path
+    ) -> None:
+        """depends_on survives save/load."""
+        t = _para("CHILD", call_path=["MAIN", "CHILD"])
+        t.depends_on = ["PARA-MAIN"]
+        store.add(t)
+        path = tmp_path / "tickets.json"
+        store.save(path)
+
+        new_store = TicketStore()
+        new_store.load(path)
+        loaded = new_store.get("PARA-CHILD")
+        assert loaded.depends_on == ["PARA-MAIN"]

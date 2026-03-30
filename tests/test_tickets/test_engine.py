@@ -260,9 +260,147 @@ class TestClaimNextDelegation:
         assert engine.claim_next() is None
 
     def test_claim_priority(self, engine: TicketEngine) -> None:
-        """ParagraphTickets should be claimed before BranchTickets."""
+        """ParagraphTickets should be claimed before BranchTickets
+        when both have no dependencies."""
         engine.create_branch_ticket("5", "T", "2000-VALIDATE")
         engine.create_entry_ticket("1000-MAIN")
         t = engine.claim_next()
         assert isinstance(t, ParagraphTicket)
         assert t.paragraph == "1000-MAIN"
+
+
+# ------------------------------------------------------------------
+# build_dag
+# ------------------------------------------------------------------
+
+
+def _make_structure(
+    entry: str,
+    paragraphs: dict[str, list[str]],
+    call_graph: dict[str, list[str]],
+    branches: dict[str, tuple[str, list[str]]] | None = None,
+):
+    """Build a minimal ProgramStructure for testing.
+
+    Args:
+        entry: Entry paragraph name.
+        paragraphs: {name: [branch_ids]} mapping.
+        call_graph: {caller: [callees]} mapping.
+        branches: {branch_id: (paragraph, [directions])} mapping.
+    """
+    from cobol_penetrator.mock_reader import (
+        BranchInfo,
+        ParagraphInfo,
+        ProgramStructure,
+    )
+
+    para_objs = {}
+    for name, branch_ids in paragraphs.items():
+        para_objs[name] = ParagraphInfo(
+            name=name,
+            line_start=1,
+            line_end=10,
+            source_code="MOCK CODE",
+            branches=list(branch_ids),
+            performs=call_graph.get(name, []),
+        )
+
+    branch_objs = {}
+    if branches:
+        for bid, (para, dirs) in branches.items():
+            branch_objs[bid] = BranchInfo(
+                id=bid,
+                paragraph=para,
+                condition_text=f"COND-{bid}",
+                condition_vars=[f"VAR-{bid}"],
+                directions=list(dirs),
+            )
+
+    return ProgramStructure(
+        entry_paragraph=entry,
+        paragraphs=para_objs,
+        branches=branch_objs,
+        call_graph=call_graph,
+    )
+
+
+class TestBuildDag:
+    """Verify build_dag creates correct ticket DAG from call graph."""
+
+    def test_linear_chain(self, engine: TicketEngine) -> None:
+        """A -> B -> C creates 3 paragraph tickets with correct deps."""
+        structure = _make_structure(
+            entry="A",
+            paragraphs={"A": [], "B": [], "C": []},
+            call_graph={"A": ["B"], "B": ["C"]},
+        )
+        count = engine.build_dag(structure)
+        assert count == 3
+
+        a = engine.store.get("PARA-A")
+        b = engine.store.get("PARA-B")
+        c = engine.store.get("PARA-C")
+        assert a.depends_on == []
+        assert b.depends_on == ["PARA-A"]
+        assert c.depends_on == ["PARA-B"]
+        assert b.call_path == ["A", "B"]
+        assert c.call_path == ["A", "B", "C"]
+
+    def test_with_branches(self, engine: TicketEngine) -> None:
+        """Branches depend on their containing paragraph."""
+        structure = _make_structure(
+            entry="MAIN",
+            paragraphs={"MAIN": ["1"], "SUB": ["2"]},
+            call_graph={"MAIN": ["SUB"]},
+            branches={
+                "1": ("MAIN", ["T", "F"]),
+                "2": ("SUB", ["T", "F"]),
+            },
+        )
+        count = engine.build_dag(structure)
+        # 2 paragraphs + 4 branches = 6
+        assert count == 6
+
+        b1t = engine.store.get("BRANCH-1-T")
+        b1f = engine.store.get("BRANCH-1-F")
+        b2t = engine.store.get("BRANCH-2-T")
+        assert b1t.depends_on == ["PARA-MAIN"]
+        assert b1f.depends_on == ["PARA-MAIN"]
+        assert b2t.depends_on == ["PARA-SUB"]
+
+    def test_cycle_handled(self, engine: TicketEngine) -> None:
+        """A -> B -> A should not loop; each paragraph gets one ticket."""
+        structure = _make_structure(
+            entry="A",
+            paragraphs={"A": [], "B": []},
+            call_graph={"A": ["B"], "B": ["A"]},
+        )
+        count = engine.build_dag(structure)
+        assert count == 2  # one ticket per paragraph
+
+    def test_diamond(self, engine: TicketEngine) -> None:
+        """A -> B, A -> C, B -> D, C -> D — D created once with shortest path."""
+        structure = _make_structure(
+            entry="A",
+            paragraphs={"A": [], "B": [], "C": [], "D": []},
+            call_graph={"A": ["B", "C"], "B": ["D"], "C": ["D"]},
+        )
+        count = engine.build_dag(structure)
+        assert count == 4  # A, B, C, D
+
+        d = engine.store.get("PARA-D")
+        # D depends on whichever parent was dequeued first (B, since A->[B,C])
+        assert d.depends_on == ["PARA-B"]
+        assert d.call_path == ["A", "B", "D"]
+
+    def test_unreachable_paragraph_skipped(self, engine: TicketEngine) -> None:
+        """Paragraphs not reachable from entry are not in DAG."""
+        structure = _make_structure(
+            entry="A",
+            paragraphs={"A": [], "B": [], "ORPHAN": []},
+            call_graph={"A": ["B"]},
+        )
+        count = engine.build_dag(structure)
+        assert count == 2  # A and B only
+        with pytest.raises(Exception):
+            engine.store.get("PARA-ORPHAN")

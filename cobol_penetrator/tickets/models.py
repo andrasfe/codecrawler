@@ -58,6 +58,7 @@ class ParagraphTicket:
     assigned_agent: str | None = None
     call_path: list[str] = field(default_factory=list)
     required_stubs: list[str] = field(default_factory=list)
+    depends_on: list[str] = field(default_factory=list)
     successful_params: dict | None = None
     branches_discovered: list[str] = field(default_factory=list)
     attempts: int = 0
@@ -96,6 +97,7 @@ class BranchTicket:
     paragraph: str
     condition_text: str = ""
     condition_vars: list[str] = field(default_factory=list)
+    depends_on: list[str] = field(default_factory=list)
     status: str = CREATED
     assigned_agent: str | None = None
     successful_params: dict | None = None
