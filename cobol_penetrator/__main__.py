@@ -16,8 +16,11 @@ Usage:
     # Status report
     python -m cobol_penetrator --status --tickets-path .tickets.json
     
-    # Restart (clear all state and start fresh)
-    python -m cobol_penetrator --restart
+    # Restart (clear all state and start fresh with execution)  
+    python -m cobol_penetrator --restart \\
+        --executable .specter_build_RCO100B/RCO100B \\
+        --mock-cbl .specter_build_RCO100B/RCO100B.mock.cbl \\
+        --budget 100 --timeout 300
 """
 
 from __future__ import annotations
@@ -143,7 +146,7 @@ def main() -> None:
     if "--restart" in sys.argv:
         config = load_config()
         restart_clean(config)
-        return
+        # Continue with normal processing instead of returning
 
     config = load_config()
 
