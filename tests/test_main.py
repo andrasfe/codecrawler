@@ -117,7 +117,7 @@ def test_restart_with_other_args():
 def test_main_with_restart_continues_processing(mock_asyncio_run, mock_restart_clean):
     """Test that main() with --restart calls restart_clean and continues with processing."""
     from cobol_penetrator.__main__ import main
-    
+
     # Create temporary executable and mock files
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
@@ -125,26 +125,24 @@ def test_main_with_restart_continues_processing(mock_asyncio_run, mock_restart_c
         mock_file = temp_path / "test.mock.cbl"
         exe_file.write_text("dummy executable")
         mock_file.write_text("dummy mock cobol")
-        
+
+        mock_asyncio_run.return_value = {"executions": 0, "coverage_pct": 0.0}
+
         with patch('sys.argv', [
             'cobol_penetrator',
             '--restart',
             '--executable', str(exe_file),
-            '--mock-cbl', str(mock_file)
+            '--mock-cbl', str(mock_file),
         ]):
-            with patch('cobol_penetrator.config.load_config') as mock_load_config:
-                # Mock the config to return our test paths
+            with patch('cobol_penetrator.__main__.load_config') as mock_load_config:
                 mock_config = PenetratorConfig(
                     executable=exe_file,
                     mock_cbl=mock_file,
+                    restart=True,
                 )
                 mock_load_config.return_value = mock_config
-                
-                # Call main
+
                 main()
-                
-                # Verify restart_clean was called
+
                 mock_restart_clean.assert_called_once_with(mock_config)
-                
-                # Verify processing continued (asyncio.run was called)
                 mock_asyncio_run.assert_called_once()

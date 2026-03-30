@@ -143,12 +143,10 @@ def main() -> None:
         show_status(config)
         return
     
-    if "--restart" in sys.argv:
-        config = load_config()
-        restart_clean(config)
-        # Continue with normal processing instead of returning
-
     config = load_config()
+
+    if config.restart:
+        restart_clean(config)
 
     if not config.executable.exists():
         print(
