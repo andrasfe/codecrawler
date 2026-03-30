@@ -28,6 +28,7 @@ class PenetratorConfig:
     budget: int = 10000
     timeout: int = 3600
     resume: bool = False
+    restart: bool = False
     tickets_path: Path = field(default_factory=lambda: Path(".tickets.json"))
     coverage_path: Path = field(default_factory=lambda: Path("reports/coverage.json"))
     params_dir: Path = field(default_factory=lambda: Path("reports/successful_params"))
@@ -66,6 +67,7 @@ def load_config(args: list[str] | None = None) -> PenetratorConfig:
     parser.add_argument("--budget", type=int, default=10000, help="Max execution attempts")
     parser.add_argument("--timeout", type=int, default=3600, help="Total timeout in seconds")
     parser.add_argument("--resume", action="store_true", help="Resume from prior run")
+    parser.add_argument("--restart", action="store_true", help="Clear all state files and start fresh")
     parser.add_argument("--status", action="store_true", help="Show status report and exit")
     parser.add_argument("--tickets-path", type=Path, default=Path(".tickets.json"))
     parser.add_argument("--coverage-path", type=Path, default=Path("reports/coverage.json"))
@@ -77,6 +79,7 @@ def load_config(args: list[str] | None = None) -> PenetratorConfig:
         budget=parsed.budget,
         timeout=parsed.timeout,
         resume=parsed.resume,
+        restart=parsed.restart,
         tickets_path=parsed.tickets_path,
         coverage_path=parsed.coverage_path,
         max_attempts=parsed.max_attempts,
