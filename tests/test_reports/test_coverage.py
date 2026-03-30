@@ -373,3 +373,61 @@ class TestCoveragePersistence:
         loaded.update(_make_result(paragraphs_hit=["3000-PROCESS"]))
 
         assert loaded.state.history[-1]["iteration"] == 3
+
+
+# ---------------------------------------------------------------------------
+# Tests: Separate paragraph and branch coverage
+# ---------------------------------------------------------------------------
+
+
+class TestSeparateCoverage:
+    """Tests for separate paragraph and branch coverage reporting."""
+
+    def test_separate_coverage_calculation(self) -> None:
+        """Paragraph and branch coverage are calculated separately."""
+        structure = _make_structure()
+        tracker = CoverageTracker(structure)
+        
+        # Hit 2 out of 3 paragraphs (66.67%)
+        # Hit 1 out of 4 branch directions (25.0%)
+        result = _make_result(
+            paragraphs_hit=["1000-MAIN", "2000-VALIDATE"],
+            branches_hit={"1": "T"},
+        )
+        tracker.update(result)
+        
+        # Check individual coverage calculations
+        assert tracker._calculate_paragraph_pct() == 66.67
+        assert tracker._calculate_branch_pct() == 25.0
+
+    def test_separate_coverage_in_saved_json(self, tmp_path: Path) -> None:
+        """JSON output includes separate paragraph and branch coverage."""
+        structure = _make_structure()
+        tracker = CoverageTracker(structure)
+        
+        # Hit all 3 paragraphs (100%) and 2 out of 4 branch directions (50%)
+        result = _make_result(
+            paragraphs_hit=["1000-MAIN", "2000-VALIDATE", "3000-PROCESS"],
+            branches_hit={"1": "T", "2": "F"},
+        )
+        tracker.update(result)
+        
+        out_path = tmp_path / "coverage.json"
+        tracker.save(out_path)
+        
+        data = json.loads(out_path.read_text())
+        assert data["paragraph_coverage_pct"] == 100.0
+        assert data["branch_coverage_pct"] == 50.0
+        assert data["coverage_pct"] == 71.43  # Combined: 5/7 * 100 = 71.43%
+
+    def test_zero_paragraphs_coverage(self) -> None:
+        """Paragraph coverage handles zero paragraphs gracefully."""
+        structure = _make_structure(paragraphs={})
+        tracker = CoverageTracker(structure)
+        assert tracker._calculate_paragraph_pct() == 0.0
+
+    def test_zero_branches_coverage(self) -> None:
+        """Branch coverage handles zero branches gracefully."""
+        structure = _make_structure(branches={})
+        tracker = CoverageTracker(structure)
+        assert tracker._calculate_branch_pct() == 0.0
