@@ -368,7 +368,11 @@ async def run(config: PenetratorConfig) -> dict:
 
     # 2. Load or create ticket store
     store = TicketStore()
-    store.load_or_create(config.tickets_path)
+    if config.resume:
+        store.load_or_create(config.tickets_path)
+    else:
+        # Fresh run - start with empty store, don't load existing tickets
+        logger.info("Fresh run - starting with empty ticket store")
     engine = TicketEngine(store, max_attempts=config.max_attempts)
 
     # 2b. Create within-run knowledge store (not persisted — EvoSkill handles cross-run)
