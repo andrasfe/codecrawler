@@ -131,6 +131,28 @@ class CoverageTracker:
         hit = len(self.state.hit_paragraphs) + len(self.state.hit_branches)
         return round((hit / total) * 100.0, 2)
 
+    def _calculate_paragraph_pct(self) -> float:
+        """Compute paragraph coverage percentage.
+
+        Returns:
+            Paragraph coverage as a float between 0.0 and 100.0.
+            Returns 0.0 if there are no paragraphs to cover.
+        """
+        if self.state.total_paragraphs == 0:
+            return 0.0
+        return round((len(self.state.hit_paragraphs) / self.state.total_paragraphs) * 100.0, 2)
+
+    def _calculate_branch_pct(self) -> float:
+        """Compute branch coverage percentage.
+
+        Returns:
+            Branch coverage as a float between 0.0 and 100.0.
+            Returns 0.0 if there are no branches to cover.
+        """
+        if self.state.total_branches == 0:
+            return 0.0
+        return round((len(self.state.hit_branches) / self.state.total_branches) * 100.0, 2)
+
     def save(self, path: Path) -> None:
         """Write the coverage state to a JSON file.
 
@@ -148,6 +170,8 @@ class CoverageTracker:
             "total_branches": self.state.total_branches,
             "hit_branches": self.state.hit_branches,
             "coverage_pct": self.state.coverage_pct,
+            "paragraph_coverage_pct": self._calculate_paragraph_pct(),
+            "branch_coverage_pct": self._calculate_branch_pct(),
             "history": self.state.history,
         }
         path.write_text(json.dumps(data, indent=2), encoding="utf-8")
